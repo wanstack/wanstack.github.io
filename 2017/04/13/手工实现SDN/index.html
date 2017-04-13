@@ -8,18 +8,18 @@
   <link rel="dns-prefetch" href="http://yoursite.com">
   <title>Neutron SDN 手动实现手册 | wanstack</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="#Neutron SDN 手动实现手册 本文旨在通过自己搭建类似neutron （openvswitch + gre） 实现SDN 的环境，学习了解其工作原理，模拟核心原理，比如：同一租户自定义网络 instance 互通，手动为instance 分配 floating ip 等相关内容。  ###虚拟网络 需要新建3个虚拟网络Net0、Net1和Net2，其在virtual box 中对应配置如">
+  <meta name="description" content="本文旨在通过自己搭建类似neutron （openvswitch + gre） 实现SDN 的环境，学习了解其工作原理，模拟核心原理，比如：同一租户自定义网络 instance 互通，手动为instance 分配 floating ip 等相关内容。  ###虚拟网络 需要新建3个虚拟网络Net0、Net1和Net2，其在virtual box 中对应配置如下。 Net0:     Network">
 <meta name="keywords" content="Network">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Neutron SDN 手动实现手册">
 <meta property="og:url" content="http://yoursite.com/2017/04/13/手工实现SDN/index.html">
 <meta property="og:site_name" content="wanstack">
-<meta property="og:description" content="#Neutron SDN 手动实现手册 本文旨在通过自己搭建类似neutron （openvswitch + gre） 实现SDN 的环境，学习了解其工作原理，模拟核心原理，比如：同一租户自定义网络 instance 互通，手动为instance 分配 floating ip 等相关内容。  ###虚拟网络 需要新建3个虚拟网络Net0、Net1和Net2，其在virtual box 中对应配置如">
+<meta property="og:description" content="本文旨在通过自己搭建类似neutron （openvswitch + gre） 实现SDN 的环境，学习了解其工作原理，模拟核心原理，比如：同一租户自定义网络 instance 互通，手动为instance 分配 floating ip 等相关内容。  ###虚拟网络 需要新建3个虚拟网络Net0、Net1和Net2，其在virtual box 中对应配置如下。 Net0:     Network">
 <meta property="og:image" content="e:/公司资料/github%20page/hexo/source/_posts/文档图片/手工SDN1.png">
-<meta property="og:updated_time" content="2017-04-13T08:50:09.747Z">
+<meta property="og:updated_time" content="2017-04-13T08:51:57.763Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Neutron SDN 手动实现手册">
-<meta name="twitter:description" content="#Neutron SDN 手动实现手册 本文旨在通过自己搭建类似neutron （openvswitch + gre） 实现SDN 的环境，学习了解其工作原理，模拟核心原理，比如：同一租户自定义网络 instance 互通，手动为instance 分配 floating ip 等相关内容。  ###虚拟网络 需要新建3个虚拟网络Net0、Net1和Net2，其在virtual box 中对应配置如">
+<meta name="twitter:description" content="本文旨在通过自己搭建类似neutron （openvswitch + gre） 实现SDN 的环境，学习了解其工作原理，模拟核心原理，比如：同一租户自定义网络 instance 互通，手动为instance 分配 floating ip 等相关内容。  ###虚拟网络 需要新建3个虚拟网络Net0、Net1和Net2，其在virtual box 中对应配置如下。 Net0:     Network">
 <meta name="twitter:image" content="e:/公司资料/github%20page/hexo/source/_posts/文档图片/手工SDN1.png">
   
     <link rel="alternative" href="/atom.xml" title="wanstack" type="application/atom+xml">
@@ -188,8 +188,7 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>#Neutron SDN 手动实现手册</p>
-<p>本文旨在通过自己搭建类似neutron （openvswitch + gre） 实现SDN 的环境，学习了解其工作原理，模拟核心原理，比如：同一租户自定义网络 instance 互通，手动为instance 分配 floating ip 等相关内容。</p>
+        <p>本文旨在通过自己搭建类似neutron （openvswitch + gre） 实现SDN 的环境，学习了解其工作原理，模拟核心原理，比如：同一租户自定义网络 instance 互通，手动为instance 分配 floating ip 等相关内容。</p>
 <p><img src="E:\公司资料\github page\hexo\source\_posts\文档图片\手工SDN1.png" alt="mock neutron architecture"></p>
 <p>###虚拟网络</p>
 <p>需要新建3个虚拟网络Net0、Net1和Net2，其在virtual box 中对应配置如下。</p>
