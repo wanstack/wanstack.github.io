@@ -1,0 +1,786 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="renderer" content="webkit">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" >
+  <link rel="dns-prefetch" href="http://yoursite.com">
+  <title>wanstack</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta property="og:type" content="website">
+<meta property="og:title" content="wanstack">
+<meta property="og:url" content="http://yoursite.com/index.html">
+<meta property="og:site_name" content="wanstack">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="wanstack">
+  
+    <link rel="alternative" href="/atom.xml" title="wanstack" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  <link rel="stylesheet" type="text/css" href="/./main.05aabf.css">
+  <style type="text/css">
+  
+    #container.show {
+      background: linear-gradient(200deg,#a0cfe4,#e8c37e);
+    }
+  </style>
+  
+
+  
+
+</head>
+
+<body>
+  <div id="container" q-class="show:isCtnShow">
+    <canvas id="anm-canvas" class="anm-canvas"></canvas>
+    <div class="left-col" q-class="show:isShow">
+      
+<div class="overlay" style="background: #4d4d4d"></div>
+<div class="intrude-less">
+	<header id="header" class="inner">
+		<a href="/" class="profilepic">
+			<img src="null" class="js-avatar">
+		</a>
+		<hgroup>
+		  <h1 class="header-author"><a href="/">wanstack</a></h1>
+		</hgroup>
+		
+
+		<nav class="header-menu">
+			<ul>
+			
+				<li><a href="/">主页</a></li>
+	        
+				<li><a href="/tags/随笔/">随笔</a></li>
+	        
+			</ul>
+		</nav>
+		<nav class="header-smart-menu">
+    		
+    			
+    			<a q-on="click: openSlider(e, 'innerArchive')" href="javascript:void(0)">所有文章</a>
+    			
+            
+    			
+    			<a q-on="click: openSlider(e, 'friends')" href="javascript:void(0)">友链</a>
+    			
+            
+    			
+    			<a q-on="click: openSlider(e, 'aboutme')" href="javascript:void(0)">关于我</a>
+    			
+            
+		</nav>
+		<nav class="header-nav">
+			<div class="social">
+				
+					<a class="github" target="_blank" href="#" title="github"><i class="icon-github"></i></a>
+		        
+					<a class="weibo" target="_blank" href="#" title="weibo"><i class="icon-weibo"></i></a>
+		        
+					<a class="rss" target="_blank" href="#" title="rss"><i class="icon-rss"></i></a>
+		        
+					<a class="zhihu" target="_blank" href="#" title="zhihu"><i class="icon-zhihu"></i></a>
+		        
+			</div>
+		</nav>
+	</header>		
+</div>
+
+    </div>
+    <div class="mid-col" q-class="show:isShow,hide:isShow|isFalse">
+      
+<nav id="mobile-nav">
+  	<div class="overlay js-overlay" style="background: #4d4d4d"></div>
+	<div class="btnctn js-mobile-btnctn">
+  		<div class="slider-trigger list" q-on="click: openSlider(e)"><i class="icon icon-sort"></i></div>
+	</div>
+	<div class="intrude-less">
+		<header id="header" class="inner">
+			<div class="profilepic">
+				<img src="null" class="js-avatar">
+			</div>
+			<hgroup>
+			  <h1 class="header-author js-header-author">wanstack</h1>
+			</hgroup>
+			
+			
+			
+				
+			
+				
+			
+			
+			
+			<nav class="header-nav">
+				<div class="social">
+					
+						<a class="github" target="_blank" href="#" title="github"><i class="icon-github"></i></a>
+			        
+						<a class="weibo" target="_blank" href="#" title="weibo"><i class="icon-weibo"></i></a>
+			        
+						<a class="rss" target="_blank" href="#" title="rss"><i class="icon-rss"></i></a>
+			        
+						<a class="zhihu" target="_blank" href="#" title="zhihu"><i class="icon-zhihu"></i></a>
+			        
+				</div>
+			</nav>
+
+			<nav class="header-menu js-header-menu">
+				<ul style="width: 50%">
+				
+				
+					<li style="width: 50%"><a href="/">主页</a></li>
+		        
+					<li style="width: 50%"><a href="/tags/随笔/">随笔</a></li>
+		        
+				</ul>
+			</nav>
+		</header>				
+	</div>
+	<div class="mobile-mask" style="display:none" q-show="isShow"></div>
+</nav>
+
+      <div id="wrapper" class="body-wrap">
+        <div class="menu-l">
+          <div class="canvas-wrap">
+            <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
+          </div>
+          <div id="js-content" class="content-ll">
+            
+  
+    <article id="post-packstack install openstack-mitaka" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/03/30/packstack install openstack-mitaka/">packstack 安装配置openstack mitaka</a>
+    </h1>
+  
+
+        
+        <a href="/2017/03/30/packstack install openstack-mitaka/" class="archive-article-date">
+  	<time datetime="2017-03-30T01:20:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-03-30</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>1、修改主机名</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">hostnamectl set-hostname controller</div><div class="line">hostname controller</div><div class="line"></div><div class="line">hostnamectl set-hostname compute01</div><div class="line">hostname compute01</div><div class="line"></div><div class="line">hostnamectl set-hostname compute02</div><div class="line">hostname compute02</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">cat /etc/hosts</div><div class="line">127.0.0.1   localhost localhost.localdomain localhost4 localhost4.localdomain4</div><div class="line">::1         localhost localhost.localdomain localhost6 localhost6.localdomain6</div><div class="line"></div><div class="line">192.168.12.50 controller</div><div class="line">192.168.12.51 compute01</div><div class="line">192.168.12.52 compute02</div></pre></td></tr></table></figure>
+<p>2、安装基础yum源</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">yum install ntpdate -y</div><div class="line">echo &quot;*/5 * * * * /usr/sbin/ntpdate 192.168.2.161 &gt;/dev/null 2&gt;&amp;1&quot; &gt;&gt; /var/spool/cron/root</div><div class="line">/usr/sbin/ntpdate 192.168.2.161</div><div class="line">yum install wget -y</div><div class="line">rm -rf /etc/yum.repos.d/*</div><div class="line">wget -O /etc/yum.repos.d/CentOS-Base.repo http://mirrors.aliyun.com/repo/Centos-7.repo</div></pre></td></tr></table></figure>
+<p>3、安装配置openstack源</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">yum install -y centos-release-openstack-mitaka</div><div class="line"></div><div class="line">vim CentOS-OpenStack-mitaka.repo </div><div class="line">[centos-openstack-mitaka]</div><div class="line">name=CentOS-7 - OpenStack mitaka</div><div class="line">baseurl=http://mirrors.aliyun.com/centos/7/cloud/$basearch/openstack-mitaka/</div><div class="line">gpgcheck=1</div><div class="line">enabled=1</div><div class="line">gpgkey=file:///etc/pki/rpm-gpg/RPM-GPG-KEY-CentOS-SIG-Cloud</div></pre></td></tr></table></figure>
+<p>4、安装配置openstack</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">yum update -y</div></pre></td></tr></table></figure>
+<p>控制节点执行: CONFIG_PROVISION_DEMO=n</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">yum install -y openstack-packstack</div><div class="line"></div><div class="line">packstack --gen-answer-file=openstack.txt</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div><div class="line">76</div><div class="line">77</div><div class="line">78</div><div class="line">79</div><div class="line">80</div><div class="line">81</div><div class="line">82</div><div class="line">83</div><div class="line">84</div><div class="line">85</div><div class="line">86</div><div class="line">87</div><div class="line">88</div><div class="line">89</div><div class="line">90</div><div class="line">91</div><div class="line">92</div><div class="line">93</div><div class="line">94</div><div class="line">95</div><div class="line">96</div><div class="line">97</div><div class="line">98</div><div class="line">99</div><div class="line">100</div><div class="line">101</div><div class="line">102</div><div class="line">103</div><div class="line">104</div><div class="line">105</div><div class="line">106</div><div class="line">107</div><div class="line">108</div><div class="line">109</div><div class="line">110</div><div class="line">111</div><div class="line">112</div><div class="line">113</div><div class="line">114</div><div class="line">115</div><div class="line">116</div><div class="line">117</div><div class="line">118</div><div class="line">119</div><div class="line">120</div><div class="line">121</div><div class="line">122</div><div class="line">123</div><div class="line">124</div><div class="line">125</div><div class="line">126</div><div class="line">127</div><div class="line">128</div><div class="line">129</div><div class="line">130</div><div class="line">131</div><div class="line">132</div><div class="line">133</div><div class="line">134</div><div class="line">135</div><div class="line">136</div><div class="line">137</div><div class="line">138</div><div class="line">139</div><div class="line">140</div><div class="line">141</div><div class="line">142</div><div class="line">143</div><div class="line">144</div><div class="line">145</div><div class="line">146</div><div class="line">147</div><div class="line">148</div><div class="line">149</div><div class="line">150</div><div class="line">151</div><div class="line">152</div><div class="line">153</div><div class="line">154</div><div class="line">155</div><div class="line">156</div><div class="line">157</div><div class="line">158</div><div class="line">159</div><div class="line">160</div><div class="line">161</div><div class="line">162</div><div class="line">163</div><div class="line">164</div><div class="line">165</div><div class="line">166</div><div class="line">167</div><div class="line">168</div><div class="line">169</div><div class="line">170</div><div class="line">171</div><div class="line">172</div><div class="line">173</div><div class="line">174</div><div class="line">175</div><div class="line">176</div><div class="line">177</div><div class="line">178</div><div class="line">179</div><div class="line">180</div><div class="line">181</div><div class="line">182</div><div class="line">183</div><div class="line">184</div><div class="line">185</div><div class="line">186</div><div class="line">187</div><div class="line">188</div><div class="line">189</div><div class="line">190</div><div class="line">191</div><div class="line">192</div><div class="line">193</div><div class="line">194</div><div class="line">195</div><div class="line">196</div><div class="line">197</div><div class="line">198</div><div class="line">199</div><div class="line">200</div><div class="line">201</div><div class="line">202</div><div class="line">203</div><div class="line">204</div><div class="line">205</div><div class="line">206</div><div class="line">207</div><div class="line">208</div><div class="line">209</div><div class="line">210</div><div class="line">211</div><div class="line">212</div><div class="line">213</div><div class="line">214</div><div class="line">215</div><div class="line">216</div><div class="line">217</div><div class="line">218</div><div class="line">219</div><div class="line">220</div><div class="line">221</div><div class="line">222</div><div class="line">223</div><div class="line">224</div><div class="line">225</div><div class="line">226</div><div class="line">227</div><div class="line">228</div><div class="line">229</div><div class="line">230</div><div class="line">231</div><div class="line">232</div><div class="line">233</div><div class="line">234</div><div class="line">235</div><div class="line">236</div><div class="line">237</div><div class="line">238</div><div class="line">239</div><div class="line">240</div><div class="line">241</div><div class="line">242</div><div class="line">243</div><div class="line">244</div><div class="line">245</div><div class="line">246</div><div class="line">247</div><div class="line">248</div><div class="line">249</div><div class="line">250</div><div class="line">251</div><div class="line">252</div><div class="line">253</div><div class="line">254</div><div class="line">255</div><div class="line">256</div><div class="line">257</div><div class="line">258</div><div class="line">259</div><div class="line">260</div><div class="line">261</div><div class="line">262</div><div class="line">263</div><div class="line">264</div><div class="line">265</div><div class="line">266</div><div class="line">267</div><div class="line">268</div><div class="line">269</div><div class="line">270</div><div class="line">271</div><div class="line">272</div><div class="line">273</div><div class="line">274</div><div class="line">275</div><div class="line">276</div><div class="line">277</div><div class="line">278</div><div class="line">279</div><div class="line">280</div><div class="line">281</div><div class="line">282</div><div class="line">283</div><div class="line">284</div><div class="line">285</div><div class="line">286</div><div class="line">287</div><div class="line">288</div><div class="line">289</div><div class="line">290</div><div class="line">291</div><div class="line">292</div><div class="line">293</div><div class="line">294</div><div class="line">295</div><div class="line">296</div><div class="line">297</div><div class="line">298</div><div class="line">299</div><div class="line">300</div><div class="line">301</div><div class="line">302</div><div class="line">303</div><div class="line">304</div><div class="line">305</div><div class="line">306</div><div class="line">307</div><div class="line">308</div><div class="line">309</div><div class="line">310</div><div class="line">311</div><div class="line">312</div><div class="line">313</div><div class="line">314</div><div class="line">315</div><div class="line">316</div><div class="line">317</div></pre></td><td class="code"><pre><div class="line">[root@controller ~]# cat openstack.txt | egrep -v &quot;^$|^#&quot;</div><div class="line">[general]</div><div class="line">CONFIG_SSH_KEY=/root/.ssh/id_rsa.pub</div><div class="line">CONFIG_DEFAULT_PASSWORD=</div><div class="line">CONFIG_SERVICE_WORKERS=%&#123;::processorcount&#125;</div><div class="line">CONFIG_MARIADB_INSTALL=y</div><div class="line">CONFIG_GLANCE_INSTALL=y</div><div class="line">CONFIG_CINDER_INSTALL=y</div><div class="line">CONFIG_MANILA_INSTALL=n</div><div class="line">CONFIG_NOVA_INSTALL=y</div><div class="line">CONFIG_NEUTRON_INSTALL=y</div><div class="line">CONFIG_HORIZON_INSTALL=y</div><div class="line">CONFIG_SWIFT_INSTALL=y</div><div class="line">CONFIG_CEILOMETER_INSTALL=y</div><div class="line">CONFIG_AODH_INSTALL=y</div><div class="line">CONFIG_GNOCCHI_INSTALL=y</div><div class="line">CONFIG_SAHARA_INSTALL=n</div><div class="line">CONFIG_HEAT_INSTALL=n</div><div class="line">CONFIG_TROVE_INSTALL=n</div><div class="line">CONFIG_IRONIC_INSTALL=n</div><div class="line">CONFIG_CLIENT_INSTALL=y</div><div class="line">CONFIG_NTP_SERVERS=</div><div class="line">CONFIG_NAGIOS_INSTALL=y</div><div class="line">EXCLUDE_SERVERS=</div><div class="line">CONFIG_DEBUG_MODE=n</div><div class="line">CONFIG_CONTROLLER_HOST=192.168.12.50</div><div class="line">CONFIG_COMPUTE_HOSTS=192.168.12.51,192.168.12.52</div><div class="line">CONFIG_NETWORK_HOSTS=192.168.12.50</div><div class="line">CONFIG_VMWARE_BACKEND=n</div><div class="line">CONFIG_UNSUPPORTED=n</div><div class="line">CONFIG_USE_SUBNETS=n</div><div class="line">CONFIG_VCENTER_HOST=</div><div class="line">CONFIG_VCENTER_USER=</div><div class="line">CONFIG_VCENTER_PASSWORD=</div><div class="line">CONFIG_VCENTER_CLUSTER_NAMES=</div><div class="line">CONFIG_STORAGE_HOST=192.168.12.50</div><div class="line">CONFIG_SAHARA_HOST=192.168.12.50</div><div class="line">CONFIG_USE_EPEL=n</div><div class="line">CONFIG_REPO=</div><div class="line">CONFIG_ENABLE_RDO_TESTING=n</div><div class="line">CONFIG_RH_USER=</div><div class="line">CONFIG_SATELLITE_URL=</div><div class="line">CONFIG_RH_SAT6_SERVER=</div><div class="line">CONFIG_RH_PW=</div><div class="line">CONFIG_RH_OPTIONAL=y</div><div class="line">CONFIG_RH_PROXY=</div><div class="line">CONFIG_RH_SAT6_ORG=</div><div class="line">CONFIG_RH_SAT6_KEY=</div><div class="line">CONFIG_RH_PROXY_PORT=</div><div class="line">CONFIG_RH_PROXY_USER=</div><div class="line">CONFIG_RH_PROXY_PW=</div><div class="line">CONFIG_SATELLITE_USER=</div><div class="line">CONFIG_SATELLITE_PW=</div><div class="line">CONFIG_SATELLITE_AKEY=</div><div class="line">CONFIG_SATELLITE_CACERT=</div><div class="line">CONFIG_SATELLITE_PROFILE=</div><div class="line">CONFIG_SATELLITE_FLAGS=</div><div class="line">CONFIG_SATELLITE_PROXY=</div><div class="line">CONFIG_SATELLITE_PROXY_USER=</div><div class="line">CONFIG_SATELLITE_PROXY_PW=</div><div class="line">CONFIG_SSL_CACERT_FILE=/etc/pki/tls/certs/selfcert.crt</div><div class="line">CONFIG_SSL_CACERT_KEY_FILE=/etc/pki/tls/private/selfkey.key</div><div class="line">CONFIG_SSL_CERT_DIR=~/packstackca/</div><div class="line">CONFIG_SSL_CACERT_SELFSIGN=y</div><div class="line">CONFIG_SELFSIGN_CACERT_SUBJECT_C=--</div><div class="line">CONFIG_SELFSIGN_CACERT_SUBJECT_ST=State</div><div class="line">CONFIG_SELFSIGN_CACERT_SUBJECT_L=City</div><div class="line">CONFIG_SELFSIGN_CACERT_SUBJECT_O=openstack</div><div class="line">CONFIG_SELFSIGN_CACERT_SUBJECT_OU=packstack</div><div class="line">CONFIG_SELFSIGN_CACERT_SUBJECT_CN=controller</div><div class="line">CONFIG_SELFSIGN_CACERT_SUBJECT_MAIL=admin@controller</div><div class="line">CONFIG_AMQP_BACKEND=rabbitmq</div><div class="line">CONFIG_AMQP_HOST=192.168.12.50</div><div class="line">CONFIG_AMQP_ENABLE_SSL=n</div><div class="line">CONFIG_AMQP_ENABLE_AUTH=n</div><div class="line">CONFIG_AMQP_NSS_CERTDB_PW=PW_PLACEHOLDER</div><div class="line">CONFIG_AMQP_AUTH_USER=amqp_user</div><div class="line">CONFIG_AMQP_AUTH_PASSWORD=PW_PLACEHOLDER</div><div class="line">CONFIG_MARIADB_HOST=192.168.12.50</div><div class="line">CONFIG_MARIADB_USER=root</div><div class="line">CONFIG_MARIADB_PW=openstack</div><div class="line">CONFIG_KEYSTONE_DB_PW=38cddfa9ce6149c9</div><div class="line">CONFIG_KEYSTONE_DB_PURGE_ENABLE=True</div><div class="line">CONFIG_KEYSTONE_REGION=RegionOne</div><div class="line">CONFIG_KEYSTONE_ADMIN_TOKEN=e462f66d03974d8fa410cf76aae40da9</div><div class="line">CONFIG_KEYSTONE_ADMIN_EMAIL=root@localhost</div><div class="line">CONFIG_KEYSTONE_ADMIN_USERNAME=admin</div><div class="line">CONFIG_KEYSTONE_ADMIN_PW=admin</div><div class="line">CONFIG_KEYSTONE_DEMO_PW=demo</div><div class="line">CONFIG_KEYSTONE_API_VERSION=v2.0</div><div class="line">CONFIG_KEYSTONE_TOKEN_FORMAT=UUID</div><div class="line">CONFIG_KEYSTONE_SERVICE_NAME=httpd</div><div class="line">CONFIG_KEYSTONE_IDENTITY_BACKEND=sql</div><div class="line">CONFIG_KEYSTONE_LDAP_URL=ldap://192.168.12.50</div><div class="line">CONFIG_KEYSTONE_LDAP_USER_DN=</div><div class="line">CONFIG_KEYSTONE_LDAP_USER_PASSWORD=</div><div class="line">CONFIG_KEYSTONE_LDAP_SUFFIX=</div><div class="line">CONFIG_KEYSTONE_LDAP_QUERY_SCOPE=one</div><div class="line">CONFIG_KEYSTONE_LDAP_PAGE_SIZE=-1</div><div class="line">CONFIG_KEYSTONE_LDAP_USER_SUBTREE=</div><div class="line">CONFIG_KEYSTONE_LDAP_USER_FILTER=</div><div class="line">CONFIG_KEYSTONE_LDAP_USER_OBJECTCLASS=</div><div class="line">CONFIG_KEYSTONE_LDAP_USER_ID_ATTRIBUTE=</div><div class="line">CONFIG_KEYSTONE_LDAP_USER_NAME_ATTRIBUTE=</div><div class="line">CONFIG_KEYSTONE_LDAP_USER_MAIL_ATTRIBUTE=</div><div class="line">CONFIG_KEYSTONE_LDAP_USER_ENABLED_ATTRIBUTE=</div><div class="line">CONFIG_KEYSTONE_LDAP_USER_ENABLED_MASK=-1</div><div class="line">CONFIG_KEYSTONE_LDAP_USER_ENABLED_DEFAULT=TRUE</div><div class="line">CONFIG_KEYSTONE_LDAP_USER_ENABLED_INVERT=n</div><div class="line">CONFIG_KEYSTONE_LDAP_USER_ATTRIBUTE_IGNORE=</div><div class="line">CONFIG_KEYSTONE_LDAP_USER_DEFAULT_PROJECT_ID_ATTRIBUTE=</div><div class="line">CONFIG_KEYSTONE_LDAP_USER_ALLOW_CREATE=n</div><div class="line">CONFIG_KEYSTONE_LDAP_USER_ALLOW_UPDATE=n</div><div class="line">CONFIG_KEYSTONE_LDAP_USER_ALLOW_DELETE=n</div><div class="line">CONFIG_KEYSTONE_LDAP_USER_PASS_ATTRIBUTE=</div><div class="line">CONFIG_KEYSTONE_LDAP_USER_ENABLED_EMULATION_DN=</div><div class="line">CONFIG_KEYSTONE_LDAP_USER_ADDITIONAL_ATTRIBUTE_MAPPING=</div><div class="line">CONFIG_KEYSTONE_LDAP_GROUP_SUBTREE=</div><div class="line">CONFIG_KEYSTONE_LDAP_GROUP_FILTER=</div><div class="line">CONFIG_KEYSTONE_LDAP_GROUP_OBJECTCLASS=</div><div class="line">CONFIG_KEYSTONE_LDAP_GROUP_ID_ATTRIBUTE=</div><div class="line">CONFIG_KEYSTONE_LDAP_GROUP_NAME_ATTRIBUTE=</div><div class="line">CONFIG_KEYSTONE_LDAP_GROUP_MEMBER_ATTRIBUTE=</div><div class="line">CONFIG_KEYSTONE_LDAP_GROUP_DESC_ATTRIBUTE=</div><div class="line">CONFIG_KEYSTONE_LDAP_GROUP_ATTRIBUTE_IGNORE=</div><div class="line">CONFIG_KEYSTONE_LDAP_GROUP_ALLOW_CREATE=n</div><div class="line">CONFIG_KEYSTONE_LDAP_GROUP_ALLOW_UPDATE=n</div><div class="line">CONFIG_KEYSTONE_LDAP_GROUP_ALLOW_DELETE=n</div><div class="line">CONFIG_KEYSTONE_LDAP_GROUP_ADDITIONAL_ATTRIBUTE_MAPPING=</div><div class="line">CONFIG_KEYSTONE_LDAP_USE_TLS=n</div><div class="line">CONFIG_KEYSTONE_LDAP_TLS_CACERTDIR=</div><div class="line">CONFIG_KEYSTONE_LDAP_TLS_CACERTFILE=</div><div class="line">CONFIG_KEYSTONE_LDAP_TLS_REQ_CERT=demand</div><div class="line">CONFIG_GLANCE_DB_PW=b5b27691c2a14788</div><div class="line">CONFIG_GLANCE_KS_PW=3ed7ad2ece9146a9</div><div class="line">CONFIG_GLANCE_BACKEND=file</div><div class="line">CONFIG_CINDER_DB_PW=dadf81afd3be45cc</div><div class="line">CONFIG_CINDER_DB_PURGE_ENABLE=True</div><div class="line">CONFIG_CINDER_KS_PW=68c0f33d48664240</div><div class="line">CONFIG_CINDER_BACKEND=lvm</div><div class="line">CONFIG_CINDER_VOLUMES_CREATE=y</div><div class="line">CONFIG_CINDER_VOLUMES_SIZE=20G</div><div class="line">CONFIG_CINDER_GLUSTER_MOUNTS=</div><div class="line">CONFIG_CINDER_NFS_MOUNTS=</div><div class="line">CONFIG_CINDER_NETAPP_LOGIN=</div><div class="line">CONFIG_CINDER_NETAPP_PASSWORD=</div><div class="line">CONFIG_CINDER_NETAPP_HOSTNAME=</div><div class="line">CONFIG_CINDER_NETAPP_SERVER_PORT=80</div><div class="line">CONFIG_CINDER_NETAPP_STORAGE_FAMILY=ontap_cluster</div><div class="line">CONFIG_CINDER_NETAPP_TRANSPORT_TYPE=http</div><div class="line">CONFIG_CINDER_NETAPP_STORAGE_PROTOCOL=nfs</div><div class="line">CONFIG_CINDER_NETAPP_SIZE_MULTIPLIER=1.0</div><div class="line">CONFIG_CINDER_NETAPP_EXPIRY_THRES_MINUTES=720</div><div class="line">CONFIG_CINDER_NETAPP_THRES_AVL_SIZE_PERC_START=20</div><div class="line">CONFIG_CINDER_NETAPP_THRES_AVL_SIZE_PERC_STOP=60</div><div class="line">CONFIG_CINDER_NETAPP_NFS_SHARES=</div><div class="line">CONFIG_CINDER_NETAPP_NFS_SHARES_CONFIG=/etc/cinder/shares.conf</div><div class="line">CONFIG_CINDER_NETAPP_VOLUME_LIST=</div><div class="line">CONFIG_CINDER_NETAPP_VFILER=</div><div class="line">CONFIG_CINDER_NETAPP_PARTNER_BACKEND_NAME=</div><div class="line">CONFIG_CINDER_NETAPP_VSERVER=</div><div class="line">CONFIG_CINDER_NETAPP_CONTROLLER_IPS=</div><div class="line">CONFIG_CINDER_NETAPP_SA_PASSWORD=</div><div class="line">CONFIG_CINDER_NETAPP_ESERIES_HOST_TYPE=linux_dm_mp</div><div class="line">CONFIG_CINDER_NETAPP_WEBSERVICE_PATH=/devmgr/v2</div><div class="line">CONFIG_CINDER_NETAPP_STORAGE_POOLS=</div><div class="line">CONFIG_IRONIC_DB_PW=PW_PLACEHOLDER</div><div class="line">CONFIG_IRONIC_KS_PW=PW_PLACEHOLDER</div><div class="line">CONFIG_NOVA_DB_PURGE_ENABLE=True</div><div class="line">CONFIG_NOVA_DB_PW=588239b4fe244aeb</div><div class="line">CONFIG_NOVA_KS_PW=3f355b76a92d41f1</div><div class="line">CONFIG_NOVA_SCHED_CPU_ALLOC_RATIO=16.0</div><div class="line">CONFIG_NOVA_SCHED_RAM_ALLOC_RATIO=1.5</div><div class="line">CONFIG_NOVA_COMPUTE_MIGRATE_PROTOCOL=tcp</div><div class="line">CONFIG_NOVA_COMPUTE_MANAGER=nova.compute.manager.ComputeManager</div><div class="line">CONFIG_VNC_SSL_CERT=</div><div class="line">CONFIG_VNC_SSL_KEY=</div><div class="line">CONFIG_NOVA_PCI_ALIAS=</div><div class="line">CONFIG_NOVA_PCI_PASSTHROUGH_WHITELIST=</div><div class="line">CONFIG_NOVA_LIBVIRT_VIRT_TYPE=%&#123;::default_hypervisor&#125;</div><div class="line">CONFIG_NOVA_COMPUTE_PRIVIF=</div><div class="line">CONFIG_NOVA_NETWORK_MANAGER=nova.network.manager.FlatDHCPManager</div><div class="line">CONFIG_NOVA_NETWORK_PUBIF=eth0</div><div class="line">CONFIG_NOVA_NETWORK_PRIVIF=</div><div class="line">CONFIG_NOVA_NETWORK_FIXEDRANGE=192.168.32.0/22</div><div class="line">CONFIG_NOVA_NETWORK_FLOATRANGE=10.3.4.0/22</div><div class="line">CONFIG_NOVA_NETWORK_AUTOASSIGNFLOATINGIP=n</div><div class="line">CONFIG_NOVA_NETWORK_VLAN_START=100</div><div class="line">CONFIG_NOVA_NETWORK_NUMBER=1</div><div class="line">CONFIG_NOVA_NETWORK_SIZE=255</div><div class="line">CONFIG_NEUTRON_KS_PW=e6c0896ef2fa412c</div><div class="line">CONFIG_NEUTRON_DB_PW=1202d0c54fdb4f5d</div><div class="line">CONFIG_NEUTRON_L3_EXT_BRIDGE=br-ex</div><div class="line">CONFIG_NEUTRON_METADATA_PW=fd7e182acbc842e3</div><div class="line">CONFIG_LBAAS_INSTALL=n</div><div class="line">CONFIG_NEUTRON_METERING_AGENT_INSTALL=y</div><div class="line">CONFIG_NEUTRON_FWAAS=n</div><div class="line">CONFIG_NEUTRON_VPNAAS=n</div><div class="line">CONFIG_NEUTRON_ML2_TYPE_DRIVERS=vxlan</div><div class="line">CONFIG_NEUTRON_ML2_TENANT_NETWORK_TYPES=vxlan</div><div class="line">CONFIG_NEUTRON_ML2_MECHANISM_DRIVERS=openvswitch</div><div class="line">CONFIG_NEUTRON_ML2_FLAT_NETWORKS=*</div><div class="line">CONFIG_NEUTRON_ML2_VLAN_RANGES=</div><div class="line">CONFIG_NEUTRON_ML2_TUNNEL_ID_RANGES=</div><div class="line">CONFIG_NEUTRON_ML2_VXLAN_GROUP=</div><div class="line">CONFIG_NEUTRON_ML2_VNI_RANGES=10:100</div><div class="line">CONFIG_NEUTRON_L2_AGENT=openvswitch</div><div class="line">CONFIG_NEUTRON_ML2_SUPPORTED_PCI_VENDOR_DEVS=[&apos;15b3:1004&apos;, &apos;8086:10ca&apos;]</div><div class="line">CONFIG_NEUTRON_ML2_SRIOV_AGENT_REQUIRED=n</div><div class="line">CONFIG_NEUTRON_ML2_SRIOV_INTERFACE_MAPPINGS=</div><div class="line">CONFIG_NEUTRON_LB_INTERFACE_MAPPINGS=</div><div class="line">CONFIG_NEUTRON_OVS_BRIDGE_MAPPINGS=</div><div class="line">CONFIG_NEUTRON_OVS_BRIDGE_IFACES=</div><div class="line">CONFIG_NEUTRON_OVS_BRIDGES_COMPUTE=</div><div class="line">CONFIG_NEUTRON_OVS_TUNNEL_IF=</div><div class="line">CONFIG_NEUTRON_OVS_TUNNEL_SUBNETS=</div><div class="line">CONFIG_NEUTRON_OVS_VXLAN_UDP_PORT=4789</div><div class="line">CONFIG_MANILA_DB_PW=PW_PLACEHOLDER</div><div class="line">CONFIG_MANILA_KS_PW=PW_PLACEHOLDER</div><div class="line">CONFIG_MANILA_BACKEND=generic</div><div class="line">CONFIG_MANILA_NETAPP_DRV_HANDLES_SHARE_SERVERS=false</div><div class="line">CONFIG_MANILA_NETAPP_TRANSPORT_TYPE=https</div><div class="line">CONFIG_MANILA_NETAPP_LOGIN=admin</div><div class="line">CONFIG_MANILA_NETAPP_PASSWORD=</div><div class="line">CONFIG_MANILA_NETAPP_SERVER_HOSTNAME=</div><div class="line">CONFIG_MANILA_NETAPP_STORAGE_FAMILY=ontap_cluster</div><div class="line">CONFIG_MANILA_NETAPP_SERVER_PORT=443</div><div class="line">CONFIG_MANILA_NETAPP_AGGREGATE_NAME_SEARCH_PATTERN=(.*)</div><div class="line">CONFIG_MANILA_NETAPP_ROOT_VOLUME_AGGREGATE=</div><div class="line">CONFIG_MANILA_NETAPP_ROOT_VOLUME_NAME=root</div><div class="line">CONFIG_MANILA_NETAPP_VSERVER=</div><div class="line">CONFIG_MANILA_GENERIC_DRV_HANDLES_SHARE_SERVERS=true</div><div class="line">CONFIG_MANILA_GENERIC_VOLUME_NAME_TEMPLATE=manila-share-%s</div><div class="line">CONFIG_MANILA_GENERIC_SHARE_MOUNT_PATH=/shares</div><div class="line">CONFIG_MANILA_SERVICE_IMAGE_LOCATION=https://www.dropbox.com/s/vi5oeh10q1qkckh/ubuntu_1204_nfs_cifs.qcow2</div><div class="line">CONFIG_MANILA_SERVICE_INSTANCE_USER=ubuntu</div><div class="line">CONFIG_MANILA_SERVICE_INSTANCE_PASSWORD=ubuntu</div><div class="line">CONFIG_MANILA_NETWORK_TYPE=neutron</div><div class="line">CONFIG_MANILA_NETWORK_STANDALONE_GATEWAY=</div><div class="line">CONFIG_MANILA_NETWORK_STANDALONE_NETMASK=</div><div class="line">CONFIG_MANILA_NETWORK_STANDALONE_SEG_ID=</div><div class="line">CONFIG_MANILA_NETWORK_STANDALONE_IP_RANGE=</div><div class="line">CONFIG_MANILA_NETWORK_STANDALONE_IP_VERSION=4</div><div class="line">CONFIG_MANILA_GLUSTERFS_SERVERS=</div><div class="line">CONFIG_MANILA_GLUSTERFS_NATIVE_PATH_TO_PRIVATE_KEY=</div><div class="line">CONFIG_MANILA_GLUSTERFS_VOLUME_PATTERN=</div><div class="line">CONFIG_MANILA_GLUSTERFS_TARGET=</div><div class="line">CONFIG_MANILA_GLUSTERFS_MOUNT_POINT_BASE=</div><div class="line">CONFIG_MANILA_GLUSTERFS_NFS_SERVER_TYPE=gluster</div><div class="line">CONFIG_MANILA_GLUSTERFS_PATH_TO_PRIVATE_KEY=</div><div class="line">CONFIG_MANILA_GLUSTERFS_GANESHA_SERVER_IP=</div><div class="line">CONFIG_HORIZON_SSL=n</div><div class="line">CONFIG_HORIZON_SECRET_KEY=82c2cbbf5e744a4785e2d0ddd3ec9b80</div><div class="line">CONFIG_HORIZON_SSL_CERT=</div><div class="line">CONFIG_HORIZON_SSL_KEY=</div><div class="line">CONFIG_HORIZON_SSL_CACERT=</div><div class="line">CONFIG_SWIFT_KS_PW=d7b6a1ec2c8f4334</div><div class="line">CONFIG_SWIFT_STORAGES=</div><div class="line">CONFIG_SWIFT_STORAGE_ZONES=1</div><div class="line">CONFIG_SWIFT_STORAGE_REPLICAS=1</div><div class="line">CONFIG_SWIFT_STORAGE_FSTYPE=ext4</div><div class="line">CONFIG_SWIFT_HASH=67485c805b524830</div><div class="line">CONFIG_SWIFT_STORAGE_SIZE=2G</div><div class="line">CONFIG_HEAT_DB_PW=PW_PLACEHOLDER</div><div class="line">CONFIG_HEAT_AUTH_ENC_KEY=ac8680aafaca4fa9</div><div class="line">CONFIG_HEAT_KS_PW=PW_PLACEHOLDER</div><div class="line">CONFIG_HEAT_CLOUDWATCH_INSTALL=n</div><div class="line">CONFIG_HEAT_CFN_INSTALL=n</div><div class="line">CONFIG_HEAT_DOMAIN=heat</div><div class="line">CONFIG_HEAT_DOMAIN_ADMIN=heat_admin</div><div class="line">CONFIG_HEAT_DOMAIN_PASSWORD=PW_PLACEHOLDER</div><div class="line">CONFIG_PROVISION_DEMO=n</div><div class="line">CONFIG_PROVISION_TEMPEST=n</div><div class="line">CONFIG_PROVISION_DEMO_FLOATRANGE=172.24.4.224/28</div><div class="line">CONFIG_PROVISION_IMAGE_NAME=cirros</div><div class="line">CONFIG_PROVISION_IMAGE_URL=http://download.cirros-cloud.net/0.3.4/cirros-0.3.4-x86_64-disk.img</div><div class="line">CONFIG_PROVISION_IMAGE_FORMAT=qcow2</div><div class="line">CONFIG_PROVISION_IMAGE_SSH_USER=cirros</div><div class="line">CONFIG_PROVISION_UEC_IMAGE_NAME=cirros-uec</div><div class="line">CONFIG_PROVISION_UEC_IMAGE_KERNEL_URL=http://download.cirros-cloud.net/0.3.4/cirros-0.3.4-x86_64-kernel</div><div class="line">CONFIG_PROVISION_UEC_IMAGE_RAMDISK_URL=http://download.cirros-cloud.net/0.3.4/cirros-0.3.4-x86_64-initramfs</div><div class="line">CONFIG_PROVISION_UEC_IMAGE_DISK_URL=http://download.cirros-cloud.net/0.3.4/cirros-0.3.4-x86_64-disk.img</div><div class="line">CONFIG_TEMPEST_HOST=</div><div class="line">CONFIG_PROVISION_TEMPEST_USER=</div><div class="line">CONFIG_PROVISION_TEMPEST_USER_PW=PW_PLACEHOLDER</div><div class="line">CONFIG_PROVISION_TEMPEST_FLOATRANGE=172.24.4.224/28</div><div class="line">CONFIG_PROVISION_TEMPEST_REPO_URI=https://github.com/openstack/tempest.git</div><div class="line">CONFIG_PROVISION_TEMPEST_REPO_REVISION=master</div><div class="line">CONFIG_RUN_TEMPEST=n</div><div class="line">CONFIG_RUN_TEMPEST_TESTS=smoke</div><div class="line">CONFIG_PROVISION_OVS_BRIDGE=y</div><div class="line">CONFIG_GNOCCHI_DB_PW=9e46b3492cd441ae</div><div class="line">CONFIG_GNOCCHI_KS_PW=553369ab22294506</div><div class="line">CONFIG_CEILOMETER_SECRET=7d41192be1264a47</div><div class="line">CONFIG_CEILOMETER_KS_PW=2b56ad68aab341a0</div><div class="line">CONFIG_CEILOMETER_SERVICE_NAME=httpd</div><div class="line">CONFIG_CEILOMETER_COORDINATION_BACKEND=redis</div><div class="line">CONFIG_CEILOMETER_METERING_BACKEND=database</div><div class="line">CONFIG_MONGODB_HOST=192.168.12.50</div><div class="line">CONFIG_REDIS_MASTER_HOST=192.168.12.50</div><div class="line">CONFIG_REDIS_PORT=6379</div><div class="line">CONFIG_REDIS_HA=n</div><div class="line">CONFIG_REDIS_SLAVE_HOSTS=</div><div class="line">CONFIG_REDIS_SENTINEL_HOSTS=</div><div class="line">CONFIG_REDIS_SENTINEL_CONTACT_HOST=</div><div class="line">CONFIG_REDIS_SENTINEL_PORT=26379</div><div class="line">CONFIG_REDIS_SENTINEL_QUORUM=2</div><div class="line">CONFIG_REDIS_MASTER_NAME=mymaster</div><div class="line">CONFIG_AODH_KS_PW=d6881f5b3b0e4ce2</div><div class="line">CONFIG_TROVE_DB_PW=PW_PLACEHOLDER</div><div class="line">CONFIG_TROVE_KS_PW=PW_PLACEHOLDER</div><div class="line">CONFIG_TROVE_NOVA_USER=trove</div><div class="line">CONFIG_TROVE_NOVA_TENANT=services</div><div class="line">CONFIG_TROVE_NOVA_PW=PW_PLACEHOLDER</div><div class="line">CONFIG_SAHARA_DB_PW=PW_PLACEHOLDER</div><div class="line">CONFIG_SAHARA_KS_PW=PW_PLACEHOLDER</div><div class="line">CONFIG_NAGIOS_PW=383e86a1cd4348b5</div></pre></td></tr></table></figure>
+<p>5、安装</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">packstack --answer-file=openstack.txt</div></pre></td></tr></table></figure>
+<p>6、安装后的修改</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">vim /etc/neutron/plugins/ml2/ml2_conf.ini </div><div class="line">修改控制节点网络配置:</div><div class="line">[ml2_type_flat]</div><div class="line">flat_networks = *</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line">修改控制节点网卡配置:</div><div class="line">[root@controller network-scripts(keystone_admin)]# cat ifcfg-ens160 </div><div class="line">DEVICE=ens160</div><div class="line">TYPE=OVSPort</div><div class="line">DEVICETYPE=ovs</div><div class="line">OVS_BRIDGE=br-ex</div><div class="line">ONBOOT=yes</div><div class="line">[root@controller network-scripts(keystone_admin)]# cat ifcfg-br-ex </div><div class="line">DEVICE=br-ex</div><div class="line">ONBOOT=yes</div><div class="line">DEVICETYPE=ovs</div><div class="line">TYPE=OVSBridge</div><div class="line">BOOTPROTO=static</div><div class="line">IPADDR=192.168.12.50</div><div class="line">NETMASK=255.255.255.0</div><div class="line">GATEWAY=192.168.12.1</div><div class="line">DNS1=218.2.2.2</div></pre></td></tr></table></figure>
+<p>#####################为2个计算节点挂载共享存储，本次是nfs</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div></pre></td><td class="code"><pre><div class="line">找一个硬盘分区后，此次是sdc1挂载到/opt/nova/instances上</div><div class="line">[root@cinder ~]# cat /etc/fstab </div><div class="line">/dev/mapper/centos-root /                       xfs     defaults        0 0</div><div class="line">UUID=06e34a87-b0fc-40e5-aae2-fa4d136543fc /boot                   xfs     defaults        0 0</div><div class="line">/dev/mapper/centos-swap swap                    swap    defaults        0 0</div><div class="line">/dev/sdc1                                       /opt/nova/instances xfs defaults    0   0</div><div class="line"></div><div class="line">格式化/dev/sdc1:</div><div class="line">mkfs.xfs /dev/sdb1</div><div class="line"></div><div class="line">修改过/etc/fstab后mount -a 即可生效</div><div class="line"></div><div class="line"></div><div class="line"></div><div class="line"></div><div class="line">yum -y install nfs-utils rpcbind -y</div><div class="line"></div><div class="line">vim  /etc/exports</div><div class="line">/opt/nova/instances 192.168.12.0/24(rw,no_root_squash,no_all_squash,sync)</div><div class="line"></div><div class="line">exportfs -r</div><div class="line">systemctl enable rpcbind.service</div><div class="line">systemctl start rpcbind.service</div><div class="line">systemctl enable nfs-server.service </div><div class="line">systemctl start nfs-server.service </div><div class="line"></div><div class="line"></div><div class="line">2、2个nova节点查看</div><div class="line">showmount -e 192.168.12.50</div><div class="line"></div><div class="line">mount -t nfs 192.168.12.50:/opt/nova/instances /var/lib/nova/instances/</div><div class="line"></div><div class="line"></div><div class="line"></div><div class="line"></div><div class="line">mount -a</div><div class="line"></div><div class="line"></div><div class="line">2个nova节点：</div><div class="line">chown -R nova.nova /var/lib/nova</div></pre></td></tr></table></figure>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">Openstack</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2017/03/30/packstack install openstack-mitaka/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+
+
+
+
+
+
+
+  
+    <article id="post-devstack" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/03/29/devstack/">devstack mitaka 安装配置</a>
+    </h1>
+  
+
+        
+        <a href="/2017/03/29/devstack/" class="archive-article-date">
+  	<time datetime="2017-03-29T15:37:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-03-29</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div><div class="line">76</div><div class="line">77</div><div class="line">78</div><div class="line">79</div><div class="line">80</div><div class="line">81</div><div class="line">82</div><div class="line">83</div><div class="line">84</div><div class="line">85</div><div class="line">86</div><div class="line">87</div><div class="line">88</div><div class="line">89</div><div class="line">90</div><div class="line">91</div><div class="line">92</div><div class="line">93</div><div class="line">94</div><div class="line">95</div><div class="line">96</div><div class="line">97</div><div class="line">98</div><div class="line">99</div><div class="line">100</div><div class="line">101</div><div class="line">102</div><div class="line">103</div><div class="line">104</div><div class="line">105</div><div class="line">106</div><div class="line">107</div><div class="line">108</div><div class="line">109</div><div class="line">110</div><div class="line">111</div><div class="line">112</div><div class="line">113</div><div class="line">114</div><div class="line">115</div><div class="line">116</div><div class="line">117</div><div class="line">118</div><div class="line">119</div><div class="line">120</div><div class="line">121</div><div class="line">122</div><div class="line">123</div><div class="line">124</div><div class="line">125</div><div class="line">126</div><div class="line">127</div><div class="line">128</div><div class="line">129</div><div class="line">130</div><div class="line">131</div><div class="line">132</div><div class="line">133</div><div class="line">134</div><div class="line">135</div><div class="line">136</div><div class="line">137</div><div class="line">138</div><div class="line">139</div><div class="line">140</div><div class="line">141</div><div class="line">142</div><div class="line">143</div><div class="line">144</div><div class="line">145</div><div class="line">146</div><div class="line">147</div><div class="line">148</div><div class="line">149</div><div class="line">150</div><div class="line">151</div><div class="line">152</div><div class="line">153</div><div class="line">154</div><div class="line">155</div></pre></td><td class="code"><pre><div class="line">1、操作系统ubuntu 14.04 </div><div class="line">2、安装方式 devstack </div><div class="line">3、安装版本 openstack mitaka版本</div><div class="line">4、安装devstack 步骤</div><div class="line"></div><div class="line">1) 目前国内已经提供了完整的OpenStack的github的mirror</div><div class="line">http://git.trystack.cn</div><div class="line"></div><div class="line">2) 另外devstack还会下载image，下载的过程也是非常缓慢。trystack也提供大家常用的image下载。</div><div class="line">http://images.trystack.cn</div><div class="line">3) 设置源</div><div class="line">sudo vim /etc/apt/sources.list</div><div class="line">deb http://cn.archive.ubuntu.com/ubuntu/ trusty main restricted universe multiverse</div><div class="line">deb http://cn.archive.ubuntu.com/ubuntu/ trusty-security main restricted universe multiverse</div><div class="line">deb http://cn.archive.ubuntu.com/ubuntu/ trusty-updates main restricted universe multiverse</div><div class="line">deb http://cn.archive.ubuntu.com/ubuntu/ trusty-proposed main restricted universe multiverse</div><div class="line">deb http://cn.archive.ubuntu.com/ubuntu/ trusty-backports main restricted universe multiverse</div><div class="line"></div><div class="line"></div><div class="line">sudo apt-get update</div><div class="line">sudo ntpdate 192.168.2.161</div><div class="line"></div><div class="line">sudo apt-get install git -y</div><div class="line"></div><div class="line">sudo git clone http://git.trystack.cn/openstack-dev/devstack.git -b stable/mitaka</div><div class="line"></div><div class="line"># 目前Devstack脚本已经不支持直接使用root身份运行，你需要创建stack用户运行</div><div class="line">cd devstack/tools/</div><div class="line">sudo ./create-stack-user.sh</div><div class="line">sudo passwd stack</div><div class="line"># 修改devstack目录权限,让stack用户可以运行</div><div class="line">sudo chown -R stack:stack devstack</div><div class="line">sudo chmod 777 /dev/pts/0</div><div class="line"></div><div class="line">su stack</div><div class="line">cd devstack</div><div class="line"></div><div class="line">vim local.conf</div><div class="line">stack@ubuntu:/home/wanstack/devstack$ cat local.conf </div><div class="line">[[local|localrc]]</div><div class="line"></div><div class="line"># use TryStack git mirror</div><div class="line">GIT_BASE=http://git.trystack.cn</div><div class="line">NOVNC_REPO=http://git.trystack.cn/kanaka/noVNC.git</div><div class="line">SPICE_REPO=http://git.trystack.cn/git/spice/spice-html5.git</div><div class="line"></div><div class="line">#OFFLINE=True</div><div class="line">RECLONE=False</div><div class="line"></div><div class="line"># Define images to be automatically downloaded during the DevStack built process.</div><div class="line">DOWNLOAD_DEFAULT_IMAGES=False</div><div class="line">IMAGE_URLS=&quot;http://images.trystack.cn/cirros/cirros-0.3.4-x86_64-disk.img&quot;</div><div class="line"></div><div class="line">HOST_IP=192.168.12.10</div><div class="line"></div><div class="line"></div><div class="line"># Credentials</div><div class="line">DATABASE_PASSWORD=openstack</div><div class="line">ADMIN_PASSWORD=openstack</div><div class="line">SERVICE_PASSWORD=openstack</div><div class="line">SERVICE_TOKEN=openstack</div><div class="line">RABBIT_PASSWORD=openstack</div><div class="line"></div><div class="line">HORIZON_BRANCH=stable/mitaka</div><div class="line">KEYSTONE_BRANCH=stable/mitaka</div><div class="line">NOVA_BRANCH=stable/mitaka</div><div class="line">NEUTRON_BRANCH=stable/mitaka</div><div class="line">GLANCE_BRANCH=stable/mitaka</div><div class="line">CINDER_BRANCH=stable/mitaka</div><div class="line">CEILOMETER_BRANCH=stable/mitaka</div><div class="line">AODH_BRANCH=stable/mitaka</div><div class="line"></div><div class="line">enable_plugin ceilometer https://git.openstack.org/openstack/ceilometer stable/mitaka</div><div class="line">enable_plugin aodh https://git.openstack.org/openstack/aodh stable/mitaka</div><div class="line"></div><div class="line"></div><div class="line">#keystone</div><div class="line">KEYSTONE_TOKEN_FORMAT=UUID</div><div class="line"></div><div class="line">##Heat</div><div class="line">HEAT_BRANCH=stable/mitaka</div><div class="line">enable_service h-eng h-api h-api-cfn h-api-cw</div><div class="line"></div><div class="line"></div><div class="line">## Swift</div><div class="line">SWIFT_BRANCH=stable/mitaka</div><div class="line">ENABLED_SERVICES+=,s-proxy,s-object,s-container,s-account</div><div class="line">SWIFT_REPLICAS=1</div><div class="line">SWIFT_HASH=011688b44136573e209e</div><div class="line"></div><div class="line"></div><div class="line"># Enabling Neutron (network) Service</div><div class="line">disable_service n-net</div><div class="line">enable_service q-svc</div><div class="line">enable_service q-agt</div><div class="line">enable_service q-dhcp</div><div class="line">enable_service q-l3</div><div class="line">enable_service q-meta</div><div class="line">enable_service q-metering</div><div class="line">enable_service neutron</div><div class="line"></div><div class="line">## Neutron options</div><div class="line">Q_USE_SECGROUP=True</div><div class="line">FLOATING_RANGE=&quot;192.168.12.0/24&quot;</div><div class="line">FIXED_RANGE=&quot;10.0.0.0/24&quot;</div><div class="line">Q_FLOATING_ALLOCATION_POOL=start=192.168.12.110,end=192.168.12.120</div><div class="line">PUBLIC_NETWORK_GATEWAY=&quot;192.168.12.1&quot;</div><div class="line">Q_L3_ENABLED=True</div><div class="line">PUBLIC_INTERFACE=eth0</div><div class="line">Q_USE_PROVIDERNET_FOR_PUBLIC=True</div><div class="line">OVS_PHYSICAL_BRIDGE=br-ex</div><div class="line">PUBLIC_BRIDGE=br-ex</div><div class="line">OVS_BRIDGE_MAPPINGS=public:br-ex</div><div class="line"></div><div class="line"># #VLAN configuration.</div><div class="line">Q_PLUGIN=ml2</div><div class="line">ENABLE_TENANT_VLANS=True</div><div class="line"></div><div class="line"># Logging</div><div class="line">LOGFILE=/opt/stack/logs/stack.sh.log</div><div class="line">VERBOSE=True</div><div class="line">LOG_COLOR=True</div><div class="line">SCREEN_LOGDIR=/opt/stack/logs</div><div class="line"></div><div class="line"></div><div class="line">报错:</div><div class="line">File &quot;/usr/local/lib/python2.7/dist-packages/pip/_vendor/requests/packages/urllib3/response.py&quot;, line 246, in _error_catcher</div><div class="line">2017-03-21 07:54:11.931 |     raise ReadTimeoutError(self._pool, None, &apos;Read timed out.&apos;)</div><div class="line">2017-03-21 07:54:11.931 | ReadTimeoutError: HTTPSConnectionPool(host=&apos;pypi.python.org&apos;, port=443): Read timed out.</div><div class="line"></div><div class="line"></div><div class="line">报错解决:</div><div class="line">./stack.sh: line 488: generate-subunit: command not found</div><div class="line"></div><div class="line">sudo apt-get install python-pip -y</div><div class="line">sudo pip install --upgrade pip</div><div class="line">sudo pip install -U os-testr</div><div class="line"></div><div class="line"></div><div class="line">报错:</div><div class="line">File &quot;/usr/local/lib/python2.7/dist-packages/openstack/session.py&quot;, line 29, in &lt;module&gt;</div><div class="line">2017-03-20 04:52:02.612 |     DEFAULT_USER_AGENT = &quot;openstacksdk/%s&quot; % openstack.__version__</div><div class="line">2017-03-20 04:52:02.612 | AttributeError: &apos;module&apos; object has no attribute &apos;__version__&apos;</div><div class="line">2017-03-20 04:52:02.643 | +lib/keystone:create_keystone_accounts:373  admin_tenant=</div><div class="line">处理:</div><div class="line">root@ubuntu:~# python</div><div class="line"> &gt;&gt;&gt; import openstack</div><div class="line"> &gt;&gt;&gt; import pbr.version</div><div class="line"> &gt;&gt;&gt; print(pbr.version.VersionInfo(&apos;openstacksdk&apos;).version_string())</div><div class="line"> 8 0.8.1</div><div class="line"> &gt;&gt;&gt; quit()</div><div class="line"> vim /usr/local/lib/python2.7/dist-packages/openstack/session.py</div><div class="line">修改为： DEFAULT_USER_AGENT = &quot;openstacksdk/0.8.1&quot;</div><div class="line"></div><div class="line">./stack.sh</div></pre></td></tr></table></figure>
+<h1 id="在ubuntu上搭建samba"><a href="#在ubuntu上搭建samba" class="headerlink" title="在ubuntu上搭建samba"></a>在ubuntu上搭建samba</h1><p>sudo apt-get install samba samba-common -y</p>
+<h1 id="我们把devstack安装在了-opt目录下，所以共享这个目录"><a href="#我们把devstack安装在了-opt目录下，所以共享这个目录" class="headerlink" title="我们把devstack安装在了/opt目录下，所以共享这个目录"></a>我们把devstack安装在了/opt目录下，所以共享这个目录</h1><p>#sudo chmod -R 777 /opt<br>sudo useradd openstack<br>sudo smbpasswd -a  openstack<br>sudo vim /etc/samba/smb.conf<br>在文件末尾添加：<br>[openstack]<br>comment=openstack<br>public=yes<br>browseable = yes<br>path=/opt<br>read only = no</p>
+<p>forceuser=root<br>forcegroup=root</p>
+<p>####################################################</p>
+<h1 id="重启服务"><a href="#重启服务" class="headerlink" title="重启服务"></a>重启服务</h1><p>sudo /etc/init.d/smbd restart</p>
+<p>```</p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">Openstack</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2017/03/29/devstack/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+
+
+
+
+
+
+
+  
+    <article id="post-python 调试工具" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/03/29/python 调试工具/">python代码调试工具</a>
+    </h1>
+  
+
+        
+        <a href="/2017/03/29/python 调试工具/" class="archive-article-date">
+  	<time datetime="2017-03-29T15:37:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-03-29</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>以前都是用print或者log来调试程序,在小规模的程序下很方便，但是遇到向openstack这种项目级别的程序就太尴尬了。于是找到了ipdb</p>
+<p>1、安装</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">pip install ipdb</div></pre></td></tr></table></figure>
+<p>2、使用方法<br>有两种使用方法,一种是不用改变程序直接用ipdb单步执行Python程序,第二种是在程序里标记断点,进行调试.</p>
+<p>1) 第一种方法</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">python -m ipdb xxx.py</div></pre></td></tr></table></figure>
+<p>2) 第二种方法</p>
+<p>在需要断点的地方插入</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">from ipdb import set_trace</div><div class="line">set_trace()</div></pre></td></tr></table></figure>
+<p>3、常用命令</p>
+<blockquote>
+<ul>
+<li>n(下一个)</li>
+<li>ENTER(重复上次命令)</li>
+<li>q(退出)</li>
+<li>p&lt;变量&gt;(打印变量)</li>
+<li>c(继续)</li>
+<li>l(查找当前位于哪里)</li>
+<li>s(进入子程序)</li>
+<li>r(运行直到子程序结束)</li>
+<li>!<python 命令=""></python></li>
+<li>h(帮助)</li>
+</ul>
+</blockquote>
+<hr>
+<p>如果上面的工具觉得好用的话，下面这款工具真心觉得用的爽。</p>
+<p>1、安装<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">pip install pudb</div></pre></td></tr></table></figure></p>
+<p>2、在代码的入口处插入</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">from pudb import set_trace; set_trace()</div></pre></td></tr></table></figure>
+<p>3、调试代码</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">sudo pudb bp.py</div></pre></td></tr></table></figure>
+<p>4、简单使用</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">Ctrl-p可以配置pudb: 是否显示行号, 选择主题, 内置Python解释器的类别</div></pre></td></tr></table></figure>
+<blockquote>
+<ul>
+<li>n: next，也就是执行一步</li>
+<li>s: step into，进入函数内部</li>
+<li>c: continue</li>
+<li>b: break point，断点</li>
+<li>!: python command line</li>
+<li>?: help</li>
+</ul>
+</blockquote>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">Python</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2017/03/29/python 调试工具/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+
+
+
+
+
+
+
+  
+    <article id="post-ceilometer-mitaka api分析" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/03/29/ceilometer-mitaka api分析/">ceilometer-mitaka api分析</a>
+    </h1>
+  
+
+        
+        <a href="/2017/03/29/ceilometer-mitaka api分析/" class="archive-article-date">
+  	<time datetime="2017-03-29T14:36:22.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-03-29</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>本文的讲解是基于目前ceilometer的mitaka版本</p>
+<p>ceilometer –debug meter-list的调用流程分析</p>
+<h5 id="大概过程"><a href="#大概过程" class="headerlink" title="大概过程"></a>大概过程</h5><ul>
+<li><p>python-ceilometerclient</p>
+<blockquote>
+<p>ceilometer –debug meter-list</p>
+<p>curl GET <a href="http://192.168.12.10:8777/v2/meters" target="_blank" rel="external">http://192.168.12.10:8777/v2/meters</a></p>
+</blockquote>
+</li>
+<li><p>Python Application的创建</p>
+</li>
+<li><p>HTTP请求的解析</p>
+<blockquote>
+<p>RootController</p>
+<p>V2Controller</p>
+<p>MetersController</p>
+</blockquote>
+</li>
+<li><p>实际去获取数据的两个函数</p>
+<blockquote>
+<p>pecan.request.storage_conn.get_meters的执行</p>
+<p>Meter.from_db_model的执行</p>
+</blockquote>
+</li>
+</ul>
+<p>curl GET <a href="http://192.168.12.10:8777/v2/meters" target="_blank" rel="external">http://192.168.12.10:8777/v2/meters</a> 这句很重要，<br>下面我们就分析ceilometer收到这个HTTP请求后是如何解析，如何使用Python Application去查询MongoDB数据库的</p>
+<h3 id="1、Python-Application的创建过程"><a href="#1、Python-Application的创建过程" class="headerlink" title="1、Python Application的创建过程"></a>1、Python Application的创建过程</h3><p>需要使用Python Application来接收HTTP请求，因此需要先创建Python Application。下面我们介绍使用Pecan+PasetDeploy创建Python Application的过程。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">在配置文件api_pasete.ini中我们可以看到，PasteDeploy会调用ceilometer.api.app:app_factory。</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line">[pipeline:main]</div><div class="line">pipeline = cors request_id authtoken api-server</div><div class="line"></div><div class="line">[app:api-server]</div><div class="line">paste.app_factory = ceilometer.api.app:app_factory</div><div class="line"></div><div class="line">[filter:authtoken]</div><div class="line">paste.filter_factory = keystonemiddleware.auth_token:filter_factory</div><div class="line"></div><div class="line">[filter:request_id]</div><div class="line">paste.filter_factory = oslo_middleware:RequestId.factory</div><div class="line"></div><div class="line">[filter:cors]</div><div class="line">paste.filter_factory = oslo_middleware.cors:filter_factory</div><div class="line">oslo_config_project = ceilometer</div></pre></td></tr></table></figure>
+<p>根据[app:api-server] 我们得知app_factory函数的具体位置<br>返回的是setup_app()</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">def app_factory(global_config, **local_conf):</div><div class="line">    return setup_app()</div></pre></td></tr></table></figure>
+<p>setup_app函数就是真正创建Python Application的函数，在此函数中最重要的就是调用了pecan.make_app函数，在此函数中最重要的就是指定了解析HTTP Request的RootController，是通过pecan_config.app.root参数指定的；另外一个重要的地方就是hoooks.DBHook，在这里面初始化了数据库的链接，关于这一点后面再做介绍。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div></pre></td><td class="code"><pre><div class="line">def setup_app(pecan_config=None):</div><div class="line">    # FIXME: Replace DBHook with a hooks.TransactionHook</div><div class="line">    app_hooks = [hooks.ConfigHook(),</div><div class="line">                 hooks.DBHook(),</div><div class="line">                 hooks.NotifierHook(),</div><div class="line">                 hooks.TranslationHook()]</div><div class="line"></div><div class="line">    pecan_config = pecan_config or &#123;</div><div class="line">        &quot;app&quot;: &#123;</div><div class="line">            &apos;root&apos;: &apos;ceilometer.api.controllers.root.RootController&apos;,</div><div class="line">            &apos;modules&apos;: [&apos;ceilometer.api&apos;],</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    pecan.configuration.set_config(dict(pecan_config), overwrite=True)</div><div class="line"></div><div class="line">    # NOTE(sileht): pecan debug won&apos;t work in multi-process environment</div><div class="line">    pecan_debug = CONF.api.pecan_debug</div><div class="line">    if CONF.api.workers and CONF.api.workers != 1 and pecan_debug:</div><div class="line">        pecan_debug = False</div><div class="line">        LOG.warning(_LW(&apos;pecan_debug cannot be enabled, if workers is &gt; 1, &apos;</div><div class="line">                        &apos;the value is overrided with False&apos;))</div><div class="line"></div><div class="line">    app = pecan.make_app(</div><div class="line">        pecan_config[&apos;app&apos;][&apos;root&apos;],</div><div class="line">        debug=pecan_debug,</div><div class="line">        hooks=app_hooks,</div><div class="line">        wrap_app=middleware.ParsableErrorMiddleware,</div><div class="line">        guess_content_type_from_ext=False</div><div class="line">    )</div><div class="line"></div><div class="line">    return app</div></pre></td></tr></table></figure>
+<p>在上面我们提到解析HTTP请求的RootController是通过pecan_config.app.root参数指定的，阅读代码可知pecan_config.app.root就pecan_config中指定的，也就是ceilometer.api.controllers.root.RootController。这样Python Application就创建完成了，并且指定好了解析HTTP Request的RootController，也就是说/v2/meters/从RootController开始处理。</p>
+<h3 id="2、HTTP请求的解析过程"><a href="#2、HTTP请求的解析过程" class="headerlink" title="2、HTTP请求的解析过程"></a>2、HTTP请求的解析过程</h3><p>在RootController我们可以看到它先创建了一个类属性:v2，于是所有的以/v2开头的HTTP Request都会由V2Controller来处理，/v2/meters/当然也不例外</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line">class RootController(object):</div><div class="line"></div><div class="line">    def __init__(self):</div><div class="line">        self.v2 = v2.V2Controller()</div><div class="line"></div><div class="line">    @pecan.expose(&apos;json&apos;)</div><div class="line">    def index(self):</div><div class="line">        base_url = pecan.request.application_url</div><div class="line">        available = [&#123;&apos;tag&apos;: &apos;v2&apos;, &apos;date&apos;: &apos;2013-02-13T00:00:00Z&apos;, &#125;]</div><div class="line">        collected = [version_descriptor(base_url, v[&apos;tag&apos;], v[&apos;date&apos;])</div><div class="line">                     for v in available]</div><div class="line">        versions = &#123;&apos;versions&apos;: &#123;&apos;values&apos;: collected&#125;&#125;</div><div class="line">        return versions</div></pre></td></tr></table></figure>
+<p>下面我们再去看V2Controller，我们可以看到它有类属性:event_types,events,capabilities，也就是说/v2/event_types会由EventTypesController来处理，/v2/events/会由EventsController来处理，/v2/capabilities/会由CapabilitiesController来处理，那/v2/meters/呢？往下看，在_lookup函数中我们可以看到/v2/meters/会由MetersController来处理，关于__lookup可以参看官方文档。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">class V2Controller(object):</div><div class="line">    &quot;&quot;&quot;Version 2 API controller root.&quot;&quot;&quot;</div><div class="line"></div><div class="line">    event_types = events.EventTypesController()</div><div class="line">    events = events.EventsController()</div><div class="line">    capabilities = capabilities.CapabilitiesController()</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div></pre></td><td class="code"><pre><div class="line">@pecan.expose()</div><div class="line">    def _lookup(self, kind, *remainder):</div><div class="line">        if (kind in [&apos;meters&apos;, &apos;resources&apos;, &apos;samples&apos;]</div><div class="line">                and self.gnocchi_is_enabled):</div><div class="line">            if kind == &apos;meters&apos; and pecan.request.method == &apos;POST&apos;:</div><div class="line">                direct = pecan.request.params.get(&apos;direct&apos;, &apos;&apos;)</div><div class="line">                if strutils.bool_from_string(direct):</div><div class="line">                    pecan.abort(400, _(&apos;direct option cannot be true when &apos;</div><div class="line">                                       &apos;Gnocchi is enabled.&apos;))</div><div class="line">                return meters.MetersController(), remainder</div><div class="line">            gnocchi_abort()</div><div class="line">        elif kind == &apos;meters&apos;:</div><div class="line">            return meters.MetersController(), remainder</div><div class="line">        elif kind == &apos;resources&apos;:</div><div class="line">            return resources.ResourcesController(), remainder</div><div class="line">        elif kind == &apos;samples&apos;:</div><div class="line">            return samples.SamplesController(), remainder</div><div class="line">        elif kind == &apos;query&apos;:</div><div class="line">            return QueryController(</div><div class="line">                gnocchi_is_enabled=self.gnocchi_is_enabled,</div><div class="line">                aodh_url=self.aodh_url,</div><div class="line">            ), remainder</div><div class="line">        elif kind == &apos;alarms&apos; and (not self.aodh_url):</div><div class="line">            aodh_abort()</div><div class="line">        elif kind == &apos;alarms&apos; and self.aodh_url:</div><div class="line">            aodh_redirect(self.aodh_url)</div><div class="line">        else:</div><div class="line">            pecan.abort(404)</div></pre></td></tr></table></figure>
+<p>因为我们是meters所以最终会执行<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">return meters.MetersController(), remainder</div></pre></td></tr></table></figure></p>
+<p>终于到了MetersController，这里就是最终处理HTTP请求:/v2/meters/的地方</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div></pre></td><td class="code"><pre><div class="line">class MetersController(rest.RestController):</div><div class="line">    &quot;&quot;&quot;Works on meters.&quot;&quot;&quot;</div><div class="line"></div><div class="line">    @pecan.expose()</div><div class="line">    def _lookup(self, meter_name, *remainder):</div><div class="line">        return MeterController(meter_name), remainder</div><div class="line"></div><div class="line">    @wsme_pecan.wsexpose([Meter], [base.Query], int, str)</div><div class="line">    def get_all(self, q=None, limit=None, unique=&apos;&apos;):</div><div class="line">        &quot;&quot;&quot;Return all known meters, based on the data recorded so far.</div><div class="line"></div><div class="line">        :param q: Filter rules for the meters to be returned.</div><div class="line">        :param unique: flag to indicate unique meters to be returned.</div><div class="line">        &quot;&quot;&quot;</div><div class="line"></div><div class="line">        rbac.enforce(&apos;get_meters&apos;, pecan.request)</div><div class="line"></div><div class="line">        q = q or []</div><div class="line"></div><div class="line">        # Timestamp field is not supported for Meter queries</div><div class="line">        limit = v2_utils.enforce_limit(limit)</div><div class="line">        kwargs = v2_utils.query_to_kwargs(</div><div class="line">            q, pecan.request.storage_conn.get_meters,</div><div class="line">            [&apos;limit&apos;], allow_timestamps=False)</div><div class="line">        return [Meter.from_db_model(m)</div><div class="line">                for m in pecan.request.storage_conn.get_meters(</div><div class="line">                limit=limit, unique=strutils.bool_from_string(unique),</div><div class="line">                **kwargs)]</div></pre></td></tr></table></figure>
+<p>在这里最重要的就是最后那一行代码：return [Meter.from_db_model(m) for m in pecan.request.storage_conn.get_meters(limit=limit,**kwargs)]，在这行代码中有两个重要的函数调用：pecan.request.storage_conn.get_meters 以及 Meter.from_db_model。所以还没结束，下面还得分析这两个函数是如何执行的。</p>
+<h3 id="pecan-request-storage-conn-get-meters的执行过程"><a href="#pecan-request-storage-conn-get-meters的执行过程" class="headerlink" title="pecan.request.storage_conn.get_meters的执行过程"></a>pecan.request.storage_conn.get_meters的执行过程</h3><p>要分析pecan.request.storage_conn.get_meters(limit=limit, **kwargs)的执行过程我们分两步：一是storage_conn是如何获得的，二是get_meters是如何执行的。</p>
+<p>storage_conn指的是数据库的链接，在DBHook.<strong>init</strong>中可以看出它是通过调用函数get_connection来获得的，而函数get_connection又调用了函数storage.get_connection_from_config。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div></pre></td><td class="code"><pre><div class="line">class DBHook(hooks.PecanHook):</div><div class="line"></div><div class="line">    def __init__(self):</div><div class="line">        self.storage_connection = DBHook.get_connection(&apos;metering&apos;)</div><div class="line">        self.event_storage_connection = DBHook.get_connection(&apos;event&apos;)</div><div class="line"></div><div class="line">        if (not self.storage_connection</div><div class="line">           and not self.event_storage_connection):</div><div class="line">            raise Exception(&quot;Api failed to start. Failed to connect to &quot;</div><div class="line">                            &quot;databases, purpose:  %s&quot; %</div><div class="line">                            &apos;, &apos;.join([&apos;metering&apos;, &apos;event&apos;]))</div><div class="line"></div><div class="line">    def before(self, state):</div><div class="line">        state.request.storage_conn = self.storage_connection</div><div class="line">        state.request.event_storage_conn = self.event_storage_connection</div><div class="line"></div><div class="line">    @staticmethod</div><div class="line">    def get_connection(purpose):</div><div class="line">        try:</div><div class="line">            return storage.get_connection_from_config(cfg.CONF, purpose)</div><div class="line">        except Exception as err:</div><div class="line">            params = &#123;&quot;purpose&quot;: purpose, &quot;err&quot;: err&#125;</div><div class="line">            LOG.exception(_LE(&quot;Failed to connect to db, purpose %(purpose)s &quot;</div><div class="line">                              &quot;retry later: %(err)s&quot;) % params)</div></pre></td></tr></table></figure>
+<p>下面再看storage.get_connection_from_config函数是如何执行的，函数storage.get_connection_from_config调用了函数storage.get_connection，而在函数storage.get_connection中重要的是: mgr = driver.DriverManger(namespace, engine_name)，其中的driver为：from stevedore import driver，namespace为：ceilometer.meterings.storage，engine_name为：mongodb。于是stevedore会到setup.cfg中查找相应的设置。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div></pre></td><td class="code"><pre><div class="line">def get_connection_from_config(conf, purpose=&apos;metering&apos;):</div><div class="line">    retries = conf.database.max_retries</div><div class="line"></div><div class="line">    # Convert retry_interval secs to msecs for retry decorator</div><div class="line">    @retrying.retry(wait_fixed=conf.database.retry_interval * 1000,</div><div class="line">                    stop_max_attempt_number=retries if retries &gt;= 0 else None)</div><div class="line">    def _inner():</div><div class="line">        if conf.database_connection:</div><div class="line">            conf.set_override(&apos;connection&apos;, conf.database_connection,</div><div class="line">                              group=&apos;database&apos;)</div><div class="line">        namespace = &apos;ceilometer.%s.storage&apos; % purpose</div><div class="line">        url = (getattr(conf.database, &apos;%s_connection&apos; % purpose) or</div><div class="line">               conf.database.connection)</div><div class="line">        return get_connection(url, namespace)</div><div class="line"></div><div class="line">    return _inner()</div><div class="line"></div><div class="line">def get_connection(url, namespace):</div><div class="line">    &quot;&quot;&quot;Return an open connection to the database.&quot;&quot;&quot;</div><div class="line">    connection_scheme = urlparse.urlparse(url).scheme</div><div class="line">    # SqlAlchemy connections specify may specify a &apos;dialect&apos; or</div><div class="line">    # &apos;dialect+driver&apos;. Handle the case where driver is specified.</div><div class="line">    engine_name = connection_scheme.split(&apos;+&apos;)[0]</div><div class="line">    if engine_name == &apos;db2&apos;:</div><div class="line">        import warnings</div><div class="line">        warnings.simplefilter(&quot;always&quot;)</div><div class="line">        import debtcollector</div><div class="line">        debtcollector.deprecate(&quot;The DB2nosql driver is no longer supported&quot;,</div><div class="line">                                version=&quot;Liberty&quot;, removal_version=&quot;N*-cycle&quot;)</div><div class="line">    # NOTE: translation not applied bug #1446983</div><div class="line">    LOG.debug(&apos;looking for %(name)r driver in %(namespace)r&apos;,</div><div class="line">              &#123;&apos;name&apos;: engine_name, &apos;namespace&apos;: namespace&#125;)</div><div class="line">    mgr = driver.DriverManager(namespace, engine_name)</div><div class="line">    return mgr.driver(url)</div></pre></td></tr></table></figure>
+<p>根据</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">from stevedore import driver </div><div class="line">namespace为：ceilometer.meterings.storage，engine_name为：mongodb</div></pre></td></tr></table></figure>
+<p>所以会去调用setup.cfg中的</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">ceilometer.event.storage =</div><div class="line">    mongodb = ceilometer.event.storage.impl_mongodb:Connection</div></pre></td></tr></table></figure>
+<p>在ceilometer.storage.imple_mongodb.Connection类的初始化函数中会初始化数据库的连接，没有相应collection的情况下新建相应collection，设置ttl等。</p>
+<p>../ceilometer/storage/impl_mongodb.py: Connection.<strong>init</strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div><div class="line">76</div><div class="line">77</div><div class="line">78</div><div class="line">79</div><div class="line">80</div><div class="line">81</div><div class="line">82</div><div class="line">83</div><div class="line">84</div><div class="line">85</div><div class="line">86</div><div class="line">87</div><div class="line">88</div><div class="line">89</div><div class="line">90</div><div class="line">91</div><div class="line">92</div><div class="line">93</div><div class="line">94</div><div class="line">95</div><div class="line">96</div><div class="line">97</div><div class="line">98</div><div class="line">99</div><div class="line">100</div><div class="line">101</div><div class="line">102</div><div class="line">103</div><div class="line">104</div><div class="line">105</div><div class="line">106</div><div class="line">107</div><div class="line">108</div><div class="line">109</div><div class="line">110</div><div class="line">111</div><div class="line">112</div></pre></td><td class="code"><pre><div class="line">class Connection(pymongo_base.Connection):</div><div class="line">   </div><div class="line">    CAPABILITIES = utils.update_nested(pymongo_base.Connection.CAPABILITIES,</div><div class="line">                                       AVAILABLE_CAPABILITIES)</div><div class="line">    CONNECTION_POOL = pymongo_utils.ConnectionPool()</div><div class="line"></div><div class="line">    STANDARD_AGGREGATES = dict([(a.name, a) for a in [</div><div class="line">        pymongo_utils.SUM_AGGREGATION, pymongo_utils.AVG_AGGREGATION,</div><div class="line">        pymongo_utils.MIN_AGGREGATION, pymongo_utils.MAX_AGGREGATION,</div><div class="line">        pymongo_utils.COUNT_AGGREGATION,</div><div class="line">    ]])</div><div class="line"></div><div class="line">    AGGREGATES = dict([(a.name, a) for a in [</div><div class="line">        pymongo_utils.SUM_AGGREGATION,</div><div class="line">        pymongo_utils.AVG_AGGREGATION,</div><div class="line">        pymongo_utils.MIN_AGGREGATION,</div><div class="line">        pymongo_utils.MAX_AGGREGATION,</div><div class="line">        pymongo_utils.COUNT_AGGREGATION,</div><div class="line">        pymongo_utils.STDDEV_AGGREGATION,</div><div class="line">        pymongo_utils.CARDINALITY_AGGREGATION,</div><div class="line">    ]])</div><div class="line"></div><div class="line">    SORT_OPERATION_MAPPING = &#123;&apos;desc&apos;: (pymongo.DESCENDING, &apos;$lt&apos;),</div><div class="line">                              &apos;asc&apos;: (pymongo.ASCENDING, &apos;$gt&apos;)&#125;</div><div class="line"></div><div class="line">    MAP_RESOURCES = bson.code.Code(&quot;&quot;&quot;</div><div class="line">    function () &#123;</div><div class="line">        emit(this.resource_id,</div><div class="line">             &#123;user_id: this.user_id,</div><div class="line">              project_id: this.project_id,</div><div class="line">              source: this.source,</div><div class="line">              first_timestamp: this.timestamp,</div><div class="line">              last_timestamp: this.timestamp,</div><div class="line">              metadata: this.resource_metadata&#125;)</div><div class="line">    &#125;&quot;&quot;&quot;)</div><div class="line"></div><div class="line">    REDUCE_RESOURCES = bson.code.Code(&quot;&quot;&quot;</div><div class="line">    function (key, values) &#123;</div><div class="line">        var merge = &#123;user_id: values[0].user_id,</div><div class="line">                     project_id: values[0].project_id,</div><div class="line">                     source: values[0].source,</div><div class="line">                     first_timestamp: values[0].first_timestamp,</div><div class="line">                     last_timestamp: values[0].last_timestamp,</div><div class="line">                     metadata: values[0].metadata&#125;</div><div class="line">        values.forEach(function(value) &#123;</div><div class="line">            if (merge.first_timestamp - value.first_timestamp &gt; 0) &#123;</div><div class="line">                merge.first_timestamp = value.first_timestamp;</div><div class="line">                merge.user_id = value.user_id;</div><div class="line">                merge.project_id = value.project_id;</div><div class="line">                merge.source = value.source;</div><div class="line">            &#125; else if (merge.last_timestamp - value.last_timestamp &lt;= 0) &#123;</div><div class="line">                merge.last_timestamp = value.last_timestamp;</div><div class="line">                merge.metadata = value.metadata;</div><div class="line">            &#125;</div><div class="line">        &#125;);</div><div class="line">        return merge;</div><div class="line">      &#125;&quot;&quot;&quot;)</div><div class="line"></div><div class="line">    _GENESIS = datetime.datetime(year=datetime.MINYEAR, month=1, day=1)</div><div class="line">    _APOCALYPSE = datetime.datetime(year=datetime.MAXYEAR, month=12, day=31,</div><div class="line">                                    hour=23, minute=59, second=59)</div><div class="line"></div><div class="line">    def __init__(self, url):</div><div class="line"></div><div class="line">        # NOTE(jd) Use our own connection pooling on top of the Pymongo one.</div><div class="line">        # We need that otherwise we overflow the MongoDB instance with new</div><div class="line">        # connection since we instantiate a Pymongo client each time someone</div><div class="line">        # requires a new storage connection.</div><div class="line">        self.conn = self.CONNECTION_POOL.connect(url)</div><div class="line">        self.version = self.conn.server_info()[&apos;versionArray&apos;]</div><div class="line">        # Require MongoDB 2.4 to use $setOnInsert</div><div class="line">        if self.version &lt; pymongo_utils.MINIMUM_COMPATIBLE_MONGODB_VERSION:</div><div class="line">            raise storage.StorageBadVersion(</div><div class="line">                &quot;Need at least MongoDB %s&quot; %</div><div class="line">                pymongo_utils.MINIMUM_COMPATIBLE_MONGODB_VERSION)</div><div class="line"></div><div class="line">        connection_options = pymongo.uri_parser.parse_uri(url)</div><div class="line">        self.db = getattr(self.conn, connection_options[&apos;database&apos;])</div><div class="line">        if connection_options.get(&apos;username&apos;):</div><div class="line">            self.db.authenticate(connection_options[&apos;username&apos;],</div><div class="line">                                 connection_options[&apos;password&apos;])</div><div class="line"></div><div class="line">        # NOTE(jd) Upgrading is just about creating index, so let&apos;s do this</div><div class="line">        # on connection to be sure at least the TTL is correctly updated if</div><div class="line">        # needed.</div><div class="line">        self.upgrade()</div><div class="line"></div><div class="line">    @staticmethod</div><div class="line">    def update_ttl(ttl, ttl_index_name, index_field, coll):</div><div class="line">        &quot;&quot;&quot;Update or create time_to_live indexes.</div><div class="line"></div><div class="line">        :param ttl: time to live in seconds.</div><div class="line">        :param ttl_index_name: name of the index we want to update or create.</div><div class="line">        :param index_field: field with the index that we need to update.</div><div class="line">        :param coll: collection which indexes need to be updated.</div><div class="line">        &quot;&quot;&quot;</div><div class="line">        indexes = coll.index_information()</div><div class="line">        if ttl &lt;= 0:</div><div class="line">            if ttl_index_name in indexes:</div><div class="line">                coll.drop_index(ttl_index_name)</div><div class="line">            return</div><div class="line"></div><div class="line">        if ttl_index_name in indexes:</div><div class="line">            return coll.database.command(</div><div class="line">                &apos;collMod&apos;, coll.name,</div><div class="line">                index=&#123;&apos;keyPattern&apos;: &#123;index_field: pymongo.ASCENDING&#125;,</div><div class="line">                       &apos;expireAfterSeconds&apos;: ttl&#125;)</div><div class="line"></div><div class="line">        coll.create_index([(index_field, pymongo.ASCENDING)],</div><div class="line">                          expireAfterSeconds=ttl,</div><div class="line">                          name=ttl_index_name)</div><div class="line">...</div></pre></td></tr></table></figure></p>
+<h3 id="get-meters的执行过程"><a href="#get-meters的执行过程" class="headerlink" title="get_meters的执行过程"></a>get_meters的执行过程</h3><p>这里有一个类的继承关系：object &lt;– storage.base.Connection &lt;– storage.pymongo_base.Connection &lt;– storage.impl_mongodb.Connection，关于storage.impl_mongodb.Connection需要讲的都在上面提到了。</p>
+<p>在storage.base.Connection中给出了一些函数定义，但都没有具体的实现。</p>
+<p>在storage.pymongo_base.Connection中给出了get_meters的定义，在这里我们就可以真正的看到查询数据库的语句了: self.db.resource.find(q)，下面我们还要解释一下语句models.Meter。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div><div class="line">76</div><div class="line">77</div><div class="line">78</div><div class="line">79</div><div class="line">80</div><div class="line">81</div><div class="line">82</div><div class="line">83</div></pre></td><td class="code"><pre><div class="line">class Connection(base.Connection):</div><div class="line">    &quot;&quot;&quot;Base Connection class for MongoDB and DB2 drivers.&quot;&quot;&quot;</div><div class="line">    CAPABILITIES = utils.update_nested(base.Connection.CAPABILITIES,</div><div class="line">                                       COMMON_AVAILABLE_CAPABILITIES)</div><div class="line"></div><div class="line">    STORAGE_CAPABILITIES = utils.update_nested(</div><div class="line">        base.Connection.STORAGE_CAPABILITIES,</div><div class="line">        AVAILABLE_STORAGE_CAPABILITIES,</div><div class="line">    )</div><div class="line"></div><div class="line">    def get_meters(self, user=None, project=None, resource=None, source=None,</div><div class="line">                   metaquery=None, limit=None, unique=False):</div><div class="line">        &quot;&quot;&quot;Return an iterable of models.Meter instances</div><div class="line"></div><div class="line">        :param user: Optional ID for user that owns the resource.</div><div class="line">        :param project: Optional ID for project that owns the resource.</div><div class="line">        :param resource: Optional resource filter.</div><div class="line">        :param source: Optional source filter.</div><div class="line">        :param metaquery: Optional dict with metadata to match on.</div><div class="line">        :param limit: Maximum number of results to return.</div><div class="line">        :param unique: If set to true, return only unique meter information.</div><div class="line">        &quot;&quot;&quot;</div><div class="line">        if limit == 0:</div><div class="line">            return</div><div class="line"></div><div class="line">        metaquery = pymongo_utils.improve_keys(metaquery, metaquery=True) or &#123;&#125;</div><div class="line"></div><div class="line">        q = &#123;&#125;</div><div class="line">        if user == &apos;None&apos;:</div><div class="line">            q[&apos;user_id&apos;] = None</div><div class="line">        elif user is not None:</div><div class="line">            q[&apos;user_id&apos;] = user</div><div class="line">        if project == &apos;None&apos;:</div><div class="line">            q[&apos;project_id&apos;] = None</div><div class="line">        elif project is not None:</div><div class="line">            q[&apos;project_id&apos;] = project</div><div class="line">        if resource == &apos;None&apos;:</div><div class="line">            q[&apos;_id&apos;] = None</div><div class="line">        elif resource is not None:</div><div class="line">            q[&apos;_id&apos;] = resource</div><div class="line">        if source is not None:</div><div class="line">            q[&apos;source&apos;] = source</div><div class="line">        q.update(metaquery)</div><div class="line"></div><div class="line">        count = 0</div><div class="line">        if unique:</div><div class="line">            meter_names = set()</div><div class="line"></div><div class="line">        for r in self.db.resource.find(q):</div><div class="line">            for r_meter in r[&apos;meter&apos;]:</div><div class="line">                if unique:</div><div class="line">                    if r_meter[&apos;counter_name&apos;] in meter_names:</div><div class="line">                        continue</div><div class="line">                    else:</div><div class="line">                        meter_names.add(r_meter[&apos;counter_name&apos;])</div><div class="line"></div><div class="line">                if limit and count &gt;= limit:</div><div class="line">                    return</div><div class="line">                else:</div><div class="line">                    count += 1</div><div class="line"></div><div class="line">                if unique:</div><div class="line">                    yield models.Meter(</div><div class="line">                        name=r_meter[&apos;counter_name&apos;],</div><div class="line">                        type=r_meter[&apos;counter_type&apos;],</div><div class="line">                        # Return empty string if &apos;counter_unit&apos; is not valid</div><div class="line">                        # for backward compatibility.</div><div class="line">                        unit=r_meter.get(&apos;counter_unit&apos;, &apos;&apos;),</div><div class="line">                        resource_id=None,</div><div class="line">                        project_id=None,</div><div class="line">                        source=None,</div><div class="line">                        user_id=None)</div><div class="line">                else:</div><div class="line">                    yield models.Meter(</div><div class="line">                        name=r_meter[&apos;counter_name&apos;],</div><div class="line">                        type=r_meter[&apos;counter_type&apos;],</div><div class="line">                        # Return empty string if &apos;counter_unit&apos; is not valid</div><div class="line">                        # for backward compatibility.</div><div class="line">                        unit=r_meter.get(&apos;counter_unit&apos;, &apos;&apos;),</div><div class="line">                        resource_id=r[&apos;_id&apos;],</div><div class="line">                        project_id=r[&apos;project_id&apos;],</div><div class="line">                        source=r[&apos;source&apos;],</div><div class="line">                        user_id=r[&apos;user_id&apos;])</div></pre></td></tr></table></figure>
+<p>这里又有一个类的继承关系：object &lt;– storage.base.Model &lt;– storage.models.Meter。 这里其实就是把查询到的值和键做个对应的设置。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div></pre></td><td class="code"><pre><div class="line">class Model(object):</div><div class="line">    &quot;&quot;&quot;Base class for storage API models.&quot;&quot;&quot;</div><div class="line"></div><div class="line">    def __init__(self, **kwds):</div><div class="line">        self.fields = list(kwds)</div><div class="line">        for k, v in six.iteritems(kwds):</div><div class="line">            setattr(self, k, v)</div><div class="line"></div><div class="line">    def as_dict(self):</div><div class="line">        d = &#123;&#125;</div><div class="line">        for f in self.fields:</div><div class="line">            v = getattr(self, f)</div><div class="line">            if isinstance(v, Model):</div><div class="line">                v = v.as_dict()</div><div class="line">            elif isinstance(v, list) and v and isinstance(v[0], Model):</div><div class="line">                v = [sub.as_dict() for sub in v]</div><div class="line">            d[f] = v</div><div class="line">        return d</div><div class="line"></div><div class="line">    def __eq__(self, other):</div><div class="line">        return self.as_dict() == other.as_dict()</div><div class="line"></div><div class="line">    @classmethod</div><div class="line">    def get_field_names(cls):</div><div class="line">        fields = inspect.getargspec(cls.__init__)[0]</div><div class="line">        return set(fields) - set([&quot;self&quot;])</div></pre></td></tr></table></figure>
+<h3 id="Meter-from-db-model-m-的执行过程"><a href="#Meter-from-db-model-m-的执行过程" class="headerlink" title="Meter.from_db_model(m)的执行过程"></a>Meter.from_db_model(m)的执行过程</h3><p>这里有个类的继承关系：wsme.types.Base &lt;– wsme.types.DynamicBase &lt;– api.controllers.v2.base.Base &lt;– api.v2.meters.Meter</p>
+<p>后面api.v2.meters.Meter的初始化函数调用了wsme.types.Base.<strong>init</strong>函数。 </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div></pre></td><td class="code"><pre><div class="line">class Base(six.with_metaclass(BaseMeta)):</div><div class="line">    &quot;&quot;&quot;Base type for complex types&quot;&quot;&quot;</div><div class="line">    def __init__(self, **kw):</div><div class="line">        for key, value in kw.items():</div><div class="line">            if hasattr(self, key):</div><div class="line">                setattr(self, key, value)</div><div class="line">                </div><div class="line">                </div><div class="line"></div><div class="line">class DynamicBase(Base):</div><div class="line">    &quot;&quot;&quot;Base type for complex types for which all attributes are not</div><div class="line">    defined when the class is constructed.</div><div class="line"></div><div class="line">    This class is meant to be used as a base for types that have</div><div class="line">    properties added after the main class is created, such as by</div><div class="line">    loading plugins.</div><div class="line"></div><div class="line">    &quot;&quot;&quot;</div><div class="line"></div><div class="line">    @classmethod</div><div class="line">    def add_attributes(cls, **attrs):</div><div class="line">        &quot;&quot;&quot;Add more attributes</div><div class="line"></div><div class="line">        The arguments should be valid Python attribute names</div><div class="line">        associated with a type for the new attribute.</div><div class="line"></div><div class="line">        &quot;&quot;&quot;</div><div class="line">        for n, t in attrs.items():</div><div class="line">            setattr(cls, n, t)</div><div class="line">        cls.__registry__.reregister(cls)</div></pre></td></tr></table></figure>
+<p>函数Meter.from_db_model定义在ceilometer.api.controllers.v2.base:Base中，函数Meter.from_db_model是把返回的ceilometer.storage.models.Meter实例， 进一步做一些简单的处理。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div></pre></td><td class="code"><pre><div class="line">class Base(wtypes.DynamicBase):</div><div class="line"></div><div class="line">    @classmethod</div><div class="line">    def from_db_model(cls, m):</div><div class="line">        return cls(**(m.as_dict()))</div><div class="line"></div><div class="line">    @classmethod</div><div class="line">    def from_db_and_links(cls, m, links):</div><div class="line">        return cls(links=links, **(m.as_dict()))</div><div class="line"></div><div class="line">    def as_dict(self, db_model):</div><div class="line">        valid_keys = inspect.getargspec(db_model.__init__)[0]</div><div class="line">        if &apos;self&apos; in valid_keys:</div><div class="line">            valid_keys.remove(&apos;self&apos;)</div><div class="line">        return self.as_dict_from_keys(valid_keys)</div><div class="line"></div><div class="line">    def as_dict_from_keys(self, keys):</div><div class="line">        return dict((k, getattr(self, k))</div><div class="line">                    for k in keys</div><div class="line">                    if hasattr(self, k) and</div><div class="line">                    getattr(self, k) != wsme.Unset)</div></pre></td></tr></table></figure>
+<p>Meter是在ceilometer.api.v2.meters中定义的，Meter中定义它的的类属性:name, type, unit, resource_id, project_id, user_id, source, meter_id；Meter中还定义了初始化函数<strong>init</strong>，该初始化函数主要是构造meter_id和调用wsme.types.Base的初始化函数<strong>init</strong>。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div></pre></td><td class="code"><pre><div class="line">class Meter(base.Base):</div><div class="line">    &quot;&quot;&quot;One category of measurements.&quot;&quot;&quot;</div><div class="line"></div><div class="line">    name = wtypes.text</div><div class="line">    &quot;The unique name for the meter&quot;</div><div class="line"></div><div class="line">    type = wtypes.Enum(str, *sample.TYPES)</div><div class="line">    &quot;The meter type (see :ref:`measurements`)&quot;</div><div class="line"></div><div class="line">    unit = wtypes.text</div><div class="line">    &quot;The unit of measure&quot;</div><div class="line"></div><div class="line">    resource_id = wtypes.text</div><div class="line">    &quot;The ID of the :class:`Resource` for which the measurements are taken&quot;</div><div class="line"></div><div class="line">    project_id = wtypes.text</div><div class="line">    &quot;The ID of the project or tenant that owns the resource&quot;</div><div class="line"></div><div class="line">    user_id = wtypes.text</div><div class="line">    &quot;The ID of the user who last triggered an update to the resource&quot;</div><div class="line"></div><div class="line">    source = wtypes.text</div><div class="line">    &quot;The ID of the source that identifies where the meter comes from&quot;</div><div class="line"></div><div class="line">    meter_id = wtypes.text</div><div class="line">    &quot;The unique identifier for the meter&quot;</div><div class="line"></div><div class="line">    def __init__(self, **kwargs):</div><div class="line">        meter_id = &apos;%s+%s&apos; % (kwargs[&apos;resource_id&apos;], kwargs[&apos;name&apos;])</div><div class="line">        # meter_id is of type Unicode but base64.encodestring() only accepts</div><div class="line">        # strings. See bug #1333177</div><div class="line">        meter_id = base64.b64encode(meter_id.encode(&apos;utf-8&apos;))</div><div class="line">        kwargs[&apos;meter_id&apos;] = meter_id</div><div class="line">        super(Meter, self).__init__(**kwargs)</div><div class="line"></div><div class="line">    @classmethod</div><div class="line">    def sample(cls):</div><div class="line">        return cls(name=&apos;instance&apos;,</div><div class="line">                   type=&apos;gauge&apos;,</div><div class="line">                   unit=&apos;instance&apos;,</div><div class="line">                   resource_id=&apos;bd9431c1-8d69-4ad3-803a-8d4a6b89fd36&apos;,</div><div class="line">                   project_id=&apos;35b17138-b364-4e6a-a131-8f3099c5be68&apos;,</div><div class="line">                   user_id=&apos;efd87807-12d2-4b38-9c70-5f5c2ac427ff&apos;,</div><div class="line">                   source=&apos;openstack&apos;,</div><div class="line">                   )</div></pre></td></tr></table></figure>
+<p>完毕。本文只是简单梳理了一些的代码流程，没有对于细节问题深究。</p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">Openstack</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2017/03/29/ceilometer-mitaka api分析/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+
+
+
+
+
+
+
+  
+  
+
+
+          </div>
+        </div>
+      </div>
+      <footer id="footer">
+  <div class="outer">
+    <div id="footer-info">
+    	<div class="footer-left">
+    		&copy; 2017 wanstack
+    	</div>
+      	<div class="footer-right">
+      		<a href="http://hexo.io/" target="_blank">Hexo</a>  Theme <a href="https://github.com/litten/hexo-theme-yilia" target="_blank">Yilia</a> by Litten
+      	</div>
+    </div>
+  </div>
+</footer>
+    </div>
+    <script>
+	var yiliaConfig = {
+		mathjax: false,
+		isHome: true,
+		isPost: false,
+		isArchive: false,
+		isTag: false,
+		isCategory: false,
+		open_in_new: false,
+		root: "/",
+		innerArchive: true,
+		showTags: false
+	}
+</script>
+
+<script>!function(t){function n(r){if(e[r])return e[r].exports;var o=e[r]={exports:{},id:r,loaded:!1};return t[r].call(o.exports,o,o.exports,n),o.loaded=!0,o.exports}var e={};return n.m=t,n.c=e,n.p="./",n(0)}([function(t,n,e){"use strict";function r(t){return t&&t.__esModule?t:{default:t}}function o(t,n){var e=/\/|index.html/g;return t.replace(e,"")===n.replace(e,"")}function i(){for(var t=document.querySelectorAll(".js-header-menu li a"),n=window.location.pathname,e=0,r=t.length;e<r;e++){var i=t[e];o(n,i.getAttribute("href"))&&(0,d.default)(i,"active")}}function u(t){for(var n=t.offsetLeft,e=t.offsetParent;null!==e;)n+=e.offsetLeft,e=e.offsetParent;return n}function f(t){for(var n=t.offsetTop,e=t.offsetParent;null!==e;)n+=e.offsetTop,e=e.offsetParent;return n}function c(t,n,e,r,o){var i=u(t),c=f(t)-n;if(c-e<=o){var a=t.$newDom;a||(a=t.cloneNode(!0),(0,h.default)(t,a),t.$newDom=a,a.style.position="fixed",a.style.top=(e||c)+"px",a.style.left=i+"px",a.style.zIndex=r||2,a.style.width="100%",a.style.color="#fff"),a.style.visibility="visible",t.style.visibility="hidden"}else{t.style.visibility="visible";var s=t.$newDom;s&&(s.style.visibility="hidden")}}function a(){var t=document.querySelector(".js-overlay"),n=document.querySelector(".js-header-menu");c(t,document.body.scrollTop,-63,2,0),c(n,document.body.scrollTop,1,3,0)}function s(){document.querySelector("#container").addEventListener("scroll",function(t){a()}),window.addEventListener("scroll",function(t){a()}),a()}function l(){x.default.versions.mobile&&window.screen.width<800&&(i(),s())}var p=e(71),d=r(p),v=e(72),y=(r(v),e(84)),h=r(y),b=e(69),x=r(b),g=e(75),m=r(g),w=e(70);l(),(0,w.addLoadEvent)(function(){m.default.init()}),t.exports={}},function(t,n){var e=t.exports="undefined"!=typeof window&&window.Math==Math?window:"undefined"!=typeof self&&self.Math==Math?self:Function("return this")();"number"==typeof __g&&(__g=e)},function(t,n){var e={}.hasOwnProperty;t.exports=function(t,n){return e.call(t,n)}},function(t,n,e){var r=e(49),o=e(15);t.exports=function(t){return r(o(t))}},function(t,n,e){t.exports=!e(8)(function(){return 7!=Object.defineProperty({},"a",{get:function(){return 7}}).a})},function(t,n,e){var r=e(6),o=e(12);t.exports=e(4)?function(t,n,e){return r.f(t,n,o(1,e))}:function(t,n,e){return t[n]=e,t}},function(t,n,e){var r=e(10),o=e(30),i=e(24),u=Object.defineProperty;n.f=e(4)?Object.defineProperty:function(t,n,e){if(r(t),n=i(n,!0),r(e),o)try{return u(t,n,e)}catch(t){}if("get"in e||"set"in e)throw TypeError("Accessors not supported!");return"value"in e&&(t[n]=e.value),t}},function(t,n,e){var r=e(22)("wks"),o=e(13),i=e(1).Symbol,u="function"==typeof i,f=t.exports=function(t){return r[t]||(r[t]=u&&i[t]||(u?i:o)("Symbol."+t))};f.store=r},function(t,n){t.exports=function(t){try{return!!t()}catch(t){return!0}}},function(t,n,e){var r=e(35),o=e(16);t.exports=Object.keys||function(t){return r(t,o)}},function(t,n,e){var r=e(11);t.exports=function(t){if(!r(t))throw TypeError(t+" is not an object!");return t}},function(t,n){t.exports=function(t){return"object"==typeof t?null!==t:"function"==typeof t}},function(t,n){t.exports=function(t,n){return{enumerable:!(1&t),configurable:!(2&t),writable:!(4&t),value:n}}},function(t,n){var e=0,r=Math.random();t.exports=function(t){return"Symbol(".concat(void 0===t?"":t,")_",(++e+r).toString(36))}},function(t,n){var e=t.exports={version:"2.4.0"};"number"==typeof __e&&(__e=e)},function(t,n){t.exports=function(t){if(void 0==t)throw TypeError("Can't call method on  "+t);return t}},function(t,n){t.exports="constructor,hasOwnProperty,isPrototypeOf,propertyIsEnumerable,toLocaleString,toString,valueOf".split(",")},function(t,n){t.exports={}},function(t,n){t.exports=!0},function(t,n){n.f={}.propertyIsEnumerable},function(t,n,e){var r=e(6).f,o=e(2),i=e(7)("toStringTag");t.exports=function(t,n,e){t&&!o(t=e?t:t.prototype,i)&&r(t,i,{configurable:!0,value:n})}},function(t,n,e){var r=e(22)("keys"),o=e(13);t.exports=function(t){return r[t]||(r[t]=o(t))}},function(t,n,e){var r=e(1),o="__core-js_shared__",i=r[o]||(r[o]={});t.exports=function(t){return i[t]||(i[t]={})}},function(t,n){var e=Math.ceil,r=Math.floor;t.exports=function(t){return isNaN(t=+t)?0:(t>0?r:e)(t)}},function(t,n,e){var r=e(11);t.exports=function(t,n){if(!r(t))return t;var e,o;if(n&&"function"==typeof(e=t.toString)&&!r(o=e.call(t)))return o;if("function"==typeof(e=t.valueOf)&&!r(o=e.call(t)))return o;if(!n&&"function"==typeof(e=t.toString)&&!r(o=e.call(t)))return o;throw TypeError("Can't convert object to primitive value")}},function(t,n,e){var r=e(1),o=e(14),i=e(18),u=e(26),f=e(6).f;t.exports=function(t){var n=o.Symbol||(o.Symbol=i?{}:r.Symbol||{});"_"==t.charAt(0)||t in n||f(n,t,{value:u.f(t)})}},function(t,n,e){n.f=e(7)},function(t,n,e){var r=e(1),o=e(14),i=e(46),u=e(5),f="prototype",c=function(t,n,e){var a,s,l,p=t&c.F,d=t&c.G,v=t&c.S,y=t&c.P,h=t&c.B,b=t&c.W,x=d?o:o[n]||(o[n]={}),g=x[f],m=d?r:v?r[n]:(r[n]||{})[f];d&&(e=n);for(a in e)s=!p&&m&&void 0!==m[a],s&&a in x||(l=s?m[a]:e[a],x[a]=d&&"function"!=typeof m[a]?e[a]:h&&s?i(l,r):b&&m[a]==l?function(t){var n=function(n,e,r){if(this instanceof t){switch(arguments.length){case 0:return new t;case 1:return new t(n);case 2:return new t(n,e)}return new t(n,e,r)}return t.apply(this,arguments)};return n[f]=t[f],n}(l):y&&"function"==typeof l?i(Function.call,l):l,y&&((x.virtual||(x.virtual={}))[a]=l,t&c.R&&g&&!g[a]&&u(g,a,l)))};c.F=1,c.G=2,c.S=4,c.P=8,c.B=16,c.W=32,c.U=64,c.R=128,t.exports=c},function(t,n){var e={}.toString;t.exports=function(t){return e.call(t).slice(8,-1)}},function(t,n,e){var r=e(11),o=e(1).document,i=r(o)&&r(o.createElement);t.exports=function(t){return i?o.createElement(t):{}}},function(t,n,e){t.exports=!e(4)&&!e(8)(function(){return 7!=Object.defineProperty(e(29)("div"),"a",{get:function(){return 7}}).a})},function(t,n,e){"use strict";var r=e(18),o=e(27),i=e(36),u=e(5),f=e(2),c=e(17),a=e(51),s=e(20),l=e(58),p=e(7)("iterator"),d=!([].keys&&"next"in[].keys()),v="@@iterator",y="keys",h="values",b=function(){return this};t.exports=function(t,n,e,x,g,m,w){a(e,n,x);var O,S,_,j=function(t){if(!d&&t in A)return A[t];switch(t){case y:return function(){return new e(this,t)};case h:return function(){return new e(this,t)}}return function(){return new e(this,t)}},P=n+" Iterator",E=g==h,M=!1,A=t.prototype,T=A[p]||A[v]||g&&A[g],L=T||j(g),N=g?E?j("entries"):L:void 0,C="Array"==n?A.entries||T:T;if(C&&(_=l(C.call(new t)),_!==Object.prototype&&(s(_,P,!0),r||f(_,p)||u(_,p,b))),E&&T&&T.name!==h&&(M=!0,L=function(){return T.call(this)}),r&&!w||!d&&!M&&A[p]||u(A,p,L),c[n]=L,c[P]=b,g)if(O={values:E?L:j(h),keys:m?L:j(y),entries:N},w)for(S in O)S in A||i(A,S,O[S]);else o(o.P+o.F*(d||M),n,O);return O}},function(t,n,e){var r=e(10),o=e(55),i=e(16),u=e(21)("IE_PROTO"),f=function(){},c="prototype",a=function(){var t,n=e(29)("iframe"),r=i.length,o="<",u=">";for(n.style.display="none",e(48).appendChild(n),n.src="javascript:",t=n.contentWindow.document,t.open(),t.write(o+"script"+u+"document.F=Object"+o+"/script"+u),t.close(),a=t.F;r--;)delete a[c][i[r]];return a()};t.exports=Object.create||function(t,n){var e;return null!==t?(f[c]=r(t),e=new f,f[c]=null,e[u]=t):e=a(),void 0===n?e:o(e,n)}},function(t,n,e){var r=e(35),o=e(16).concat("length","prototype");n.f=Object.getOwnPropertyNames||function(t){return r(t,o)}},function(t,n){n.f=Object.getOwnPropertySymbols},function(t,n,e){var r=e(2),o=e(3),i=e(45)(!1),u=e(21)("IE_PROTO");t.exports=function(t,n){var e,f=o(t),c=0,a=[];for(e in f)e!=u&&r(f,e)&&a.push(e);for(;n.length>c;)r(f,e=n[c++])&&(~i(a,e)||a.push(e));return a}},function(t,n,e){t.exports=e(5)},function(t,n,e){var r=e(15);t.exports=function(t){return Object(r(t))}},function(t,n,e){t.exports={default:e(41),__esModule:!0}},function(t,n,e){t.exports={default:e(42),__esModule:!0}},function(t,n,e){"use strict";function r(t){return t&&t.__esModule?t:{default:t}}n.__esModule=!0;var o=e(39),i=r(o),u=e(38),f=r(u),c="function"==typeof f.default&&"symbol"==typeof i.default?function(t){return typeof t}:function(t){return t&&"function"==typeof f.default&&t.constructor===f.default&&t!==f.default.prototype?"symbol":typeof t};n.default="function"==typeof f.default&&"symbol"===c(i.default)?function(t){return"undefined"==typeof t?"undefined":c(t)}:function(t){return t&&"function"==typeof f.default&&t.constructor===f.default&&t!==f.default.prototype?"symbol":"undefined"==typeof t?"undefined":c(t)}},function(t,n,e){e(65),e(63),e(66),e(67),t.exports=e(14).Symbol},function(t,n,e){e(64),e(68),t.exports=e(26).f("iterator")},function(t,n){t.exports=function(t){if("function"!=typeof t)throw TypeError(t+" is not a function!");return t}},function(t,n){t.exports=function(){}},function(t,n,e){var r=e(3),o=e(61),i=e(60);t.exports=function(t){return function(n,e,u){var f,c=r(n),a=o(c.length),s=i(u,a);if(t&&e!=e){for(;a>s;)if(f=c[s++],f!=f)return!0}else for(;a>s;s++)if((t||s in c)&&c[s]===e)return t||s||0;return!t&&-1}}},function(t,n,e){var r=e(43);t.exports=function(t,n,e){if(r(t),void 0===n)return t;switch(e){case 1:return function(e){return t.call(n,e)};case 2:return function(e,r){return t.call(n,e,r)};case 3:return function(e,r,o){return t.call(n,e,r,o)}}return function(){return t.apply(n,arguments)}}},function(t,n,e){var r=e(9),o=e(34),i=e(19);t.exports=function(t){var n=r(t),e=o.f;if(e)for(var u,f=e(t),c=i.f,a=0;f.length>a;)c.call(t,u=f[a++])&&n.push(u);return n}},function(t,n,e){t.exports=e(1).document&&document.documentElement},function(t,n,e){var r=e(28);t.exports=Object("z").propertyIsEnumerable(0)?Object:function(t){return"String"==r(t)?t.split(""):Object(t)}},function(t,n,e){var r=e(28);t.exports=Array.isArray||function(t){return"Array"==r(t)}},function(t,n,e){"use strict";var r=e(32),o=e(12),i=e(20),u={};e(5)(u,e(7)("iterator"),function(){return this}),t.exports=function(t,n,e){t.prototype=r(u,{next:o(1,e)}),i(t,n+" Iterator")}},function(t,n){t.exports=function(t,n){return{value:n,done:!!t}}},function(t,n,e){var r=e(9),o=e(3);t.exports=function(t,n){for(var e,i=o(t),u=r(i),f=u.length,c=0;f>c;)if(i[e=u[c++]]===n)return e}},function(t,n,e){var r=e(13)("meta"),o=e(11),i=e(2),u=e(6).f,f=0,c=Object.isExtensible||function(){return!0},a=!e(8)(function(){return c(Object.preventExtensions({}))}),s=function(t){u(t,r,{value:{i:"O"+ ++f,w:{}}})},l=function(t,n){if(!o(t))return"symbol"==typeof t?t:("string"==typeof t?"S":"P")+t;if(!i(t,r)){if(!c(t))return"F";if(!n)return"E";s(t)}return t[r].i},p=function(t,n){if(!i(t,r)){if(!c(t))return!0;if(!n)return!1;s(t)}return t[r].w},d=function(t){return a&&v.NEED&&c(t)&&!i(t,r)&&s(t),t},v=t.exports={KEY:r,NEED:!1,fastKey:l,getWeak:p,onFreeze:d}},function(t,n,e){var r=e(6),o=e(10),i=e(9);t.exports=e(4)?Object.defineProperties:function(t,n){o(t);for(var e,u=i(n),f=u.length,c=0;f>c;)r.f(t,e=u[c++],n[e]);return t}},function(t,n,e){var r=e(19),o=e(12),i=e(3),u=e(24),f=e(2),c=e(30),a=Object.getOwnPropertyDescriptor;n.f=e(4)?a:function(t,n){if(t=i(t),n=u(n,!0),c)try{return a(t,n)}catch(t){}if(f(t,n))return o(!r.f.call(t,n),t[n])}},function(t,n,e){var r=e(3),o=e(33).f,i={}.toString,u="object"==typeof window&&window&&Object.getOwnPropertyNames?Object.getOwnPropertyNames(window):[],f=function(t){try{return o(t)}catch(t){return u.slice()}};t.exports.f=function(t){return u&&"[object Window]"==i.call(t)?f(t):o(r(t))}},function(t,n,e){var r=e(2),o=e(37),i=e(21)("IE_PROTO"),u=Object.prototype;t.exports=Object.getPrototypeOf||function(t){return t=o(t),r(t,i)?t[i]:"function"==typeof t.constructor&&t instanceof t.constructor?t.constructor.prototype:t instanceof Object?u:null}},function(t,n,e){var r=e(23),o=e(15);t.exports=function(t){return function(n,e){var i,u,f=String(o(n)),c=r(e),a=f.length;return c<0||c>=a?t?"":void 0:(i=f.charCodeAt(c),i<55296||i>56319||c+1===a||(u=f.charCodeAt(c+1))<56320||u>57343?t?f.charAt(c):i:t?f.slice(c,c+2):(i-55296<<10)+(u-56320)+65536)}}},function(t,n,e){var r=e(23),o=Math.max,i=Math.min;t.exports=function(t,n){return t=r(t),t<0?o(t+n,0):i(t,n)}},function(t,n,e){var r=e(23),o=Math.min;t.exports=function(t){return t>0?o(r(t),9007199254740991):0}},function(t,n,e){"use strict";var r=e(44),o=e(52),i=e(17),u=e(3);t.exports=e(31)(Array,"Array",function(t,n){this._t=u(t),this._i=0,this._k=n},function(){var t=this._t,n=this._k,e=this._i++;return!t||e>=t.length?(this._t=void 0,o(1)):"keys"==n?o(0,e):"values"==n?o(0,t[e]):o(0,[e,t[e]])},"values"),i.Arguments=i.Array,r("keys"),r("values"),r("entries")},function(t,n){},function(t,n,e){"use strict";var r=e(59)(!0);e(31)(String,"String",function(t){this._t=String(t),this._i=0},function(){var t,n=this._t,e=this._i;return e>=n.length?{value:void 0,done:!0}:(t=r(n,e),this._i+=t.length,{value:t,done:!1})})},function(t,n,e){"use strict";var r=e(1),o=e(2),i=e(4),u=e(27),f=e(36),c=e(54).KEY,a=e(8),s=e(22),l=e(20),p=e(13),d=e(7),v=e(26),y=e(25),h=e(53),b=e(47),x=e(50),g=e(10),m=e(3),w=e(24),O=e(12),S=e(32),_=e(57),j=e(56),P=e(6),E=e(9),M=j.f,A=P.f,T=_.f,L=r.Symbol,N=r.JSON,C=N&&N.stringify,k="prototype",F=d("_hidden"),q=d("toPrimitive"),I={}.propertyIsEnumerable,B=s("symbol-registry"),D=s("symbols"),W=s("op-symbols"),H=Object[k],K="function"==typeof L,R=r.QObject,J=!R||!R[k]||!R[k].findChild,U=i&&a(function(){return 7!=S(A({},"a",{get:function(){return A(this,"a",{value:7}).a}})).a})?function(t,n,e){var r=M(H,n);r&&delete H[n],A(t,n,e),r&&t!==H&&A(H,n,r)}:A,G=function(t){var n=D[t]=S(L[k]);return n._k=t,n},$=K&&"symbol"==typeof L.iterator?function(t){return"symbol"==typeof t}:function(t){return t instanceof L},z=function(t,n,e){return t===H&&z(W,n,e),g(t),n=w(n,!0),g(e),o(D,n)?(e.enumerable?(o(t,F)&&t[F][n]&&(t[F][n]=!1),e=S(e,{enumerable:O(0,!1)})):(o(t,F)||A(t,F,O(1,{})),t[F][n]=!0),U(t,n,e)):A(t,n,e)},Y=function(t,n){g(t);for(var e,r=b(n=m(n)),o=0,i=r.length;i>o;)z(t,e=r[o++],n[e]);return t},Q=function(t,n){return void 0===n?S(t):Y(S(t),n)},X=function(t){var n=I.call(this,t=w(t,!0));return!(this===H&&o(D,t)&&!o(W,t))&&(!(n||!o(this,t)||!o(D,t)||o(this,F)&&this[F][t])||n)},V=function(t,n){if(t=m(t),n=w(n,!0),t!==H||!o(D,n)||o(W,n)){var e=M(t,n);return!e||!o(D,n)||o(t,F)&&t[F][n]||(e.enumerable=!0),e}},Z=function(t){for(var n,e=T(m(t)),r=[],i=0;e.length>i;)o(D,n=e[i++])||n==F||n==c||r.push(n);return r},tt=function(t){for(var n,e=t===H,r=T(e?W:m(t)),i=[],u=0;r.length>u;)!o(D,n=r[u++])||e&&!o(H,n)||i.push(D[n]);return i};K||(L=function(){if(this instanceof L)throw TypeError("Symbol is not a constructor!");var t=p(arguments.length>0?arguments[0]:void 0),n=function(e){this===H&&n.call(W,e),o(this,F)&&o(this[F],t)&&(this[F][t]=!1),U(this,t,O(1,e))};return i&&J&&U(H,t,{configurable:!0,set:n}),G(t)},f(L[k],"toString",function(){return this._k}),j.f=V,P.f=z,e(33).f=_.f=Z,e(19).f=X,e(34).f=tt,i&&!e(18)&&f(H,"propertyIsEnumerable",X,!0),v.f=function(t){return G(d(t))}),u(u.G+u.W+u.F*!K,{Symbol:L});for(var nt="hasInstance,isConcatSpreadable,iterator,match,replace,search,species,split,toPrimitive,toStringTag,unscopables".split(","),et=0;nt.length>et;)d(nt[et++]);for(var nt=E(d.store),et=0;nt.length>et;)y(nt[et++]);u(u.S+u.F*!K,"Symbol",{for:function(t){return o(B,t+="")?B[t]:B[t]=L(t)},keyFor:function(t){if($(t))return h(B,t);throw TypeError(t+" is not a symbol!")},useSetter:function(){J=!0},useSimple:function(){J=!1}}),u(u.S+u.F*!K,"Object",{create:Q,defineProperty:z,defineProperties:Y,getOwnPropertyDescriptor:V,getOwnPropertyNames:Z,getOwnPropertySymbols:tt}),N&&u(u.S+u.F*(!K||a(function(){var t=L();return"[null]"!=C([t])||"{}"!=C({a:t})||"{}"!=C(Object(t))})),"JSON",{stringify:function(t){if(void 0!==t&&!$(t)){for(var n,e,r=[t],o=1;arguments.length>o;)r.push(arguments[o++]);return n=r[1],"function"==typeof n&&(e=n),!e&&x(n)||(n=function(t,n){if(e&&(n=e.call(this,t,n)),!$(n))return n}),r[1]=n,C.apply(N,r)}}}),L[k][q]||e(5)(L[k],q,L[k].valueOf),l(L,"Symbol"),l(Math,"Math",!0),l(r.JSON,"JSON",!0)},function(t,n,e){e(25)("asyncIterator")},function(t,n,e){e(25)("observable")},function(t,n,e){e(62);for(var r=e(1),o=e(5),i=e(17),u=e(7)("toStringTag"),f=["NodeList","DOMTokenList","MediaList","StyleSheetList","CSSRuleList"],c=0;c<5;c++){var a=f[c],s=r[a],l=s&&s.prototype;l&&!l[u]&&o(l,u,a),i[a]=i.Array}},function(t,n){"use strict";var e={versions:function(){var t=window.navigator.userAgent;return{trident:t.indexOf("Trident")>-1,presto:t.indexOf("Presto")>-1,webKit:t.indexOf("AppleWebKit")>-1,gecko:t.indexOf("Gecko")>-1&&t.indexOf("KHTML")==-1,mobile:!!t.match(/AppleWebKit.*Mobile.*/),ios:!!t.match(/\(i[^;]+;( U;)? CPU.+Mac OS X/),android:t.indexOf("Android")>-1||t.indexOf("Linux")>-1,iPhone:t.indexOf("iPhone")>-1||t.indexOf("Mac")>-1,iPad:t.indexOf("iPad")>-1,webApp:t.indexOf("Safari")==-1,weixin:t.indexOf("MicroMessenger")==-1}}()};t.exports=e},function(t,n,e){"use strict";function r(t){return t&&t.__esModule?t:{default:t}}var o=e(40),i=r(o),u=function(){function t(t,n,e){return n||e?String.fromCharCode(n||e):o[t]||t}function n(t){return l[t]}var e=/&quot;|&lt;|&gt;|&amp;|&nbsp;|&apos;|&#(\d+);|&#(\d+)/g,r=/['<> "&]/g,o={"&quot;":'"',"&lt;":"<","&gt;":">","&amp;":"&","&nbsp;":" "},f=/\u00a0/g,c=/<br\s*\/?>/gi,a=/\r?\n/g,s=/\s/g,l={};for(var p in o)l[o[p]]=p;return o["&apos;"]="'",l["'"]="&#39;",{encode:function(t){return t?(""+t).replace(r,n).replace(a,"<br/>").replace(s,"&nbsp;"):""},decode:function(n){return n?(""+n).replace(c,"\n").replace(e,t).replace(f," "):""},encodeBase16:function(t){if(!t)return t;t+="";for(var n=[],e=0,r=t.length;r>e;e++)n.push(t.charCodeAt(e).toString(16).toUpperCase());return n.join("")},encodeBase16forJSON:function(t){if(!t)return t;t=t.replace(/[\u4E00-\u9FBF]/gi,function(t){return escape(t).replace("%u","\\u")});for(var n=[],e=0,r=t.length;r>e;e++)n.push(t.charCodeAt(e).toString(16).toUpperCase());return n.join("")},decodeBase16:function(t){if(!t)return t;t+="";for(var n=[],e=0,r=t.length;r>e;e+=2)n.push(String.fromCharCode("0x"+t.slice(e,e+2)));return n.join("")},encodeObject:function(t){if(t instanceof Array)for(var n=0,e=t.length;e>n;n++)t[n]=u.encodeObject(t[n]);else if("object"==("undefined"==typeof t?"undefined":(0,i.default)(t)))for(var r in t)t[r]=u.encodeObject(t[r]);else if("string"==typeof t)return u.encode(t);return t},loadScript:function(t){var n=document.createElement("script");document.getElementsByTagName("body")[0].appendChild(n),n.setAttribute("src",t)},addLoadEvent:function(t){var n=window.onload;"function"!=typeof window.onload?window.onload=t:window.onload=function(){n(),t()}}}}();t.exports=u},function(t,n){function e(t,n){t.classList?t.classList.add(n):t.className+=" "+n}t.exports=e},function(t,n){function e(t,n){if(t.classList)t.classList.remove(n);else{var e=new RegExp("(^|\\b)"+n.split(" ").join("|")+"(\\b|$)","gi");t.className=t.className.replace(e," ")}}t.exports=e},,,function(t,n){"use strict";function e(){var t=document.querySelector("#page-nav");if(t&&!document.querySelector("#page-nav .extend.prev")&&(t.innerHTML='<a class="extend prev disabled" rel="prev">&laquo; Prev</a>'+t.innerHTML),t&&!document.querySelector("#page-nav .extend.next")&&(t.innerHTML=t.innerHTML+'<a class="extend next disabled" rel="next">Next &raquo;</a>'),yiliaConfig&&yiliaConfig.open_in_new){var n=document.querySelectorAll(".article-entry a:not(.article-more-a)");n.forEach(function(t){var n=t.setAttribute("target");n&&""!==n||t.setAttribute("target","_blank")})}var e=document.querySelector("#js-aboutme");e&&0!==e.length&&(e.innerHTML=e.innerText)}t.exports={init:e}},,,,,,,,,function(t,n){function e(t,n){if("string"==typeof n)return t.insertAdjacentHTML("afterend",n);var e=t.nextSibling;return e?t.parentNode.insertBefore(n,e):t.parentNode.appendChild(n)}t.exports=e}])</script><script src="/./main.05aabf.js"></script><script>!function(){var e=function(e){var t=document.createElement("script");document.getElementsByTagName("body")[0].appendChild(t),t.setAttribute("src",e)};e("/slider.885efe.js")}()</script>
+
+
+    
+<div class="tools-col" q-class="show:isShow,hide:isShow|isFalse" q-on="click:stop(e)">
+  <div class="tools-nav header-menu">
+    
+    
+      
+      
+      
+    
+      
+      
+      
+    
+      
+      
+      
+    
+    
+
+    <ul style="width: 70%">
+    
+    
+      
+      <li style="width: 33.333333333333336%" q-on="click: openSlider(e, 'innerArchive')"><a href="javascript:void(0)" q-class="active:innerArchive">所有文章</a></li>
+      
+        
+      
+      <li style="width: 33.333333333333336%" q-on="click: openSlider(e, 'friends')"><a href="javascript:void(0)" q-class="active:friends">友链</a></li>
+      
+        
+      
+      <li style="width: 33.333333333333336%" q-on="click: openSlider(e, 'aboutme')"><a href="javascript:void(0)" q-class="active:aboutme">关于我</a></li>
+      
+        
+    </ul>
+  </div>
+  <div class="tools-wrap">
+    
+    	<section class="tools-section tools-section-all" q-show="innerArchive">
+        <div class="search-wrap">
+          <input class="search-ipt" q-model="search" type="text" placeholder="find something…">
+          <i class="icon-search icon" q-show="search|isEmptyStr"></i>
+          <i class="icon-close icon" q-show="search|isNotEmptyStr" q-on="click:clearChose(e)"></i>
+        </div>
+        <div class="widget tagcloud search-tag">
+          <p class="search-tag-wording">tag:</p>
+          <label class="search-switch">
+            <input type="checkbox" q-on="click:toggleTag(e)" q-attr="checked:showTags">
+          </label>
+          <ul class="article-tag-list" q-show="showTags">
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">Openstack</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">Python</a>
+              </li>
+            
+            <div class="clearfix"></div>
+          </ul>
+        </div>
+        <ul class="search-ul">
+          <p q-show="jsonFail" style="padding: 20px; font-size: 12px;">
+            缺失模块。<br/>1、在博客根目录（注意不是yilia根目录）执行以下命令：<br/> npm i hexo-generator-json-content --save<br/><br/>
+            2、在根目录_config.yml里添加配置：
+<pre style="font-size: 12px;" q-show="jsonFail">
+  jsonContent:
+    meta: false
+    pages: false
+    posts:
+      title: true
+      date: true
+      path: true
+      text: true
+      raw: false
+      content: false
+      slug: false
+      updated: false
+      comments: false
+      link: false
+      permalink: false
+      excerpt: false
+      categories: false
+      tags: true
+</pre>
+          </p>
+          <li class="search-li" q-repeat="items" q-show="isShow">
+            <a q-attr="href:path|urlformat" class="search-title"><i class="icon-quo-left icon"></i><span q-text="title"></span></a>
+            <p class="search-time">
+              <i class="icon-calendar icon"></i>
+              <span q-text="date|dateformat"></span>
+            </p>
+            <p class="search-tag">
+              <i class="icon-price-tags icon"></i>
+              <span q-repeat="tags" q-on="click:choseTag(e, name)" q-text="name|tagformat"></span>
+            </p>
+          </li>
+        </ul>
+    	</section>
+    
+
+    
+    	<section class="tools-section tools-section-friends" q-show="friends">
+  		
+        <ul class="search-ul">
+          
+            <li class="search-li">
+              <a href="http://localhost:4000/" target="_blank" class="search-title"><i class="icon-quo-left icon"></i>友情链接1</a>
+            </li>
+          
+            <li class="search-li">
+              <a href="http://localhost:4000/" target="_blank" class="search-title"><i class="icon-quo-left icon"></i>友情链接2</a>
+            </li>
+          
+            <li class="search-li">
+              <a href="http://localhost:4000/" target="_blank" class="search-title"><i class="icon-quo-left icon"></i>友情链接3</a>
+            </li>
+          
+            <li class="search-li">
+              <a href="http://localhost:4000/" target="_blank" class="search-title"><i class="icon-quo-left icon"></i>友情链接4</a>
+            </li>
+          
+            <li class="search-li">
+              <a href="http://localhost:4000/" target="_blank" class="search-title"><i class="icon-quo-left icon"></i>友情链接5</a>
+            </li>
+          
+            <li class="search-li">
+              <a href="http://localhost:4000/" target="_blank" class="search-title"><i class="icon-quo-left icon"></i>友情链接6</a>
+            </li>
+          
+        </ul>
+  		
+    	</section>
+    
+
+    
+    	<section class="tools-section tools-section-me" q-show="aboutme">
+  	  	
+  	  		<div class="aboutme-wrap" id="js-aboutme">很惭愧&lt;br&gt;&lt;br&gt;只做了一点微小的工作&lt;br&gt;谢谢大家</div>
+  	  	
+    	</section>
+    
+  </div>
+  
+</div>
+    <!-- Root element of PhotoSwipe. Must have class pswp. -->
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+    <!-- Background of PhotoSwipe. 
+         It's a separate element as animating opacity is faster than rgba(). -->
+    <div class="pswp__bg"></div>
+
+    <!-- Slides wrapper with overflow:hidden. -->
+    <div class="pswp__scroll-wrap">
+
+        <!-- Container that holds slides. 
+            PhotoSwipe keeps only 3 of them in the DOM to save memory.
+            Don't modify these 3 pswp__item elements, data is added later on. -->
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+
+        <!-- Default (PhotoSwipeUI_Default) interface on top of sliding area. Can be changed. -->
+        <div class="pswp__ui pswp__ui--hidden">
+
+            <div class="pswp__top-bar">
+
+                <!--  Controls are self-explanatory. Order can be changed. -->
+
+                <div class="pswp__counter"></div>
+
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+
+                <button class="pswp__button pswp__button--share" style="display:none" title="Share"></button>
+
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+                <!-- Preloader demo http://codepen.io/dimsemenov/pen/yyBWoR -->
+                <!-- element will get class pswp__preloader--active when preloader is running -->
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                      <div class="pswp__preloader__cut">
+                        <div class="pswp__preloader__donut"></div>
+                      </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div> 
+            </div>
+
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+  </div>
+</body>
+</html>
