@@ -183,10 +183,8 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <hr>
-<p>title: Neutron SDN 手动实现手册<br>date: 2017-04-13 23:37</p>
-<h2 id="tags-Network"><a href="#tags-Network" class="headerlink" title="tags: Network"></a>tags: Network</h2><p>本文旨在通过自己搭建类似neutron （openvswitch + gre） 实现SDN 的环境，学习了解其工作原理，模拟核心原理，比如：同一租户自定义网络 instance 互通，手动为instance 分配 floating ip 等相关内容。</p>
-<p><img src="E:\公司资料\github page\hexo\public\img\文档图片\手工SDN1.png" alt="image"></p>
+        <p>本文旨在通过自己搭建类似neutron （openvswitch + gre） 实现SDN 的环境，学习了解其工作原理，模拟核心原理，比如：同一租户自定义网络 instance 互通，手动为instance 分配 floating ip 等相关内容。</p>
+<p><img src="E:\公司资料\github page\hexo\public\img\手工SDN1.png" alt="image"></p>
 <p>###虚拟网络</p>
 <p>需要新建3个虚拟网络Net0、Net1和Net2，其在virtual box 中对应配置如下。</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div></pre></td><td class="code"><pre><div class="line">   Net0:</div><div class="line">	Network name: VirtualBox  host-only Ethernet Adapter#2</div><div class="line">	Purpose: administrator / management network</div><div class="line">	IP block: 10.20.0.0/24</div><div class="line">	DHCP: disable</div><div class="line">	Linux device: eth0</div><div class="line"></div><div class="line">Net1:</div><div class="line">	Network name: VirtualBox  host-only Ethernet Adapter#3</div><div class="line">	Purpose: public network</div><div class="line">	DHCP: disable</div><div class="line">	IP block: 172.16.0.0/24</div><div class="line">	Linux device: eth1</div><div class="line"></div><div class="line">Net2：</div><div class="line">	Network name: VirtualBox  host-only Ethernet Adapter#4</div><div class="line">	Purpose: Storage/private network</div><div class="line">	DHCP: disable</div><div class="line">	IP block: 192.168.4.0/24</div><div class="line">	Linux device: eth2</div></pre></td></tr></table></figure>
