@@ -6,14 +6,21 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>Tag: Openstack | wanstack</title>
+  <title>Neutron SDN 手动实现手册 | wanstack</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="wanstack">
-<meta property="og:url" content="http://yoursite.com/tags/Openstack/index.html">
+  <meta name="description" content="#Neutron SDN 手动实现手册 本文旨在通过自己搭建类似neutron （openvswitch + gre） 实现SDN 的环境，学习了解其工作原理，模拟核心原理，比如：同一租户自定义网络 instance 互通，手动为instance 分配 floating ip 等相关内容。  ###虚拟网络 需要新建3个虚拟网络Net0、Net1和Net2，其在virtual box 中对应配置如">
+<meta name="keywords" content="Network">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Neutron SDN 手动实现手册">
+<meta property="og:url" content="http://yoursite.com/2017/04/13/手工实现SDN/index.html">
 <meta property="og:site_name" content="wanstack">
+<meta property="og:description" content="#Neutron SDN 手动实现手册 本文旨在通过自己搭建类似neutron （openvswitch + gre） 实现SDN 的环境，学习了解其工作原理，模拟核心原理，比如：同一租户自定义网络 instance 互通，手动为instance 分配 floating ip 等相关内容。  ###虚拟网络 需要新建3个虚拟网络Net0、Net1和Net2，其在virtual box 中对应配置如">
+<meta property="og:image" content="e:/公司资料/github%20page/hexo/source/_posts/文档图片/手工SDN1.png">
+<meta property="og:updated_time" content="2017-04-13T08:50:09.747Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="wanstack">
+<meta name="twitter:title" content="Neutron SDN 手动实现手册">
+<meta name="twitter:description" content="#Neutron SDN 手动实现手册 本文旨在通过自己搭建类似neutron （openvswitch + gre） 实现SDN 的环境，学习了解其工作原理，模拟核心原理，比如：同一租户自定义网络 instance 互通，手动为instance 分配 floating ip 等相关内容。  ###虚拟网络 需要新建3个虚拟网络Net0、Net1和Net2，其在virtual box 中对应配置如">
+<meta name="twitter:image" content="e:/公司资料/github%20page/hexo/source/_posts/文档图片/手工SDN1.png">
   
     <link rel="alternative" href="/atom.xml" title="wanstack" type="application/atom+xml">
   
@@ -161,136 +168,434 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-  
+            <article id="post-手工实现SDN" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
     
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      Neutron SDN 手动实现手册
+    </h1>
+  
+
+        
+        <a href="/2017/04/13/手工实现SDN/" class="archive-article-date">
+  	<time datetime="2017-04-13T15:37:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-04-13</time>
+</a>
+        
+      </header>
     
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>#Neutron SDN 手动实现手册</p>
+<p>本文旨在通过自己搭建类似neutron （openvswitch + gre） 实现SDN 的环境，学习了解其工作原理，模拟核心原理，比如：同一租户自定义网络 instance 互通，手动为instance 分配 floating ip 等相关内容。</p>
+<p><img src="E:\公司资料\github page\hexo\source\_posts\文档图片\手工SDN1.png" alt="mock neutron architecture"></p>
+<p>###虚拟网络</p>
+<p>需要新建3个虚拟网络Net0、Net1和Net2，其在virtual box 中对应配置如下。</p>
+<pre><code>Net0:
+    Network name: VirtualBox  host-only Ethernet Adapter#2
+    Purpose: administrator / management network
+    IP block: 10.20.0.0/24
+    DHCP: disable
+    Linux device: eth0
+
+Net1:
+    Network name: VirtualBox  host-only Ethernet Adapter#3
+    Purpose: public network
+    DHCP: disable
+    IP block: 172.16.0.0/24
+    Linux device: eth1
+
+Net2：
+    Network name: VirtualBox  host-only Ethernet Adapter#4
+    Purpose: Storage/private network
+    DHCP: disable
+    IP block: 192.168.4.0/24
+    Linux device: eth2
+</code></pre><p>###虚拟机</p>
+<p>需要新建2个虚拟机VM1和VM2，其对应配置如下。</p>
+<pre><code>VM1：
+    Name : network1
+    vCPU:1
+    Memory :1G
+    Disk:30G
+    Network:net1,net2,net3
+
+VM2：
+    Name: compute1
+    vCPU:1
+    Memory :1G
+    Disk:30G
+    Networks:net1,net2,net3
+</code></pre><p>###Linux interface设置</p>
+<pre><code>network1
+     eth0:10.20.0.201   (management network)
+     eht1:172.16.0.201   (public/external network)
+     eht2:192.168.4.201  (private network，gre tunning)
+
+compute1
+     eth0:10.20.0.202   (management network)
+     eht1:(disabled)
+     eht2:192.168.4.202  (private network，gre tunning)
+</code></pre><p>##模拟安装网络节点(Network1)</p>
+<p>模拟Network 节点相关实现，比如L3、dhcp-agent实现，为了模拟多节点网络情况，这里Network同时也模拟一个计算节点，模拟M2 openvswitch 实现，上面运行instance1。</p>
+<p>网络接口配置</p>
+<pre><code>vi /etc/sysconfig/network-scripts/ifcfg-eth0
+DEVICE=eth0
+TYPE=Ethernet
+ONBOOT=yes
+NM_CONTROLLED=yes
+BOOTPROTO=static
+IPADDR=10.20.0.201
+NETMASK=255.255.255.0
+
+vi /etc/sysconfig/network-scripts/ifcfg-eth1
+DEVICE=eth1
+TYPE=Ethernet
+ONBOOT=yes
+NM_CONTROLLED=yes
+BOOTPROTO=static
+IPADDR=172.16.0.201
+NETMASK=255.255.255.0
+
+vi /etc/sysconfig/network-scripts/ifcfg-eth2
+DEVICE=eth2
+TYPE=Ethernet
+ONBOOT=yes
+NM_CONTROLLED=yes
+BOOTPROTO=static
+IPADDR=192.168.4.201
+NETMASK=255.255.255.0
+</code></pre><p>重启网络服务</p>
+<pre><code>service network restart
+</code></pre><p>安装需要用到的包</p>
+<pre><code>yum install libvirt openvswitch python-virtinst xauth tigervnc qemu-* -y
+</code></pre><p>移除默认的libvirt 网络，方便清晰分析网络情况</p>
+<pre><code>virsh net-destroy default
+virsh net-autostart --disable default
+virsh net-undefine default
+</code></pre><p>设置允许ipforwarding</p>
+<pre><code>vi /etc/sysctl.conf 
+net.ipv4.ip_forward=1
+net.ipv4.conf.all.rp_filter=0
+net.ipv4.conf.default.rp_filter=0
+</code></pre><p>立即生效</p>
+<pre><code>sysctl -p
+</code></pre><p>启动openvswitch</p>
+<pre><code>service openvswitch start
+chkconfig openvswitch on
+</code></pre><p>创建一个linux bridge</p>
+<pre><code>brctl addbr qbr01
+ip link set qbr01 up
+</code></pre><p>创建一个instance，并连接到qbr01 Bridge，网络接口部分配置如下</p>
+<pre><code>&lt;interface type=&apos;bridge&apos;&gt;
+      &lt;source bridge=&apos;qbr01&apos;/&gt;
+      &lt;target dev=&apos;tap01&apos;/&gt;
+      &lt;model type=&apos;virtio&apos;/&gt;
+      &lt;driver name=&apos;qemu&apos;/&gt;
+      &lt;address type=&apos;pci&apos; domain=&apos;0x0000&apos; bus=&apos;0x00&apos; slot=&apos;0x03&apos; function=&apos;0x0&apos;/&gt;
+&lt;/interface&gt;
+</code></pre><p>可以参考附件./gre/instance1.xml创建</p>
+<pre><code>cp ~/gre/ /var/tmp/
+cd /var/tmp/gre
+mv cirros-0.3.0-x86_64-disk.img instance1.img
+virsh define instance1.xml
+virsh start instance1
+virsh vncdisplay instance1
+vncviewer :0
+</code></pre><p>启动console 以后,登录添加ip 地址 192.168.1.11</p>
+<pre><code>ip addr add 192.168.1.11/24 dev eth0
+route add default gw 192.168.1.1
+</code></pre><p>创建一个内部bridge br-int， 模拟 OpenStack integrated bridge</p>
+<pre><code>ovs-vsctl add-br br-int
+ovs-vsctl add-port br-int gre0 -- set interface gre0 type=gre options:remote_ip=192.168.4.202
+</code></pre><p>创建一个veth peer，连接Linux Bridge ‘qbr01’ 和  OpenvSwich Bridge ‘br-ini’</p>
+<pre><code>ip link add qvo01 type veth peer name qvb01
+brctl addif qbr01 qvb01
+ovs-vsctl add-port br-int qvo01
+ovs-vsctl set port qvo01 tag=100
+ip link set qvb01 up
+ip link set qvo01 up
+</code></pre><p>查看现在network1上的 br-int</p>
+<pre><code>ovs-vsctl show
+</code></pre><p>##模拟安装计算节点(compute1)</p>
+<p>##网络接口配置</p>
+<pre><code>vi /etc/sysconfig/network-scripts/ifcfg-eth0
+DEVICE=eth0
+TYPE=Ethernet
+ONBOOT=yes
+NM_CONTROLLED=yes
+BOOTPROTO=static
+IPADDR=10.20.0.202
+NETMASK=255.255.255.0
+
+vi /etc/sysconfig/network-scripts/ifcfg-eth1
+DEVICE=eth1
+TYPE=Ethernet
+ONBOOT=yes
+NM_CONTROLLED=yes
+BOOTPROTO=static
+IPADDR=172.16.0.202
+NETMASK=255.255.255.0
+
+vi /etc/sysconfig/network-scripts/ifcfg-eth2
+DEVICE=eth2
+TYPE=Ethernet
+ONBOOT=yes
+NM_CONTROLLED=yes
+BOOTPROTO=static
+IPADDR=192.168.4.202
+NETMASK=255.255.255.0
+</code></pre><p>重启网络服务</p>
+<pre><code>service network restart
+</code></pre><p>安装需要用到的包</p>
+<pre><code>yum install libvirt openvswitch python-virtinst xauth tigervnc  qemu-*
+</code></pre><p>移除libvirt 默认的网络</p>
+<pre><code>virsh net-destroy default
+virsh net-autostart --disable default
+virsh net-undefine default
+</code></pre><p>设置允许ipforwarding</p>
+<pre><code>vi /etc/sysctl.conf 
+net.ipv4.ip_forward=1
+net.ipv4.conf.all.rp_filter=0
+net.ipv4.conf.default.rp_filter=0
+</code></pre><p>立即生效</p>
+<pre><code>sysctl -p
+</code></pre><p>启动openvswitch</p>
+<pre><code>service openvswitch start
+chkconfig openvswitch on
+</code></pre><p>创建一个linux bridge</p>
+<pre><code>brctl addbr qbr02
+ip link set qbr02 up
+</code></pre><p>创建一个vm，并连接到qbr02</p>
+<interface type="bridge"><br>      <source bridge="qbr02"><br>      <target dev="tap02"><br>      <model type="virtio"><br>      <driver name="qemu"><br>      <address type="pci" domain="0x0000" bus="0x00" slot="0x03" function="0x0"><br></address></driver></model></target></interface>
+
+<p>上gre目录到compute1 节点，可以参考附件./gre/instance2.xml创建</p>
+<pre><code>cp ~/gre/ /var/tmp/
+cd /var/tmp/gre
+mv cirros-0.3.0-x86_64-disk.img instance2.img
+virsh define instance2.xml
+virsh start instance2
+virsh vncdisplay instance2
+vncviewer :0
+</code></pre><p>启动console 以后,登录添加ip得知 192.168.1.12</p>
+<pre><code>ip addr add 192.168.1.12/24 dev eth0
+route add default gw 192.168.1.1 
+</code></pre><p>创建一个内部bridge br-int， 模拟 OpenStack integrated bridge</p>
+<pre><code>ovs-vsctl add-br br-int
+ovs-vsctl add-port br-int gre0 -- set interface gre0 type=gre options:remote_ip=192.168.4.201
+</code></pre><p>创建一个veth peer，连接Linux Bridge ‘qbr02’ 和  OpenvSwich Bridge ‘br-ini’</p>
+<pre><code>ip link add qvo02 type veth peer name qvb02
+brctl addif qbr02 qvb02
+ovs-vsctl add-port br-int qvo02
+ovs-vsctl set port qvo02 tag=100
+ip link set qvb02 up
+ip link set qvo02 up
+</code></pre><p>查看现在network1 上的 br-int</p>
+<pre><code>ovs-vsctl show
+</code></pre><p>检查是否能连通instance1，在instance2的控制台</p>
+<pre><code>ping 192.168.1.11
+</code></pre><p>##通过 Network Namespace 实现租户私有网络互访</p>
+<p>添加一个namespace，dhcp01用于隔离租户网络。</p>
+<pre><code>ip netns add dhcp01
+</code></pre><p>为私有网络192.168.1.0/24 ，在命名空间dhcp01 中 创建dhcp 服务</p>
+<pre><code>ovs-vsctl add-port br-int tapdhcp01 -- set interface tapdhcp01 type=internal
+ovs-vsctl set port tapdhcp01 tag=100
+
+ip link set tapdhcp01 netns dhcp01
+ip netns exec dhcp01 ip addr add 192.168.1.2/24 dev tapdhcp01
+ip netns exec dhcp01 ip link set tapdhcp01 up
+</code></pre><p>检查网络是否连通，在namespace 访问instance1 和 instance2</p>
+<pre><code>ip netns exec dhcp01 ping 192.168.1.12
+ip netns exec dhcp01 ping 192.168.1.11
+</code></pre><p>##通过 Network Namespace 和Iptables 实现L3 router</p>
+<p>ovs-vsctl add-br br-ex</p>
+<p>重新配置eth1 和 br-ex</p>
+<pre><code>vi /etc/sysconfig/network-scripts/ifcfg-eth1
+
+DEVICE=eth1
+ONBOOT=yes
+BOOTPROTO=none
+PROMISC=yes
+MTU=1546
+###################################
+DEVICE=ens160
+</code></pre><p>TYPE=OVSPort<br>DEVICETYPE=ovs<br>OVS_BRIDGE=br-ex<br>ONBOOT=yes</p>
+<pre><code>####################################
+
+vi /etc/sysconfig/network-scripts/ifcfg-br-ex
+
+DEVICE=br-ex
+TYPE=Bridge
+ONBOOT=yes
+BOOTPROTO=none
+IPADDR0=172.16.0.201
+PREFIX0=24
+#######################################
+DEVICE=br-ex
+</code></pre><p>ONBOOT=yes<br>DEVICETYPE=ovs<br>TYPE=OVSBridge<br>BOOTPROTO=static<br>IPADDR=192.168.2.134<br>NETMASK=255.255.255.0<br>GATEWAY=192.168.2.1<br>DNS1=218.2.2.2</p>
+<pre><code>######################################
+</code></pre><p>重启启动网络服务</p>
+<pre><code>ovs-vsctl add-port br-ex eth1 &amp;&amp; service network restart
+</code></pre><p>检查网络，配置后是否连通</p>
+<pre><code>ping 172.16.0.201
+</code></pre><p>添加一个namespace，router01 用于路由和floating ip 分配</p>
+<pre><code>ip netns add router01
+</code></pre><p>在br-int添加一个接口，作为私有网络192.168.1.0/24的网关</p>
+<pre><code>ovs-vsctl add-port br-int qr01 -- set interface qr01 type=internal
+ovs-vsctl set port qr01 tag=100
+
+ip link set qr01 netns router01
+ip netns exec router01 ip addr add 192.168.1.1/24 dev qr01
+ip netns exec router01 ip link set qr01 up
+ip netns exec router01 ip link set lo up
+</code></pre><p>在br-ex中添加一个接口，用于私网192.168.1.0/24设置下一跳地址</p>
+<pre><code>ovs-vsctl add-port br-ex qg01 -- set interface qg01  type=internal
+ip link set qg01  netns router01
+ip netns exec router01 ip addr add 172.16.0.100/24 dev qg01 
+ip netns exec router01 ip link set qg01 up
+ip netns exec router01 ip link set lo up
+</code></pre><h2 id="模拟分配floating-ip-访问instance1"><a href="#模拟分配floating-ip-访问instance1" class="headerlink" title="模拟分配floating ip 访问instance1"></a>模拟分配floating ip 访问instance1</h2><p>为instance1 192.168.1.11 分配floating ip，172.16.0.101</p>
+<pre><code>ip netns exec router01 ip addr add 172.16.0.101/32 dev qg01 
+
+ip netns exec router01  iptables -t nat -A OUTPUT -d 172.16.0.101/32  -j DNAT --to-destination 192.168.1.11
+ip netns exec router01  iptables -t nat -A PREROUTING -d 172.16.0.101/32 -j DNAT --to-destination 192.168.1.11
+ip netns exec router01  iptables -t nat -A POSTROUTING -s 192.168.1.11/32 -j SNAT --to-source 172.16.0.101
+ip netns exec router01  iptables -t nat -A POSTROUTING -s 192.168.1.0/24 -j SNAT --to-source 172.16.0.100
+</code></pre><p>测试floating ip</p>
+<pre><code>ping 172.16.0.101
+</code></pre><p>如果需要清除nat chain </p>
+<pre><code>iptables -t nat -F
+</code></pre><p>ip netns exec router01 iptables -t nat -A OUTPUT -d 192.168.2.102/32 -j DNAT –to-destination 192.168.10.11<br>ip netns exec router01 iptables -t nat -A PREROUTING -d 192.168.2.102/32 -j DNAT –to-destination 192.168.10.11<br>ip netns exec router01 iptables -t nat -A POSTROUTING -s 192.168.10.11/32 -j SNAT –to-source 192.168.2.102</p>
+<p>ip netns exec router01 ip addr add 192.168.2.103/32 dev qg01<br>ip netns exec router01 iptables -t nat -A OUTPUT -d 192.168.2.103/32 -j DNAT –to-destination 192.168.10.11<br>ip netns exec router01 iptables -t nat -A PREROUTING -d 192.168.2.103/32 -j DNAT –to-destination 192.168.10.11<br>ip netns exec router01 iptables -t nat -A POSTROUTING -s 192.168.10.11/32 -j SNAT –to-source 192.168.2.103</p>
+<p>[root@network ~]# ip netns exec router01 route add default gw 192.168.2.1<br>[root@network ~]# ip netns exec router01 route -n</p>
+
+      
+
+      
+        <div class="page-reward">
+          <a href="javascript:;" class="page-reward-btn tooltip-top">
+            <div class="tooltip tooltip-east">
+            <span class="tooltip-item">
+              赏
+            </span>
+            <span class="tooltip-content">
+              <span class="tooltip-text">
+                <span class="tooltip-inner">
+                  <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢你请我吃糖果<i class="icon icon-quo-right"></i></p>
+                  <div class="reward-box">
+                    
+                    
+                  </div>
+                </span>
+              </span>
+            </span>
+          </div>
+          </a>
+        </div>
+      
+    </div>
+    <div class="article-info article-info-index">
       
       
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2017" class="archive-year">2017</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/03/30/packstack install openstack-mitaka/" class="archive-article-date">
-  	<time datetime="2017-03-30T01:20:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-03-30</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/03/30/packstack install openstack-mitaka/">packstack 安装配置openstack mitaka</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags icon"></i>
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">Openstack</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">Network</a>
         		</li>
       		
 		</ul>
 	</div>
 
-          
+      
 
+      
+
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
         </div>
-        <div class="clearfix"></div>
-    </header>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="http://s.jiathis.com/qrcode.php?url=http://yoursite.com/2017/04/13/手工实现SDN/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
+
   
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/03/29/devstack/" class="archive-article-date">
-  	<time datetime="2017-03-29T15:37:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-03-29</time>
-</a>
-        </div>
-    	 
+<nav id="article-nav">
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/03/29/devstack/">devstack mitaka 安装配置</a>
-    </h1>
+    <a href="/2017/03/30/packstack install openstack-mitaka/" id="article-nav-newer" class="article-nav-link-wrap">
+      <i class="icon-circle-left"></i>
+      <div class="article-nav-title">
+        
+          packstack 安装配置openstack mitaka
+        
+      </div>
+    </a>
+  
+  
+</nav>
+
+
+
+
+
+
+  
+    <div class="duoshuo"></div>
   
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">Openstack</a>
-        		</li>
-      		
-		</ul>
-	</div>
 
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/03/29/ceilometer-mitaka api分析/" class="archive-article-date">
-  	<time datetime="2017-03-29T14:36:22.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-03-29</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/03/29/ceilometer-mitaka api分析/">ceilometer-mitaka api分析</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">Openstack</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-  
-    </div></section>
-  
-
-    
 
 
           </div>
@@ -313,9 +618,9 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
+		isPost: true,
 		isArchive: false,
-		isTag: true,
+		isTag: false,
 		isCategory: false,
 		open_in_new: false,
 		root: "/",
