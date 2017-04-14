@@ -6,14 +6,19 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>wanstack</title>
+  <title>Openstack Mitaka 集群安装部署 | wanstack</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="wanstack">
-<meta property="og:url" content="http://yoursite.com/index.html">
+  <meta name="description" content="[Toc] Openstack Mitaka HA 实施部署测试文档一、环境说明1、主机环境123456controller(VIP) 192.168.10.100controller01    192.168.10.101, 10.0.0.1controller02    192.168.10.102, 10.0.0.2controller03    192.168.10.103, 10.0.0">
+<meta name="keywords" content="Openstack">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Openstack Mitaka 集群安装部署">
+<meta property="og:url" content="http://yoursite.com/2017/04/14/Openstack-Mitaka HA 部署手册/index.html">
 <meta property="og:site_name" content="wanstack">
+<meta property="og:description" content="[Toc] Openstack Mitaka HA 实施部署测试文档一、环境说明1、主机环境123456controller(VIP) 192.168.10.100controller01    192.168.10.101, 10.0.0.1controller02    192.168.10.102, 10.0.0.2controller03    192.168.10.103, 10.0.0">
+<meta property="og:updated_time" content="2017-04-14T05:52:09.476Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="wanstack">
+<meta name="twitter:title" content="Openstack Mitaka 集群安装部署">
+<meta name="twitter:description" content="[Toc] Openstack Mitaka HA 实施部署测试文档一、环境说明1、主机环境123456controller(VIP) 192.168.10.100controller01    192.168.10.101, 10.0.0.1controller02    192.168.10.102, 10.0.0.2controller03    192.168.10.103, 10.0.0">
   
     <link rel="alternative" href="/atom.xml" title="wanstack" type="application/atom+xml">
   
@@ -167,16 +172,14 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-    <article id="post-Openstack-Mitaka HA 部署手册" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+            <article id="post-Openstack-Mitaka HA 部署手册" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/04/14/Openstack-Mitaka HA 部署手册/">Openstack Mitaka 集群安装部署</a>
+    <h1 class="article-title" itemprop="name">
+      Openstack Mitaka 集群安装部署
     </h1>
   
 
@@ -235,245 +238,26 @@
       
 
       
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">Openstack</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2017/04/14/Openstack-Mitaka HA 部署手册/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-
-
-
-
-
-
-
-  
-    <article id="post-手工实现SDN" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/04/13/手工实现SDN/">Neutron SDN 手动实现手册</a>
-    </h1>
-  
-
-        
-        <a href="/2017/04/13/手工实现SDN/" class="archive-article-date">
-  	<time datetime="2017-04-13T15:37:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-04-13</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>openstack运维开发QQ群:94776000</p>
-<p>本文旨在通过自己搭建类似neutron （openvswitch + gre） 实现SDN 的环境，学习了解其工作原理，模拟核心原理，比如：同一租户自定义网络 instance 互通，手动为instance 分配 floating ip 等相关内容。</p>
-<p><img src="E:\公司资料\github page\hexo\public\img\手工SDN1.png" alt="image"></p>
-<h3 id="虚拟网络"><a href="#虚拟网络" class="headerlink" title="虚拟网络"></a>虚拟网络</h3><p>需要新建3个虚拟网络Net0、Net1和Net2，其在virtual box 中对应配置如下。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div></pre></td><td class="code"><pre><div class="line">Net0:</div><div class="line">		Network name: VirtualBox  host-only Ethernet Adapter#2</div><div class="line">		Purpose: administrator / management network</div><div class="line">		IP block: 10.20.0.0/24</div><div class="line">		DHCP: disable</div><div class="line">		Linux device: eth0</div><div class="line"></div><div class="line">Net1:</div><div class="line">		Network name: VirtualBox  host-only Ethernet Adapter#3</div><div class="line">		Purpose: public network</div><div class="line">		DHCP: disable</div><div class="line">		IP block: 172.16.0.0/24</div><div class="line">		Linux device: eth1</div><div class="line"></div><div class="line">Net2：</div><div class="line">		Network name: VirtualBox  host-only Ethernet Adapter#4</div><div class="line">		Purpose: Storage/private network</div><div class="line">		DHCP: disable</div><div class="line">		IP block: 192.168.4.0/24</div><div class="line">		Linux device: eth2</div></pre></td></tr></table></figure>
-<h3 id="虚拟机"><a href="#虚拟机" class="headerlink" title="虚拟机"></a>虚拟机</h3><p>需要新建2个虚拟机VM1和VM2，其对应配置如下。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line">VM1：</div><div class="line">		Name : network1</div><div class="line">		vCPU:1</div><div class="line">		Memory :1G</div><div class="line">		Disk:30G</div><div class="line">		Network:net1,net2,net3</div><div class="line"></div><div class="line">VM2：</div><div class="line">		Name: compute1</div><div class="line">		vCPU:1</div><div class="line">		Memory :1G</div><div class="line">		Disk:30G</div><div class="line">		Networks:net1,net2,net3</div></pre></td></tr></table></figure>
-<p>###Linux interface设置</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">network1</div><div class="line">	     eth0:10.20.0.201   (management network)</div><div class="line">	     eht1:172.16.0.201   (public/external network)</div><div class="line">	     eht2:192.168.4.201  (private network，gre tunning)</div><div class="line"></div><div class="line">compute1</div><div class="line">	     eth0:10.20.0.202   (management network)</div><div class="line">	     eht1:(disabled)</div><div class="line">	     eht2:192.168.4.202  (private network，gre tunning)</div></pre></td></tr></table></figure>
-<p>模拟安装网络节点(Network1)</p>
-<p>模拟Network 节点相关实现，比如L3、dhcp-agent实现，为了模拟多节点网络情况，这里Network同时也模拟一个计算节点，模拟M2 openvswitch 实现，上面运行instance1。</p>
-<p>网络接口配置</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div></pre></td><td class="code"><pre><div class="line">vi /etc/sysconfig/network-scripts/ifcfg-eth0</div><div class="line">	DEVICE=eth0</div><div class="line">	TYPE=Ethernet</div><div class="line">	ONBOOT=yes</div><div class="line">	NM_CONTROLLED=yes</div><div class="line">	BOOTPROTO=static</div><div class="line">	IPADDR=10.20.0.201</div><div class="line">	NETMASK=255.255.255.0</div><div class="line"></div><div class="line">vi /etc/sysconfig/network-scripts/ifcfg-eth1</div><div class="line">	DEVICE=eth1</div><div class="line">	TYPE=Ethernet</div><div class="line">	ONBOOT=yes</div><div class="line">	NM_CONTROLLED=yes</div><div class="line">	BOOTPROTO=static</div><div class="line">	IPADDR=172.16.0.201</div><div class="line">	NETMASK=255.255.255.0</div><div class="line"></div><div class="line">vi /etc/sysconfig/network-scripts/ifcfg-eth2</div><div class="line">	DEVICE=eth2</div><div class="line">	TYPE=Ethernet</div><div class="line">	ONBOOT=yes</div><div class="line">	NM_CONTROLLED=yes</div><div class="line">	BOOTPROTO=static</div><div class="line">	IPADDR=192.168.4.201</div><div class="line">	NETMASK=255.255.255.0</div></pre></td></tr></table></figure>
-<p>重启网络服务</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">service network restart</div></pre></td></tr></table></figure>
-<p>安装需要用到的包</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">yum install libvirt openvswitch python-virtinst xauth tigervnc qemu-* -y</div></pre></td></tr></table></figure>
-<p>移除默认的libvirt 网络，方便清晰分析网络情况</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">virsh net-destroy default</div><div class="line">virsh net-autostart --disable default</div><div class="line">virsh net-undefine default</div></pre></td></tr></table></figure>
-<p>设置允许ipforwarding</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">vi /etc/sysctl.conf </div><div class="line">	net.ipv4.ip_forward=1</div><div class="line">	net.ipv4.conf.all.rp_filter=0</div><div class="line">	net.ipv4.conf.default.rp_filter=0</div></pre></td></tr></table></figure>
-<p>立即生效</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">sysctl -p</div></pre></td></tr></table></figure>
-<p>启动openvswitch</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">service openvswitch start</div><div class="line">chkconfig openvswitch on</div></pre></td></tr></table></figure>
-<p>创建一个linux bridge</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">brctl addbr qbr01</div><div class="line">ip link set qbr01 up</div></pre></td></tr></table></figure>
-<p>创建一个instance，并连接到qbr01 Bridge，网络接口部分配置如下</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">&lt;interface type=&apos;bridge&apos;&gt;</div><div class="line">      &lt;source bridge=&apos;qbr01&apos;/&gt;</div><div class="line">      &lt;target dev=&apos;tap01&apos;/&gt;</div><div class="line">      &lt;model type=&apos;virtio&apos;/&gt;</div><div class="line">      &lt;driver name=&apos;qemu&apos;/&gt;</div><div class="line">      &lt;address type=&apos;pci&apos; domain=&apos;0x0000&apos; bus=&apos;0x00&apos; slot=&apos;0x03&apos; function=&apos;0x0&apos;/&gt;</div><div class="line">&lt;/interface&gt;</div></pre></td></tr></table></figure>
-<p>可以参考附件./gre/instance1.xml创建</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">cp ~/gre/ /var/tmp/</div><div class="line">cd /var/tmp/gre</div><div class="line">mv cirros-0.3.0-x86_64-disk.img instance1.img</div><div class="line">virsh define instance1.xml</div><div class="line">virsh start instance1</div><div class="line">virsh vncdisplay instance1</div><div class="line">vncviewer :0</div></pre></td></tr></table></figure>
-<p>启动console 以后,登录添加ip 地址 192.168.1.11</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">ip addr add 192.168.1.11/24 dev eth0</div><div class="line">route add default gw 192.168.1.1</div></pre></td></tr></table></figure>
-<p>创建一个内部bridge br-int， 模拟 OpenStack integrated bridge</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">ovs-vsctl add-br br-int</div><div class="line">ovs-vsctl add-port br-int gre0 -- set interface gre0 type=gre options:remote_ip=192.168.4.202</div></pre></td></tr></table></figure>
-<p>创建一个veth peer，连接Linux Bridge ‘qbr01’ 和  OpenvSwich Bridge ‘br-ini’</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">ip link add qvo01 type veth peer name qvb01</div><div class="line">brctl addif qbr01 qvb01</div><div class="line">ovs-vsctl add-port br-int qvo01</div><div class="line">ovs-vsctl set port qvo01 tag=100</div><div class="line">ip link set qvb01 up</div><div class="line">ip link set qvo01 up</div></pre></td></tr></table></figure>
-<p>查看现在network1上的 br-int</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">ovs-vsctl show</div></pre></td></tr></table></figure>
-<p>##模拟安装计算节点(compute1)</p>
-<p>##网络接口配置</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div></pre></td><td class="code"><pre><div class="line">vi /etc/sysconfig/network-scripts/ifcfg-eth0</div><div class="line">	DEVICE=eth0</div><div class="line">	TYPE=Ethernet</div><div class="line">	ONBOOT=yes</div><div class="line">	NM_CONTROLLED=yes</div><div class="line">	BOOTPROTO=static</div><div class="line">	IPADDR=10.20.0.202</div><div class="line">	NETMASK=255.255.255.0</div><div class="line"></div><div class="line">vi /etc/sysconfig/network-scripts/ifcfg-eth1</div><div class="line">	DEVICE=eth1</div><div class="line">	TYPE=Ethernet</div><div class="line">	ONBOOT=yes</div><div class="line">	NM_CONTROLLED=yes</div><div class="line">	BOOTPROTO=static</div><div class="line">	IPADDR=172.16.0.202</div><div class="line">	NETMASK=255.255.255.0</div><div class="line"></div><div class="line">vi /etc/sysconfig/network-scripts/ifcfg-eth2</div><div class="line">	DEVICE=eth2</div><div class="line">	TYPE=Ethernet</div><div class="line">	ONBOOT=yes</div><div class="line">	NM_CONTROLLED=yes</div><div class="line">	BOOTPROTO=static</div><div class="line">	IPADDR=192.168.4.202</div><div class="line">	NETMASK=255.255.255.0</div></pre></td></tr></table></figure>
-<p>重启网络服务</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">service network restart</div></pre></td></tr></table></figure>
-<p>安装需要用到的包</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">yum install libvirt openvswitch python-virtinst xauth tigervnc  qemu-*</div></pre></td></tr></table></figure>
-<p>移除libvirt 默认的网络</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">virsh net-destroy default</div><div class="line">virsh net-autostart --disableu default</div><div class="line">virsh net-undefine default</div></pre></td></tr></table></figure>
-<p>设置允许ipforwarding</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">vi /etc/sysctl.conf </div><div class="line">    net.ipv4.ip_forward=1</div><div class="line">    net.ipv4.conf.all.rp_filter=0</div><div class="line">    net.ipv4.conf.default.rp_filter=0</div></pre></td></tr></table></figure>
-<p>立即生效</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">sysctl -p</div></pre></td></tr></table></figure>
-<p>启动openvswitch</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">service openvswitch start</div><div class="line">chkconfig openvswitch on</div></pre></td></tr></table></figure>
-<p>创建一个linux bridge</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">brctl addbr qbr02</div><div class="line">ip link set qbr02 up</div></pre></td></tr></table></figure>
-<p>创建一个vm，并连接到qbr02</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">&lt;interface type=&apos;bridge&apos;&gt;</div><div class="line">      &lt;source bridge=&apos;qbr02&apos;/&gt;</div><div class="line">      &lt;target dev=&apos;tap02&apos;/&gt;</div><div class="line">      &lt;model type=&apos;virtio&apos;/&gt;</div><div class="line">      &lt;driver name=&apos;qemu&apos;/&gt;</div><div class="line">      &lt;address type=&apos;pci&apos; domain=&apos;0x0000&apos; bus=&apos;0x00&apos; slot=&apos;0x03&apos; function=&apos;0x0&apos;/&gt;</div><div class="line">&lt;/interface&gt;</div></pre></td></tr></table></figure>
-<p>上gre目录到compute1 节点，可以参考附件./gre/instance2.xml创建</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">cp ~/gre/ /var/tmp/</div><div class="line">cd /var/tmp/gre</div><div class="line">mv cirros-0.3.0-x86_64-disk.img instance2.img</div><div class="line">virsh define instance2.xml</div><div class="line">virsh start instance2</div><div class="line">virsh vncdisplay instance2</div><div class="line">vncviewer :0</div></pre></td></tr></table></figure>
-<p>启动console 以后,登录添加ip得知 192.168.1.12</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">ip addr add 192.168.1.12/24 dev eth0</div><div class="line">route add default gw 192.168.1.1</div></pre></td></tr></table></figure>
-<p>创建一个内部bridge br-int， 模拟 OpenStack integrated bridge</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">ovs-vsctl add-br br-int</div><div class="line">ovs-vsctl add-port br-int gre0 -- set interface gre0 type=gre options:remote_ip=192.168.4.201</div></pre></td></tr></table></figure>
-<p>创建一个veth peer，连接Linux Bridge ‘qbr02’ 和  OpenvSwich Bridge ‘br-ini’</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">ip link add qvo02 type veth peer name qvb02</div><div class="line">brctl addif qbr02 qvb02</div><div class="line">ovs-vsctl add-port br-int qvo02</div><div class="line">ovs-vsctl set port qvo02 tag=100</div><div class="line">ip link set qvb02 up</div><div class="line">ip link set qvo02 up</div></pre></td></tr></table></figure>
-<p>查看现在network1 上的 br-int</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">ovs-vsctl show</div></pre></td></tr></table></figure>
-<p>检查是否能连通instance1，在instance2的控制台</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">ping 192.168.1.11</div></pre></td></tr></table></figure>
-<p>##通过 Network Namespace 实现租户私有网络互访</p>
-<p>添加一个namespace，dhcp01用于隔离租户网络。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">ip netns add dhcp01</div></pre></td></tr></table></figure>
-<p>为私有网络192.168.1.0/24 ，在命名空间dhcp01 中 创建dhcp 服务</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">ovs-vsctl add-port br-int tapdhcp01 -- set interface tapdhcp01 type=internal</div><div class="line">ovs-vsctl set port tapdhcp01 tag=100</div><div class="line">ip link set tapdhcp01 netns dhcp01</div><div class="line">ip netns exec dhcp01 ip addr add 192.168.1.2/24 dev tapdhcp01</div><div class="line">ip netns exec dhcp01 ip link set tapdhcp01 up</div></pre></td></tr></table></figure>
-<p>检查网络是否连通，在namespace 访问instance1 和 instance2</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">ip netns exec dhcp01 ping 192.168.1.12</div><div class="line">ip netns exec dhcp01 ping 192.168.1.11</div></pre></td></tr></table></figure>
-<p>通过 Network Namespace 和Iptables 实现L3 router</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">ovs-vsctl add-br br-ex</div></pre></td></tr></table></figure>
-<p>重新配置eth1 和 br-ex</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div></pre></td><td class="code"><pre><div class="line">vi /etc/sysconfig/network-scripts/ifcfg-eth1</div><div class="line"></div><div class="line">	DEVICE=eth1</div><div class="line">	ONBOOT=yes</div><div class="line">	BOOTPROTO=none</div><div class="line">	PROMISC=yes</div><div class="line">	MTU=1546</div><div class="line">	###################################</div><div class="line">	DEVICE=ens160</div><div class="line">	TYPE=OVSPort</div><div class="line">	DEVICETYPE=ovs</div><div class="line">	OVS_BRIDGE=br-ex</div><div class="line">	ONBOOT=yes</div><div class="line"></div><div class="line">	####################################</div><div class="line"></div><div class="line">vi /etc/sysconfig/network-scripts/ifcfg-br-ex</div><div class="line"></div><div class="line">	DEVICE=br-ex</div><div class="line">	TYPE=Bridge</div><div class="line">	ONBOOT=yes</div><div class="line">	BOOTPROTO=none</div><div class="line">	IPADDR0=172.16.0.201</div><div class="line">	PREFIX0=24</div><div class="line">	#######################################</div><div class="line">	DEVICE=br-ex</div><div class="line">	ONBOOT=yes</div><div class="line">	DEVICETYPE=ovs</div><div class="line">	TYPE=OVSBridge</div><div class="line">	BOOTPROTO=static</div><div class="line">	IPADDR=192.168.2.134</div><div class="line">	NETMASK=255.255.255.0</div><div class="line">	GATEWAY=192.168.2.1</div><div class="line">	DNS1=218.2.2.2</div><div class="line"></div><div class="line">	######################################</div></pre></td></tr></table></figure>
-<p>重启启动网络服务</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">ovs-vsctl add-port br-ex eth1 &amp;&amp; service network restart</div></pre></td></tr></table></figure>
-<p>检查网络，配置后是否连通</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">ping 172.16.0.201</div></pre></td></tr></table></figure>
-<p>添加一个namespace，router01 用于路由和floating ip 分配</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">ip netns add router01</div></pre></td></tr></table></figure>
-<p>在br-int添加一个接口，作为私有网络192.168.1.0/24的网关</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">ovs-vsctl add-port br-int qr01 -- set interface qr01 type=internal</div><div class="line">ovs-vsctl set port qr01 tag=100</div><div class="line">ip link set qr01 netns router01</div><div class="line">ip netns exec router01 ip addr add 192.168.1.1/24 dev qr01</div><div class="line">ip netns exec router01 ip link set qr01 up</div><div class="line">ip netns exec router01 ip link set lo up</div></pre></td></tr></table></figure>
-<p>在br-ex中添加一个接口，用于私网192.168.1.0/24设置下一跳地址</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">ovs-vsctl add-port br-ex qg01 -- set interface qg01  type=internal</div><div class="line">ip link set qg01  netns router01</div><div class="line">ip netns exec router01 ip addr add 172.16.0.100/24 dev qg01 </div><div class="line">ip netns exec router01 ip link set qg01 up</div><div class="line">ip netns exec router01 ip link set lo up</div></pre></td></tr></table></figure>
-<p>模拟分配floating ip 访问instance1</p>
-<p>为instance1 192.168.1.11 分配floating ip，172.16.0.101</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">ip netns exec router01 ip addr add 172.16.0.101/32 dev qg01 </div><div class="line">ip netns exec router01  iptables -t nat -A OUTPUT -d 172.16.0.101/32  -j DNAT --to-destination 192.168.1.11</div><div class="line">ip netns exec router01  iptables -t nat -A PREROUTING -d 172.16.0.101/32 -j DNAT --to-destination 192.168.1.11</div><div class="line">ip netns exec router01  iptables -t nat -A POSTROUTING -s 192.168.1.11/32 -j SNAT --to-source 172.16.0.101</div><div class="line">ip netns exec router01  iptables -t nat -A POSTROUTING -s 192.168.1.0/24 -j SNAT --to-source 172.16.0.100</div></pre></td></tr></table></figure>
-<p>测试floating ip</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">ping 172.16.0.101</div></pre></td></tr></table></figure>
-<p>如果需要清除nat chain </p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">iptables -t nat -F</div></pre></td></tr></table></figure>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">ip netns exec router01 iptables -t nat -A OUTPUT -d 192.168.2.102/32 -j DNAT --to-destination 192.168.10.11</div><div class="line">ip netns exec router01 iptables -t nat -A PREROUTING -d 192.168.2.102/32 -j DNAT --to-destination 192.168.10.11</div><div class="line">ip netns exec router01 iptables -t nat -A POSTROUTING -s 192.168.10.11/32 -j SNAT --to-source 192.168.2.102</div><div class="line"></div><div class="line">ip netns exec router01 ip addr add 192.168.2.103/32 dev qg01</div><div class="line">ip netns exec router01 iptables -t nat -A OUTPUT -d 192.168.2.103/32 -j DNAT --to-destination 192.168.10.11</div><div class="line">ip netns exec router01 iptables -t nat -A PREROUTING -d 192.168.2.103/32 -j DNAT --to-destination 192.168.10.11</div><div class="line">ip netns exec router01 iptables -t nat -A POSTROUTING -s 192.168.10.11/32 -j SNAT --to-source 192.168.2.103</div><div class="line"></div><div class="line">ip netns exec router01 route add default gw 192.168.2.1</div><div class="line">ip netns exec router01 route -n</div></pre></td></tr></table></figure>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">Network</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2017/04/13/手工实现SDN/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-
-
-
-
-
-
-
-  
-    <article id="post-packstack install openstack-mitaka" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/03/30/packstack install openstack-mitaka/">packstack 安装配置openstack mitaka</a>
-    </h1>
-  
-
-        
-        <a href="/2017/03/30/packstack install openstack-mitaka/" class="archive-article-date">
-  	<time datetime="2017-03-30T01:20:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-03-30</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>1、修改主机名</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">hostnamectl set-hostname controller</div><div class="line">hostname controller</div><div class="line"></div><div class="line">hostnamectl set-hostname compute01</div><div class="line">hostname compute01</div><div class="line"></div><div class="line">hostnamectl set-hostname compute02</div><div class="line">hostname compute02</div></pre></td></tr></table></figure>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">cat /etc/hosts</div><div class="line">127.0.0.1   localhost localhost.localdomain localhost4 localhost4.localdomain4</div><div class="line">::1         localhost localhost.localdomain localhost6 localhost6.localdomain6</div><div class="line"></div><div class="line">192.168.12.50 controller</div><div class="line">192.168.12.51 compute01</div><div class="line">192.168.12.52 compute02</div></pre></td></tr></table></figure>
-<p>2、安装基础yum源</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">yum install ntpdate -y</div><div class="line">echo &quot;*/5 * * * * /usr/sbin/ntpdate 192.168.2.161 &gt;/dev/null 2&gt;&amp;1&quot; &gt;&gt; /var/spool/cron/root</div><div class="line">/usr/sbin/ntpdate 192.168.2.161</div><div class="line">yum install wget -y</div><div class="line">rm -rf /etc/yum.repos.d/*</div><div class="line">wget -O /etc/yum.repos.d/CentOS-Base.repo http://mirrors.aliyun.com/repo/Centos-7.repo</div></pre></td></tr></table></figure>
-<p>3、安装配置openstack源</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">yum install -y centos-release-openstack-mitaka</div><div class="line"></div><div class="line">vim CentOS-OpenStack-mitaka.repo </div><div class="line">[centos-openstack-mitaka]</div><div class="line">name=CentOS-7 - OpenStack mitaka</div><div class="line">baseurl=http://mirrors.aliyun.com/centos/7/cloud/$basearch/openstack-mitaka/</div><div class="line">gpgcheck=1</div><div class="line">enabled=1</div><div class="line">gpgkey=file:///etc/pki/rpm-gpg/RPM-GPG-KEY-CentOS-SIG-Cloud</div></pre></td></tr></table></figure>
-<p>4、安装配置openstack</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">yum update -y</div></pre></td></tr></table></figure>
-<p>控制节点执行: CONFIG_PROVISION_DEMO=n</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">yum install -y openstack-packstack</div><div class="line"></div><div class="line">packstack --gen-answer-file=openstack.txt</div></pre></td></tr></table></figure>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div><div class="line">76</div><div class="line">77</div><div class="line">78</div><div class="line">79</div><div class="line">80</div><div class="line">81</div><div class="line">82</div><div class="line">83</div><div class="line">84</div><div class="line">85</div><div class="line">86</div><div class="line">87</div><div class="line">88</div><div class="line">89</div><div class="line">90</div><div class="line">91</div><div class="line">92</div><div class="line">93</div><div class="line">94</div><div class="line">95</div><div class="line">96</div><div class="line">97</div><div class="line">98</div><div class="line">99</div><div class="line">100</div><div class="line">101</div><div class="line">102</div><div class="line">103</div><div class="line">104</div><div class="line">105</div><div class="line">106</div><div class="line">107</div><div class="line">108</div><div class="line">109</div><div class="line">110</div><div class="line">111</div><div class="line">112</div><div class="line">113</div><div class="line">114</div><div class="line">115</div><div class="line">116</div><div class="line">117</div><div class="line">118</div><div class="line">119</div><div class="line">120</div><div class="line">121</div><div class="line">122</div><div class="line">123</div><div class="line">124</div><div class="line">125</div><div class="line">126</div><div class="line">127</div><div class="line">128</div><div class="line">129</div><div class="line">130</div><div class="line">131</div><div class="line">132</div><div class="line">133</div><div class="line">134</div><div class="line">135</div><div class="line">136</div><div class="line">137</div><div class="line">138</div><div class="line">139</div><div class="line">140</div><div class="line">141</div><div class="line">142</div><div class="line">143</div><div class="line">144</div><div class="line">145</div><div class="line">146</div><div class="line">147</div><div class="line">148</div><div class="line">149</div><div class="line">150</div><div class="line">151</div><div class="line">152</div><div class="line">153</div><div class="line">154</div><div class="line">155</div><div class="line">156</div><div class="line">157</div><div class="line">158</div><div class="line">159</div><div class="line">160</div><div class="line">161</div><div class="line">162</div><div class="line">163</div><div class="line">164</div><div class="line">165</div><div class="line">166</div><div class="line">167</div><div class="line">168</div><div class="line">169</div><div class="line">170</div><div class="line">171</div><div class="line">172</div><div class="line">173</div><div class="line">174</div><div class="line">175</div><div class="line">176</div><div class="line">177</div><div class="line">178</div><div class="line">179</div><div class="line">180</div><div class="line">181</div><div class="line">182</div><div class="line">183</div><div class="line">184</div><div class="line">185</div><div class="line">186</div><div class="line">187</div><div class="line">188</div><div class="line">189</div><div class="line">190</div><div class="line">191</div><div class="line">192</div><div class="line">193</div><div class="line">194</div><div class="line">195</div><div class="line">196</div><div class="line">197</div><div class="line">198</div><div class="line">199</div><div class="line">200</div><div class="line">201</div><div class="line">202</div><div class="line">203</div><div class="line">204</div><div class="line">205</div><div class="line">206</div><div class="line">207</div><div class="line">208</div><div class="line">209</div><div class="line">210</div><div class="line">211</div><div class="line">212</div><div class="line">213</div><div class="line">214</div><div class="line">215</div><div class="line">216</div><div class="line">217</div><div class="line">218</div><div class="line">219</div><div class="line">220</div><div class="line">221</div><div class="line">222</div><div class="line">223</div><div class="line">224</div><div class="line">225</div><div class="line">226</div><div class="line">227</div><div class="line">228</div><div class="line">229</div><div class="line">230</div><div class="line">231</div><div class="line">232</div><div class="line">233</div><div class="line">234</div><div class="line">235</div><div class="line">236</div><div class="line">237</div><div class="line">238</div><div class="line">239</div><div class="line">240</div><div class="line">241</div><div class="line">242</div><div class="line">243</div><div class="line">244</div><div class="line">245</div><div class="line">246</div><div class="line">247</div><div class="line">248</div><div class="line">249</div><div class="line">250</div><div class="line">251</div><div class="line">252</div><div class="line">253</div><div class="line">254</div><div class="line">255</div><div class="line">256</div><div class="line">257</div><div class="line">258</div><div class="line">259</div><div class="line">260</div><div class="line">261</div><div class="line">262</div><div class="line">263</div><div class="line">264</div><div class="line">265</div><div class="line">266</div><div class="line">267</div><div class="line">268</div><div class="line">269</div><div class="line">270</div><div class="line">271</div><div class="line">272</div><div class="line">273</div><div class="line">274</div><div class="line">275</div><div class="line">276</div><div class="line">277</div><div class="line">278</div><div class="line">279</div><div class="line">280</div><div class="line">281</div><div class="line">282</div><div class="line">283</div><div class="line">284</div><div class="line">285</div><div class="line">286</div><div class="line">287</div><div class="line">288</div><div class="line">289</div><div class="line">290</div><div class="line">291</div><div class="line">292</div><div class="line">293</div><div class="line">294</div><div class="line">295</div><div class="line">296</div><div class="line">297</div><div class="line">298</div><div class="line">299</div><div class="line">300</div><div class="line">301</div><div class="line">302</div><div class="line">303</div><div class="line">304</div><div class="line">305</div><div class="line">306</div><div class="line">307</div><div class="line">308</div><div class="line">309</div><div class="line">310</div><div class="line">311</div><div class="line">312</div><div class="line">313</div><div class="line">314</div><div class="line">315</div><div class="line">316</div><div class="line">317</div></pre></td><td class="code"><pre><div class="line">[root@controller ~]# cat openstack.txt | egrep -v &quot;^$|^#&quot;</div><div class="line">[general]</div><div class="line">CONFIG_SSH_KEY=/root/.ssh/id_rsa.pub</div><div class="line">CONFIG_DEFAULT_PASSWORD=</div><div class="line">CONFIG_SERVICE_WORKERS=%&#123;::processorcount&#125;</div><div class="line">CONFIG_MARIADB_INSTALL=y</div><div class="line">CONFIG_GLANCE_INSTALL=y</div><div class="line">CONFIG_CINDER_INSTALL=y</div><div class="line">CONFIG_MANILA_INSTALL=n</div><div class="line">CONFIG_NOVA_INSTALL=y</div><div class="line">CONFIG_NEUTRON_INSTALL=y</div><div class="line">CONFIG_HORIZON_INSTALL=y</div><div class="line">CONFIG_SWIFT_INSTALL=y</div><div class="line">CONFIG_CEILOMETER_INSTALL=y</div><div class="line">CONFIG_AODH_INSTALL=y</div><div class="line">CONFIG_GNOCCHI_INSTALL=y</div><div class="line">CONFIG_SAHARA_INSTALL=n</div><div class="line">CONFIG_HEAT_INSTALL=n</div><div class="line">CONFIG_TROVE_INSTALL=n</div><div class="line">CONFIG_IRONIC_INSTALL=n</div><div class="line">CONFIG_CLIENT_INSTALL=y</div><div class="line">CONFIG_NTP_SERVERS=</div><div class="line">CONFIG_NAGIOS_INSTALL=y</div><div class="line">EXCLUDE_SERVERS=</div><div class="line">CONFIG_DEBUG_MODE=n</div><div class="line">CONFIG_CONTROLLER_HOST=192.168.12.50</div><div class="line">CONFIG_COMPUTE_HOSTS=192.168.12.51,192.168.12.52</div><div class="line">CONFIG_NETWORK_HOSTS=192.168.12.50</div><div class="line">CONFIG_VMWARE_BACKEND=n</div><div class="line">CONFIG_UNSUPPORTED=n</div><div class="line">CONFIG_USE_SUBNETS=n</div><div class="line">CONFIG_VCENTER_HOST=</div><div class="line">CONFIG_VCENTER_USER=</div><div class="line">CONFIG_VCENTER_PASSWORD=</div><div class="line">CONFIG_VCENTER_CLUSTER_NAMES=</div><div class="line">CONFIG_STORAGE_HOST=192.168.12.50</div><div class="line">CONFIG_SAHARA_HOST=192.168.12.50</div><div class="line">CONFIG_USE_EPEL=n</div><div class="line">CONFIG_REPO=</div><div class="line">CONFIG_ENABLE_RDO_TESTING=n</div><div class="line">CONFIG_RH_USER=</div><div class="line">CONFIG_SATELLITE_URL=</div><div class="line">CONFIG_RH_SAT6_SERVER=</div><div class="line">CONFIG_RH_PW=</div><div class="line">CONFIG_RH_OPTIONAL=y</div><div class="line">CONFIG_RH_PROXY=</div><div class="line">CONFIG_RH_SAT6_ORG=</div><div class="line">CONFIG_RH_SAT6_KEY=</div><div class="line">CONFIG_RH_PROXY_PORT=</div><div class="line">CONFIG_RH_PROXY_USER=</div><div class="line">CONFIG_RH_PROXY_PW=</div><div class="line">CONFIG_SATELLITE_USER=</div><div class="line">CONFIG_SATELLITE_PW=</div><div class="line">CONFIG_SATELLITE_AKEY=</div><div class="line">CONFIG_SATELLITE_CACERT=</div><div class="line">CONFIG_SATELLITE_PROFILE=</div><div class="line">CONFIG_SATELLITE_FLAGS=</div><div class="line">CONFIG_SATELLITE_PROXY=</div><div class="line">CONFIG_SATELLITE_PROXY_USER=</div><div class="line">CONFIG_SATELLITE_PROXY_PW=</div><div class="line">CONFIG_SSL_CACERT_FILE=/etc/pki/tls/certs/selfcert.crt</div><div class="line">CONFIG_SSL_CACERT_KEY_FILE=/etc/pki/tls/private/selfkey.key</div><div class="line">CONFIG_SSL_CERT_DIR=~/packstackca/</div><div class="line">CONFIG_SSL_CACERT_SELFSIGN=y</div><div class="line">CONFIG_SELFSIGN_CACERT_SUBJECT_C=--</div><div class="line">CONFIG_SELFSIGN_CACERT_SUBJECT_ST=State</div><div class="line">CONFIG_SELFSIGN_CACERT_SUBJECT_L=City</div><div class="line">CONFIG_SELFSIGN_CACERT_SUBJECT_O=openstack</div><div class="line">CONFIG_SELFSIGN_CACERT_SUBJECT_OU=packstack</div><div class="line">CONFIG_SELFSIGN_CACERT_SUBJECT_CN=controller</div><div class="line">CONFIG_SELFSIGN_CACERT_SUBJECT_MAIL=admin@controller</div><div class="line">CONFIG_AMQP_BACKEND=rabbitmq</div><div class="line">CONFIG_AMQP_HOST=192.168.12.50</div><div class="line">CONFIG_AMQP_ENABLE_SSL=n</div><div class="line">CONFIG_AMQP_ENABLE_AUTH=n</div><div class="line">CONFIG_AMQP_NSS_CERTDB_PW=PW_PLACEHOLDER</div><div class="line">CONFIG_AMQP_AUTH_USER=amqp_user</div><div class="line">CONFIG_AMQP_AUTH_PASSWORD=PW_PLACEHOLDER</div><div class="line">CONFIG_MARIADB_HOST=192.168.12.50</div><div class="line">CONFIG_MARIADB_USER=root</div><div class="line">CONFIG_MARIADB_PW=openstack</div><div class="line">CONFIG_KEYSTONE_DB_PW=38cddfa9ce6149c9</div><div class="line">CONFIG_KEYSTONE_DB_PURGE_ENABLE=True</div><div class="line">CONFIG_KEYSTONE_REGION=RegionOne</div><div class="line">CONFIG_KEYSTONE_ADMIN_TOKEN=e462f66d03974d8fa410cf76aae40da9</div><div class="line">CONFIG_KEYSTONE_ADMIN_EMAIL=root@localhost</div><div class="line">CONFIG_KEYSTONE_ADMIN_USERNAME=admin</div><div class="line">CONFIG_KEYSTONE_ADMIN_PW=admin</div><div class="line">CONFIG_KEYSTONE_DEMO_PW=demo</div><div class="line">CONFIG_KEYSTONE_API_VERSION=v2.0</div><div class="line">CONFIG_KEYSTONE_TOKEN_FORMAT=UUID</div><div class="line">CONFIG_KEYSTONE_SERVICE_NAME=httpd</div><div class="line">CONFIG_KEYSTONE_IDENTITY_BACKEND=sql</div><div class="line">CONFIG_KEYSTONE_LDAP_URL=ldap://192.168.12.50</div><div class="line">CONFIG_KEYSTONE_LDAP_USER_DN=</div><div class="line">CONFIG_KEYSTONE_LDAP_USER_PASSWORD=</div><div class="line">CONFIG_KEYSTONE_LDAP_SUFFIX=</div><div class="line">CONFIG_KEYSTONE_LDAP_QUERY_SCOPE=one</div><div class="line">CONFIG_KEYSTONE_LDAP_PAGE_SIZE=-1</div><div class="line">CONFIG_KEYSTONE_LDAP_USER_SUBTREE=</div><div class="line">CONFIG_KEYSTONE_LDAP_USER_FILTER=</div><div class="line">CONFIG_KEYSTONE_LDAP_USER_OBJECTCLASS=</div><div class="line">CONFIG_KEYSTONE_LDAP_USER_ID_ATTRIBUTE=</div><div class="line">CONFIG_KEYSTONE_LDAP_USER_NAME_ATTRIBUTE=</div><div class="line">CONFIG_KEYSTONE_LDAP_USER_MAIL_ATTRIBUTE=</div><div class="line">CONFIG_KEYSTONE_LDAP_USER_ENABLED_ATTRIBUTE=</div><div class="line">CONFIG_KEYSTONE_LDAP_USER_ENABLED_MASK=-1</div><div class="line">CONFIG_KEYSTONE_LDAP_USER_ENABLED_DEFAULT=TRUE</div><div class="line">CONFIG_KEYSTONE_LDAP_USER_ENABLED_INVERT=n</div><div class="line">CONFIG_KEYSTONE_LDAP_USER_ATTRIBUTE_IGNORE=</div><div class="line">CONFIG_KEYSTONE_LDAP_USER_DEFAULT_PROJECT_ID_ATTRIBUTE=</div><div class="line">CONFIG_KEYSTONE_LDAP_USER_ALLOW_CREATE=n</div><div class="line">CONFIG_KEYSTONE_LDAP_USER_ALLOW_UPDATE=n</div><div class="line">CONFIG_KEYSTONE_LDAP_USER_ALLOW_DELETE=n</div><div class="line">CONFIG_KEYSTONE_LDAP_USER_PASS_ATTRIBUTE=</div><div class="line">CONFIG_KEYSTONE_LDAP_USER_ENABLED_EMULATION_DN=</div><div class="line">CONFIG_KEYSTONE_LDAP_USER_ADDITIONAL_ATTRIBUTE_MAPPING=</div><div class="line">CONFIG_KEYSTONE_LDAP_GROUP_SUBTREE=</div><div class="line">CONFIG_KEYSTONE_LDAP_GROUP_FILTER=</div><div class="line">CONFIG_KEYSTONE_LDAP_GROUP_OBJECTCLASS=</div><div class="line">CONFIG_KEYSTONE_LDAP_GROUP_ID_ATTRIBUTE=</div><div class="line">CONFIG_KEYSTONE_LDAP_GROUP_NAME_ATTRIBUTE=</div><div class="line">CONFIG_KEYSTONE_LDAP_GROUP_MEMBER_ATTRIBUTE=</div><div class="line">CONFIG_KEYSTONE_LDAP_GROUP_DESC_ATTRIBUTE=</div><div class="line">CONFIG_KEYSTONE_LDAP_GROUP_ATTRIBUTE_IGNORE=</div><div class="line">CONFIG_KEYSTONE_LDAP_GROUP_ALLOW_CREATE=n</div><div class="line">CONFIG_KEYSTONE_LDAP_GROUP_ALLOW_UPDATE=n</div><div class="line">CONFIG_KEYSTONE_LDAP_GROUP_ALLOW_DELETE=n</div><div class="line">CONFIG_KEYSTONE_LDAP_GROUP_ADDITIONAL_ATTRIBUTE_MAPPING=</div><div class="line">CONFIG_KEYSTONE_LDAP_USE_TLS=n</div><div class="line">CONFIG_KEYSTONE_LDAP_TLS_CACERTDIR=</div><div class="line">CONFIG_KEYSTONE_LDAP_TLS_CACERTFILE=</div><div class="line">CONFIG_KEYSTONE_LDAP_TLS_REQ_CERT=demand</div><div class="line">CONFIG_GLANCE_DB_PW=b5b27691c2a14788</div><div class="line">CONFIG_GLANCE_KS_PW=3ed7ad2ece9146a9</div><div class="line">CONFIG_GLANCE_BACKEND=file</div><div class="line">CONFIG_CINDER_DB_PW=dadf81afd3be45cc</div><div class="line">CONFIG_CINDER_DB_PURGE_ENABLE=True</div><div class="line">CONFIG_CINDER_KS_PW=68c0f33d48664240</div><div class="line">CONFIG_CINDER_BACKEND=lvm</div><div class="line">CONFIG_CINDER_VOLUMES_CREATE=y</div><div class="line">CONFIG_CINDER_VOLUMES_SIZE=20G</div><div class="line">CONFIG_CINDER_GLUSTER_MOUNTS=</div><div class="line">CONFIG_CINDER_NFS_MOUNTS=</div><div class="line">CONFIG_CINDER_NETAPP_LOGIN=</div><div class="line">CONFIG_CINDER_NETAPP_PASSWORD=</div><div class="line">CONFIG_CINDER_NETAPP_HOSTNAME=</div><div class="line">CONFIG_CINDER_NETAPP_SERVER_PORT=80</div><div class="line">CONFIG_CINDER_NETAPP_STORAGE_FAMILY=ontap_cluster</div><div class="line">CONFIG_CINDER_NETAPP_TRANSPORT_TYPE=http</div><div class="line">CONFIG_CINDER_NETAPP_STORAGE_PROTOCOL=nfs</div><div class="line">CONFIG_CINDER_NETAPP_SIZE_MULTIPLIER=1.0</div><div class="line">CONFIG_CINDER_NETAPP_EXPIRY_THRES_MINUTES=720</div><div class="line">CONFIG_CINDER_NETAPP_THRES_AVL_SIZE_PERC_START=20</div><div class="line">CONFIG_CINDER_NETAPP_THRES_AVL_SIZE_PERC_STOP=60</div><div class="line">CONFIG_CINDER_NETAPP_NFS_SHARES=</div><div class="line">CONFIG_CINDER_NETAPP_NFS_SHARES_CONFIG=/etc/cinder/shares.conf</div><div class="line">CONFIG_CINDER_NETAPP_VOLUME_LIST=</div><div class="line">CONFIG_CINDER_NETAPP_VFILER=</div><div class="line">CONFIG_CINDER_NETAPP_PARTNER_BACKEND_NAME=</div><div class="line">CONFIG_CINDER_NETAPP_VSERVER=</div><div class="line">CONFIG_CINDER_NETAPP_CONTROLLER_IPS=</div><div class="line">CONFIG_CINDER_NETAPP_SA_PASSWORD=</div><div class="line">CONFIG_CINDER_NETAPP_ESERIES_HOST_TYPE=linux_dm_mp</div><div class="line">CONFIG_CINDER_NETAPP_WEBSERVICE_PATH=/devmgr/v2</div><div class="line">CONFIG_CINDER_NETAPP_STORAGE_POOLS=</div><div class="line">CONFIG_IRONIC_DB_PW=PW_PLACEHOLDER</div><div class="line">CONFIG_IRONIC_KS_PW=PW_PLACEHOLDER</div><div class="line">CONFIG_NOVA_DB_PURGE_ENABLE=True</div><div class="line">CONFIG_NOVA_DB_PW=588239b4fe244aeb</div><div class="line">CONFIG_NOVA_KS_PW=3f355b76a92d41f1</div><div class="line">CONFIG_NOVA_SCHED_CPU_ALLOC_RATIO=16.0</div><div class="line">CONFIG_NOVA_SCHED_RAM_ALLOC_RATIO=1.5</div><div class="line">CONFIG_NOVA_COMPUTE_MIGRATE_PROTOCOL=tcp</div><div class="line">CONFIG_NOVA_COMPUTE_MANAGER=nova.compute.manager.ComputeManager</div><div class="line">CONFIG_VNC_SSL_CERT=</div><div class="line">CONFIG_VNC_SSL_KEY=</div><div class="line">CONFIG_NOVA_PCI_ALIAS=</div><div class="line">CONFIG_NOVA_PCI_PASSTHROUGH_WHITELIST=</div><div class="line">CONFIG_NOVA_LIBVIRT_VIRT_TYPE=%&#123;::default_hypervisor&#125;</div><div class="line">CONFIG_NOVA_COMPUTE_PRIVIF=</div><div class="line">CONFIG_NOVA_NETWORK_MANAGER=nova.network.manager.FlatDHCPManager</div><div class="line">CONFIG_NOVA_NETWORK_PUBIF=eth0</div><div class="line">CONFIG_NOVA_NETWORK_PRIVIF=</div><div class="line">CONFIG_NOVA_NETWORK_FIXEDRANGE=192.168.32.0/22</div><div class="line">CONFIG_NOVA_NETWORK_FLOATRANGE=10.3.4.0/22</div><div class="line">CONFIG_NOVA_NETWORK_AUTOASSIGNFLOATINGIP=n</div><div class="line">CONFIG_NOVA_NETWORK_VLAN_START=100</div><div class="line">CONFIG_NOVA_NETWORK_NUMBER=1</div><div class="line">CONFIG_NOVA_NETWORK_SIZE=255</div><div class="line">CONFIG_NEUTRON_KS_PW=e6c0896ef2fa412c</div><div class="line">CONFIG_NEUTRON_DB_PW=1202d0c54fdb4f5d</div><div class="line">CONFIG_NEUTRON_L3_EXT_BRIDGE=br-ex</div><div class="line">CONFIG_NEUTRON_METADATA_PW=fd7e182acbc842e3</div><div class="line">CONFIG_LBAAS_INSTALL=n</div><div class="line">CONFIG_NEUTRON_METERING_AGENT_INSTALL=y</div><div class="line">CONFIG_NEUTRON_FWAAS=n</div><div class="line">CONFIG_NEUTRON_VPNAAS=n</div><div class="line">CONFIG_NEUTRON_ML2_TYPE_DRIVERS=vxlan</div><div class="line">CONFIG_NEUTRON_ML2_TENANT_NETWORK_TYPES=vxlan</div><div class="line">CONFIG_NEUTRON_ML2_MECHANISM_DRIVERS=openvswitch</div><div class="line">CONFIG_NEUTRON_ML2_FLAT_NETWORKS=*</div><div class="line">CONFIG_NEUTRON_ML2_VLAN_RANGES=</div><div class="line">CONFIG_NEUTRON_ML2_TUNNEL_ID_RANGES=</div><div class="line">CONFIG_NEUTRON_ML2_VXLAN_GROUP=</div><div class="line">CONFIG_NEUTRON_ML2_VNI_RANGES=10:100</div><div class="line">CONFIG_NEUTRON_L2_AGENT=openvswitch</div><div class="line">CONFIG_NEUTRON_ML2_SUPPORTED_PCI_VENDOR_DEVS=[&apos;15b3:1004&apos;, &apos;8086:10ca&apos;]</div><div class="line">CONFIG_NEUTRON_ML2_SRIOV_AGENT_REQUIRED=n</div><div class="line">CONFIG_NEUTRON_ML2_SRIOV_INTERFACE_MAPPINGS=</div><div class="line">CONFIG_NEUTRON_LB_INTERFACE_MAPPINGS=</div><div class="line">CONFIG_NEUTRON_OVS_BRIDGE_MAPPINGS=</div><div class="line">CONFIG_NEUTRON_OVS_BRIDGE_IFACES=</div><div class="line">CONFIG_NEUTRON_OVS_BRIDGES_COMPUTE=</div><div class="line">CONFIG_NEUTRON_OVS_TUNNEL_IF=</div><div class="line">CONFIG_NEUTRON_OVS_TUNNEL_SUBNETS=</div><div class="line">CONFIG_NEUTRON_OVS_VXLAN_UDP_PORT=4789</div><div class="line">CONFIG_MANILA_DB_PW=PW_PLACEHOLDER</div><div class="line">CONFIG_MANILA_KS_PW=PW_PLACEHOLDER</div><div class="line">CONFIG_MANILA_BACKEND=generic</div><div class="line">CONFIG_MANILA_NETAPP_DRV_HANDLES_SHARE_SERVERS=false</div><div class="line">CONFIG_MANILA_NETAPP_TRANSPORT_TYPE=https</div><div class="line">CONFIG_MANILA_NETAPP_LOGIN=admin</div><div class="line">CONFIG_MANILA_NETAPP_PASSWORD=</div><div class="line">CONFIG_MANILA_NETAPP_SERVER_HOSTNAME=</div><div class="line">CONFIG_MANILA_NETAPP_STORAGE_FAMILY=ontap_cluster</div><div class="line">CONFIG_MANILA_NETAPP_SERVER_PORT=443</div><div class="line">CONFIG_MANILA_NETAPP_AGGREGATE_NAME_SEARCH_PATTERN=(.*)</div><div class="line">CONFIG_MANILA_NETAPP_ROOT_VOLUME_AGGREGATE=</div><div class="line">CONFIG_MANILA_NETAPP_ROOT_VOLUME_NAME=root</div><div class="line">CONFIG_MANILA_NETAPP_VSERVER=</div><div class="line">CONFIG_MANILA_GENERIC_DRV_HANDLES_SHARE_SERVERS=true</div><div class="line">CONFIG_MANILA_GENERIC_VOLUME_NAME_TEMPLATE=manila-share-%s</div><div class="line">CONFIG_MANILA_GENERIC_SHARE_MOUNT_PATH=/shares</div><div class="line">CONFIG_MANILA_SERVICE_IMAGE_LOCATION=https://www.dropbox.com/s/vi5oeh10q1qkckh/ubuntu_1204_nfs_cifs.qcow2</div><div class="line">CONFIG_MANILA_SERVICE_INSTANCE_USER=ubuntu</div><div class="line">CONFIG_MANILA_SERVICE_INSTANCE_PASSWORD=ubuntu</div><div class="line">CONFIG_MANILA_NETWORK_TYPE=neutron</div><div class="line">CONFIG_MANILA_NETWORK_STANDALONE_GATEWAY=</div><div class="line">CONFIG_MANILA_NETWORK_STANDALONE_NETMASK=</div><div class="line">CONFIG_MANILA_NETWORK_STANDALONE_SEG_ID=</div><div class="line">CONFIG_MANILA_NETWORK_STANDALONE_IP_RANGE=</div><div class="line">CONFIG_MANILA_NETWORK_STANDALONE_IP_VERSION=4</div><div class="line">CONFIG_MANILA_GLUSTERFS_SERVERS=</div><div class="line">CONFIG_MANILA_GLUSTERFS_NATIVE_PATH_TO_PRIVATE_KEY=</div><div class="line">CONFIG_MANILA_GLUSTERFS_VOLUME_PATTERN=</div><div class="line">CONFIG_MANILA_GLUSTERFS_TARGET=</div><div class="line">CONFIG_MANILA_GLUSTERFS_MOUNT_POINT_BASE=</div><div class="line">CONFIG_MANILA_GLUSTERFS_NFS_SERVER_TYPE=gluster</div><div class="line">CONFIG_MANILA_GLUSTERFS_PATH_TO_PRIVATE_KEY=</div><div class="line">CONFIG_MANILA_GLUSTERFS_GANESHA_SERVER_IP=</div><div class="line">CONFIG_HORIZON_SSL=n</div><div class="line">CONFIG_HORIZON_SECRET_KEY=82c2cbbf5e744a4785e2d0ddd3ec9b80</div><div class="line">CONFIG_HORIZON_SSL_CERT=</div><div class="line">CONFIG_HORIZON_SSL_KEY=</div><div class="line">CONFIG_HORIZON_SSL_CACERT=</div><div class="line">CONFIG_SWIFT_KS_PW=d7b6a1ec2c8f4334</div><div class="line">CONFIG_SWIFT_STORAGES=</div><div class="line">CONFIG_SWIFT_STORAGE_ZONES=1</div><div class="line">CONFIG_SWIFT_STORAGE_REPLICAS=1</div><div class="line">CONFIG_SWIFT_STORAGE_FSTYPE=ext4</div><div class="line">CONFIG_SWIFT_HASH=67485c805b524830</div><div class="line">CONFIG_SWIFT_STORAGE_SIZE=2G</div><div class="line">CONFIG_HEAT_DB_PW=PW_PLACEHOLDER</div><div class="line">CONFIG_HEAT_AUTH_ENC_KEY=ac8680aafaca4fa9</div><div class="line">CONFIG_HEAT_KS_PW=PW_PLACEHOLDER</div><div class="line">CONFIG_HEAT_CLOUDWATCH_INSTALL=n</div><div class="line">CONFIG_HEAT_CFN_INSTALL=n</div><div class="line">CONFIG_HEAT_DOMAIN=heat</div><div class="line">CONFIG_HEAT_DOMAIN_ADMIN=heat_admin</div><div class="line">CONFIG_HEAT_DOMAIN_PASSWORD=PW_PLACEHOLDER</div><div class="line">CONFIG_PROVISION_DEMO=n</div><div class="line">CONFIG_PROVISION_TEMPEST=n</div><div class="line">CONFIG_PROVISION_DEMO_FLOATRANGE=172.24.4.224/28</div><div class="line">CONFIG_PROVISION_IMAGE_NAME=cirros</div><div class="line">CONFIG_PROVISION_IMAGE_URL=http://download.cirros-cloud.net/0.3.4/cirros-0.3.4-x86_64-disk.img</div><div class="line">CONFIG_PROVISION_IMAGE_FORMAT=qcow2</div><div class="line">CONFIG_PROVISION_IMAGE_SSH_USER=cirros</div><div class="line">CONFIG_PROVISION_UEC_IMAGE_NAME=cirros-uec</div><div class="line">CONFIG_PROVISION_UEC_IMAGE_KERNEL_URL=http://download.cirros-cloud.net/0.3.4/cirros-0.3.4-x86_64-kernel</div><div class="line">CONFIG_PROVISION_UEC_IMAGE_RAMDISK_URL=http://download.cirros-cloud.net/0.3.4/cirros-0.3.4-x86_64-initramfs</div><div class="line">CONFIG_PROVISION_UEC_IMAGE_DISK_URL=http://download.cirros-cloud.net/0.3.4/cirros-0.3.4-x86_64-disk.img</div><div class="line">CONFIG_TEMPEST_HOST=</div><div class="line">CONFIG_PROVISION_TEMPEST_USER=</div><div class="line">CONFIG_PROVISION_TEMPEST_USER_PW=PW_PLACEHOLDER</div><div class="line">CONFIG_PROVISION_TEMPEST_FLOATRANGE=172.24.4.224/28</div><div class="line">CONFIG_PROVISION_TEMPEST_REPO_URI=https://github.com/openstack/tempest.git</div><div class="line">CONFIG_PROVISION_TEMPEST_REPO_REVISION=master</div><div class="line">CONFIG_RUN_TEMPEST=n</div><div class="line">CONFIG_RUN_TEMPEST_TESTS=smoke</div><div class="line">CONFIG_PROVISION_OVS_BRIDGE=y</div><div class="line">CONFIG_GNOCCHI_DB_PW=9e46b3492cd441ae</div><div class="line">CONFIG_GNOCCHI_KS_PW=553369ab22294506</div><div class="line">CONFIG_CEILOMETER_SECRET=7d41192be1264a47</div><div class="line">CONFIG_CEILOMETER_KS_PW=2b56ad68aab341a0</div><div class="line">CONFIG_CEILOMETER_SERVICE_NAME=httpd</div><div class="line">CONFIG_CEILOMETER_COORDINATION_BACKEND=redis</div><div class="line">CONFIG_CEILOMETER_METERING_BACKEND=database</div><div class="line">CONFIG_MONGODB_HOST=192.168.12.50</div><div class="line">CONFIG_REDIS_MASTER_HOST=192.168.12.50</div><div class="line">CONFIG_REDIS_PORT=6379</div><div class="line">CONFIG_REDIS_HA=n</div><div class="line">CONFIG_REDIS_SLAVE_HOSTS=</div><div class="line">CONFIG_REDIS_SENTINEL_HOSTS=</div><div class="line">CONFIG_REDIS_SENTINEL_CONTACT_HOST=</div><div class="line">CONFIG_REDIS_SENTINEL_PORT=26379</div><div class="line">CONFIG_REDIS_SENTINEL_QUORUM=2</div><div class="line">CONFIG_REDIS_MASTER_NAME=mymaster</div><div class="line">CONFIG_AODH_KS_PW=d6881f5b3b0e4ce2</div><div class="line">CONFIG_TROVE_DB_PW=PW_PLACEHOLDER</div><div class="line">CONFIG_TROVE_KS_PW=PW_PLACEHOLDER</div><div class="line">CONFIG_TROVE_NOVA_USER=trove</div><div class="line">CONFIG_TROVE_NOVA_TENANT=services</div><div class="line">CONFIG_TROVE_NOVA_PW=PW_PLACEHOLDER</div><div class="line">CONFIG_SAHARA_DB_PW=PW_PLACEHOLDER</div><div class="line">CONFIG_SAHARA_KS_PW=PW_PLACEHOLDER</div><div class="line">CONFIG_NAGIOS_PW=383e86a1cd4348b5</div></pre></td></tr></table></figure>
-<p>5、安装</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">packstack --answer-file=openstack.txt</div></pre></td></tr></table></figure>
-<p>6、安装后的修改</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">vim /etc/neutron/plugins/ml2/ml2_conf.ini </div><div class="line">修改控制节点网络配置:</div><div class="line">[ml2_type_flat]</div><div class="line">flat_networks = *</div></pre></td></tr></table></figure>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line">修改控制节点网卡配置:</div><div class="line">[root@controller network-scripts(keystone_admin)]# cat ifcfg-ens160 </div><div class="line">DEVICE=ens160</div><div class="line">TYPE=OVSPort</div><div class="line">DEVICETYPE=ovs</div><div class="line">OVS_BRIDGE=br-ex</div><div class="line">ONBOOT=yes</div><div class="line">[root@controller network-scripts(keystone_admin)]# cat ifcfg-br-ex </div><div class="line">DEVICE=br-ex</div><div class="line">ONBOOT=yes</div><div class="line">DEVICETYPE=ovs</div><div class="line">TYPE=OVSBridge</div><div class="line">BOOTPROTO=static</div><div class="line">IPADDR=192.168.12.50</div><div class="line">NETMASK=255.255.255.0</div><div class="line">GATEWAY=192.168.12.1</div><div class="line">DNS1=218.2.2.2</div></pre></td></tr></table></figure>
-<p>#####################为2个计算节点挂载共享存储，本次是nfs</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div></pre></td><td class="code"><pre><div class="line">找一个硬盘分区后，此次是sdc1挂载到/opt/nova/instances上</div><div class="line">[root@cinder ~]# cat /etc/fstab </div><div class="line">/dev/mapper/centos-root /                       xfs     defaults        0 0</div><div class="line">UUID=06e34a87-b0fc-40e5-aae2-fa4d136543fc /boot                   xfs     defaults        0 0</div><div class="line">/dev/mapper/centos-swap swap                    swap    defaults        0 0</div><div class="line">/dev/sdc1                                       /opt/nova/instances xfs defaults    0   0</div><div class="line"></div><div class="line">格式化/dev/sdc1:</div><div class="line">mkfs.xfs /dev/sdb1</div><div class="line"></div><div class="line">修改过/etc/fstab后mount -a 即可生效</div><div class="line"></div><div class="line"></div><div class="line"></div><div class="line"></div><div class="line">yum -y install nfs-utils rpcbind -y</div><div class="line"></div><div class="line">vim  /etc/exports</div><div class="line">/opt/nova/instances 192.168.12.0/24(rw,no_root_squash,no_all_squash,sync)</div><div class="line"></div><div class="line">exportfs -r</div><div class="line">systemctl enable rpcbind.service</div><div class="line">systemctl start rpcbind.service</div><div class="line">systemctl enable nfs-server.service </div><div class="line">systemctl start nfs-server.service </div><div class="line"></div><div class="line"></div><div class="line">2、2个nova节点查看</div><div class="line">showmount -e 192.168.12.50</div><div class="line"></div><div class="line">mount -t nfs 192.168.12.50:/opt/nova/instances /var/lib/nova/instances/</div><div class="line"></div><div class="line"></div><div class="line"></div><div class="line"></div><div class="line">mount -a</div><div class="line"></div><div class="line"></div><div class="line">2个nova节点：</div><div class="line">chown -R nova.nova /var/lib/nova</div></pre></td></tr></table></figure>
-
-      
-
+        <div class="page-reward">
+          <a href="javascript:;" class="page-reward-btn tooltip-top">
+            <div class="tooltip tooltip-east">
+            <span class="tooltip-item">
+              赏
+            </span>
+            <span class="tooltip-content">
+              <span class="tooltip-text">
+                <span class="tooltip-inner">
+                  <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢你请我吃糖果<i class="icon icon-quo-right"></i></p>
+                  <div class="reward-box">
+                    
+                    
+                  </div>
+                </span>
+              </span>
+            </span>
+          </div>
+          </a>
+        </div>
       
     </div>
     <div class="article-info article-info-index">
@@ -493,86 +277,78 @@
       
 
       
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2017/03/30/packstack install openstack-mitaka/">展开全文 >></a>
-        </p>
-      
 
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
+        </div>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="http://s.jiathis.com/qrcode.php?url=http://yoursite.com/2017/04/14/Openstack-Mitaka HA 部署手册/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
       
       <div class="clearfix"></div>
     </div>
   </div>
 </article>
 
-
-
-
-
-
-
-
   
-    <article id="post-devstack" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
+<nav id="article-nav">
+  
+    <a href="/2017/04/13/手工实现SDN/" id="article-nav-newer" class="article-nav-link-wrap">
+      <i class="icon-circle-left"></i>
+      <div class="article-nav-title">
         
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/03/29/devstack/">devstack mitaka 安装配置</a>
-    </h1>
-  
-
+          Neutron SDN 手动实现手册
         
-        <a href="/2017/03/29/devstack/" class="archive-article-date">
-  	<time datetime="2017-03-29T15:37:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-03-29</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div><div class="line">76</div><div class="line">77</div><div class="line">78</div><div class="line">79</div><div class="line">80</div><div class="line">81</div><div class="line">82</div><div class="line">83</div><div class="line">84</div><div class="line">85</div><div class="line">86</div><div class="line">87</div><div class="line">88</div><div class="line">89</div><div class="line">90</div><div class="line">91</div><div class="line">92</div><div class="line">93</div><div class="line">94</div><div class="line">95</div><div class="line">96</div><div class="line">97</div><div class="line">98</div><div class="line">99</div><div class="line">100</div><div class="line">101</div><div class="line">102</div><div class="line">103</div><div class="line">104</div><div class="line">105</div><div class="line">106</div><div class="line">107</div><div class="line">108</div><div class="line">109</div><div class="line">110</div><div class="line">111</div><div class="line">112</div><div class="line">113</div><div class="line">114</div><div class="line">115</div><div class="line">116</div><div class="line">117</div><div class="line">118</div><div class="line">119</div><div class="line">120</div><div class="line">121</div><div class="line">122</div><div class="line">123</div><div class="line">124</div><div class="line">125</div><div class="line">126</div><div class="line">127</div><div class="line">128</div><div class="line">129</div><div class="line">130</div><div class="line">131</div><div class="line">132</div><div class="line">133</div><div class="line">134</div><div class="line">135</div><div class="line">136</div><div class="line">137</div><div class="line">138</div><div class="line">139</div><div class="line">140</div><div class="line">141</div><div class="line">142</div><div class="line">143</div><div class="line">144</div><div class="line">145</div><div class="line">146</div><div class="line">147</div><div class="line">148</div><div class="line">149</div><div class="line">150</div><div class="line">151</div><div class="line">152</div><div class="line">153</div><div class="line">154</div><div class="line">155</div></pre></td><td class="code"><pre><div class="line">1、操作系统ubuntu 14.04 </div><div class="line">2、安装方式 devstack </div><div class="line">3、安装版本 openstack mitaka版本</div><div class="line">4、安装devstack 步骤</div><div class="line"></div><div class="line">1) 目前国内已经提供了完整的OpenStack的github的mirror</div><div class="line">http://git.trystack.cn</div><div class="line"></div><div class="line">2) 另外devstack还会下载image，下载的过程也是非常缓慢。trystack也提供大家常用的image下载。</div><div class="line">http://images.trystack.cn</div><div class="line">3) 设置源</div><div class="line">sudo vim /etc/apt/sources.list</div><div class="line">deb http://cn.archive.ubuntu.com/ubuntu/ trusty main restricted universe multiverse</div><div class="line">deb http://cn.archive.ubuntu.com/ubuntu/ trusty-security main restricted universe multiverse</div><div class="line">deb http://cn.archive.ubuntu.com/ubuntu/ trusty-updates main restricted universe multiverse</div><div class="line">deb http://cn.archive.ubuntu.com/ubuntu/ trusty-proposed main restricted universe multiverse</div><div class="line">deb http://cn.archive.ubuntu.com/ubuntu/ trusty-backports main restricted universe multiverse</div><div class="line"></div><div class="line"></div><div class="line">sudo apt-get update</div><div class="line">sudo ntpdate 192.168.2.161</div><div class="line"></div><div class="line">sudo apt-get install git -y</div><div class="line"></div><div class="line">sudo git clone http://git.trystack.cn/openstack-dev/devstack.git -b stable/mitaka</div><div class="line"></div><div class="line"># 目前Devstack脚本已经不支持直接使用root身份运行，你需要创建stack用户运行</div><div class="line">cd devstack/tools/</div><div class="line">sudo ./create-stack-user.sh</div><div class="line">sudo passwd stack</div><div class="line"># 修改devstack目录权限,让stack用户可以运行</div><div class="line">sudo chown -R stack:stack devstack</div><div class="line">sudo chmod 777 /dev/pts/0</div><div class="line"></div><div class="line">su stack</div><div class="line">cd devstack</div><div class="line"></div><div class="line">vim local.conf</div><div class="line">stack@ubuntu:/home/wanstack/devstack$ cat local.conf </div><div class="line">[[local|localrc]]</div><div class="line"></div><div class="line"># use TryStack git mirror</div><div class="line">GIT_BASE=http://git.trystack.cn</div><div class="line">NOVNC_REPO=http://git.trystack.cn/kanaka/noVNC.git</div><div class="line">SPICE_REPO=http://git.trystack.cn/git/spice/spice-html5.git</div><div class="line"></div><div class="line">#OFFLINE=True</div><div class="line">RECLONE=False</div><div class="line"></div><div class="line"># Define images to be automatically downloaded during the DevStack built process.</div><div class="line">DOWNLOAD_DEFAULT_IMAGES=False</div><div class="line">IMAGE_URLS=&quot;http://images.trystack.cn/cirros/cirros-0.3.4-x86_64-disk.img&quot;</div><div class="line"></div><div class="line">HOST_IP=192.168.12.10</div><div class="line"></div><div class="line"></div><div class="line"># Credentials</div><div class="line">DATABASE_PASSWORD=openstack</div><div class="line">ADMIN_PASSWORD=openstack</div><div class="line">SERVICE_PASSWORD=openstack</div><div class="line">SERVICE_TOKEN=openstack</div><div class="line">RABBIT_PASSWORD=openstack</div><div class="line"></div><div class="line">HORIZON_BRANCH=stable/mitaka</div><div class="line">KEYSTONE_BRANCH=stable/mitaka</div><div class="line">NOVA_BRANCH=stable/mitaka</div><div class="line">NEUTRON_BRANCH=stable/mitaka</div><div class="line">GLANCE_BRANCH=stable/mitaka</div><div class="line">CINDER_BRANCH=stable/mitaka</div><div class="line">CEILOMETER_BRANCH=stable/mitaka</div><div class="line">AODH_BRANCH=stable/mitaka</div><div class="line"></div><div class="line">enable_plugin ceilometer https://git.openstack.org/openstack/ceilometer stable/mitaka</div><div class="line">enable_plugin aodh https://git.openstack.org/openstack/aodh stable/mitaka</div><div class="line"></div><div class="line"></div><div class="line">#keystone</div><div class="line">KEYSTONE_TOKEN_FORMAT=UUID</div><div class="line"></div><div class="line">##Heat</div><div class="line">HEAT_BRANCH=stable/mitaka</div><div class="line">enable_service h-eng h-api h-api-cfn h-api-cw</div><div class="line"></div><div class="line"></div><div class="line">## Swift</div><div class="line">SWIFT_BRANCH=stable/mitaka</div><div class="line">ENABLED_SERVICES+=,s-proxy,s-object,s-container,s-account</div><div class="line">SWIFT_REPLICAS=1</div><div class="line">SWIFT_HASH=011688b44136573e209e</div><div class="line"></div><div class="line"></div><div class="line"># Enabling Neutron (network) Service</div><div class="line">disable_service n-net</div><div class="line">enable_service q-svc</div><div class="line">enable_service q-agt</div><div class="line">enable_service q-dhcp</div><div class="line">enable_service q-l3</div><div class="line">enable_service q-meta</div><div class="line">enable_service q-metering</div><div class="line">enable_service neutron</div><div class="line"></div><div class="line">## Neutron options</div><div class="line">Q_USE_SECGROUP=True</div><div class="line">FLOATING_RANGE=&quot;192.168.12.0/24&quot;</div><div class="line">FIXED_RANGE=&quot;10.0.0.0/24&quot;</div><div class="line">Q_FLOATING_ALLOCATION_POOL=start=192.168.12.110,end=192.168.12.120</div><div class="line">PUBLIC_NETWORK_GATEWAY=&quot;192.168.12.1&quot;</div><div class="line">Q_L3_ENABLED=True</div><div class="line">PUBLIC_INTERFACE=eth0</div><div class="line">Q_USE_PROVIDERNET_FOR_PUBLIC=True</div><div class="line">OVS_PHYSICAL_BRIDGE=br-ex</div><div class="line">PUBLIC_BRIDGE=br-ex</div><div class="line">OVS_BRIDGE_MAPPINGS=public:br-ex</div><div class="line"></div><div class="line"># #VLAN configuration.</div><div class="line">Q_PLUGIN=ml2</div><div class="line">ENABLE_TENANT_VLANS=True</div><div class="line"></div><div class="line"># Logging</div><div class="line">LOGFILE=/opt/stack/logs/stack.sh.log</div><div class="line">VERBOSE=True</div><div class="line">LOG_COLOR=True</div><div class="line">SCREEN_LOGDIR=/opt/stack/logs</div><div class="line"></div><div class="line"></div><div class="line">报错:</div><div class="line">File &quot;/usr/local/lib/python2.7/dist-packages/pip/_vendor/requests/packages/urllib3/response.py&quot;, line 246, in _error_catcher</div><div class="line">2017-03-21 07:54:11.931 |     raise ReadTimeoutError(self._pool, None, &apos;Read timed out.&apos;)</div><div class="line">2017-03-21 07:54:11.931 | ReadTimeoutError: HTTPSConnectionPool(host=&apos;pypi.python.org&apos;, port=443): Read timed out.</div><div class="line"></div><div class="line"></div><div class="line">报错解决:</div><div class="line">./stack.sh: line 488: generate-subunit: command not found</div><div class="line"></div><div class="line">sudo apt-get install python-pip -y</div><div class="line">sudo pip install --upgrade pip</div><div class="line">sudo pip install -U os-testr</div><div class="line"></div><div class="line"></div><div class="line">报错:</div><div class="line">File &quot;/usr/local/lib/python2.7/dist-packages/openstack/session.py&quot;, line 29, in &lt;module&gt;</div><div class="line">2017-03-20 04:52:02.612 |     DEFAULT_USER_AGENT = &quot;openstacksdk/%s&quot; % openstack.__version__</div><div class="line">2017-03-20 04:52:02.612 | AttributeError: &apos;module&apos; object has no attribute &apos;__version__&apos;</div><div class="line">2017-03-20 04:52:02.643 | +lib/keystone:create_keystone_accounts:373  admin_tenant=</div><div class="line">处理:</div><div class="line">root@ubuntu:~# python</div><div class="line"> &gt;&gt;&gt; import openstack</div><div class="line"> &gt;&gt;&gt; import pbr.version</div><div class="line"> &gt;&gt;&gt; print(pbr.version.VersionInfo(&apos;openstacksdk&apos;).version_string())</div><div class="line"> 8 0.8.1</div><div class="line"> &gt;&gt;&gt; quit()</div><div class="line"> vim /usr/local/lib/python2.7/dist-packages/openstack/session.py</div><div class="line">修改为： DEFAULT_USER_AGENT = &quot;openstacksdk/0.8.1&quot;</div><div class="line"></div><div class="line">./stack.sh</div></pre></td></tr></table></figure>
-<h1 id="在ubuntu上搭建samba"><a href="#在ubuntu上搭建samba" class="headerlink" title="在ubuntu上搭建samba"></a>在ubuntu上搭建samba</h1><p>sudo apt-get install samba samba-common -y</p>
-<h1 id="我们把devstack安装在了-opt目录下，所以共享这个目录"><a href="#我们把devstack安装在了-opt目录下，所以共享这个目录" class="headerlink" title="我们把devstack安装在了/opt目录下，所以共享这个目录"></a>我们把devstack安装在了/opt目录下，所以共享这个目录</h1><p>#sudo chmod -R 777 /opt<br>sudo useradd openstack<br>sudo smbpasswd -a  openstack<br>sudo vim /etc/samba/smb.conf<br>在文件末尾添加：<br>[openstack]<br>comment=openstack<br>public=yes<br>browseable = yes<br>path=/opt<br>read only = no</p>
-<p>forceuser=root<br>forcegroup=root</p>
-<p>####################################################</p>
-<h1 id="重启服务"><a href="#重启服务" class="headerlink" title="重启服务"></a>重启服务</h1><p>sudo /etc/init.d/smbd restart</p>
-<p>```</p>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">Openstack</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2017/03/29/devstack/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-
+      </div>
+    </a>
+  
+  
+</nav>
 
 
 
@@ -580,305 +356,10 @@
 
 
   
-    <article id="post-python 调试工具" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/03/29/python 调试工具/">python代码调试工具</a>
-    </h1>
+    <div class="duoshuo"></div>
   
 
-        
-        <a href="/2017/03/29/python 调试工具/" class="archive-article-date">
-  	<time datetime="2017-03-29T15:37:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-03-29</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>以前都是用print或者log来调试程序,在小规模的程序下很方便，但是遇到向openstack这种项目级别的程序就太尴尬了。于是找到了ipdb</p>
-<p>1、安装</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">pip install ipdb</div></pre></td></tr></table></figure>
-<p>2、使用方法<br>有两种使用方法,一种是不用改变程序直接用ipdb单步执行Python程序,第二种是在程序里标记断点,进行调试.</p>
-<p>1) 第一种方法</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">python -m ipdb xxx.py</div></pre></td></tr></table></figure>
-<p>2) 第二种方法</p>
-<p>在需要断点的地方插入</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">from ipdb import set_trace</div><div class="line">set_trace()</div></pre></td></tr></table></figure>
-<p>3、常用命令</p>
-<blockquote>
-<ul>
-<li>n(下一个)</li>
-<li>ENTER(重复上次命令)</li>
-<li>q(退出)</li>
-<li>p&lt;变量&gt;(打印变量)</li>
-<li>c(继续)</li>
-<li>l(查找当前位于哪里)</li>
-<li>s(进入子程序)</li>
-<li>r(运行直到子程序结束)</li>
-<li>!<python 命令=""></python></li>
-<li>h(帮助)</li>
-</ul>
-</blockquote>
-<hr>
-<p>如果上面的工具觉得好用的话，下面这款工具真心觉得用的爽。</p>
-<p>1、安装<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">pip install pudb</div></pre></td></tr></table></figure></p>
-<p>2、在代码的入口处插入</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">from pudb import set_trace; set_trace()</div></pre></td></tr></table></figure>
-<p>3、调试代码</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">sudo pudb bp.py</div></pre></td></tr></table></figure>
-<p>4、简单使用</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">Ctrl-p可以配置pudb: 是否显示行号, 选择主题, 内置Python解释器的类别</div></pre></td></tr></table></figure>
-<blockquote>
-<ul>
-<li>n: next，也就是执行一步</li>
-<li>s: step into，进入函数内部</li>
-<li>c: continue</li>
-<li>b: break point，断点</li>
-<li>!: python command line</li>
-<li>?: help</li>
-</ul>
-</blockquote>
 
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">Python</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2017/03/29/python 调试工具/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-
-
-
-
-
-
-
-  
-    <article id="post-关于生活" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/03/29/关于生活/">关于感情</a>
-    </h1>
-  
-
-        
-        <a href="/2017/03/29/关于生活/" class="archive-article-date">
-  	<time datetime="2017-03-29T15:37:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-03-29</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>懵懂无知急功近利说爱情,花前月下纸醉金迷遭人叛,平平淡淡知足常乐即是福。</p>
-<p>人生若是初相见是美好。</p>
-<p>如果在感情的路上遇到过伤害, 请务必谢谢那些伤害过你的人。不要试图伤害她们, 一念成佛,一念成魔, 没有他(她)们你也只是停留在懵懂状态。</p>
-<p>珍惜那些跟你一起粗茶淡饭的人,只有他们才愿意和你长相厮守。没有任何前提, 没有如果, 更没有长期投资。</p>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">Life</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2017/03/29/关于生活/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-
-
-
-
-
-
-
-  
-    <article id="post-ceilometer-mitaka api分析" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/03/29/ceilometer-mitaka api分析/">ceilometer-mitaka api分析</a>
-    </h1>
-  
-
-        
-        <a href="/2017/03/29/ceilometer-mitaka api分析/" class="archive-article-date">
-  	<time datetime="2017-03-29T14:36:22.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-03-29</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>本文的讲解是基于目前ceilometer的mitaka版本</p>
-<p>ceilometer –debug meter-list的调用流程分析</p>
-<h5 id="大概过程"><a href="#大概过程" class="headerlink" title="大概过程"></a>大概过程</h5><ul>
-<li><p>python-ceilometerclient</p>
-<blockquote>
-<p>ceilometer –debug meter-list</p>
-<p>curl GET <a href="http://192.168.12.10:8777/v2/meters" target="_blank" rel="external">http://192.168.12.10:8777/v2/meters</a></p>
-</blockquote>
-</li>
-<li><p>Python Application的创建</p>
-</li>
-<li><p>HTTP请求的解析</p>
-<blockquote>
-<p>RootController</p>
-<p>V2Controller</p>
-<p>MetersController</p>
-</blockquote>
-</li>
-<li><p>实际去获取数据的两个函数</p>
-<blockquote>
-<p>pecan.request.storage_conn.get_meters的执行</p>
-<p>Meter.from_db_model的执行</p>
-</blockquote>
-</li>
-</ul>
-<p>curl GET <a href="http://192.168.12.10:8777/v2/meters" target="_blank" rel="external">http://192.168.12.10:8777/v2/meters</a> 这句很重要，<br>下面我们就分析ceilometer收到这个HTTP请求后是如何解析，如何使用Python Application去查询MongoDB数据库的</p>
-<h3 id="1、Python-Application的创建过程"><a href="#1、Python-Application的创建过程" class="headerlink" title="1、Python Application的创建过程"></a>1、Python Application的创建过程</h3><p>需要使用Python Application来接收HTTP请求，因此需要先创建Python Application。下面我们介绍使用Pecan+PasetDeploy创建Python Application的过程。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">在配置文件api_pasete.ini中我们可以看到，PasteDeploy会调用ceilometer.api.app:app_factory。</div></pre></td></tr></table></figure>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line">[pipeline:main]</div><div class="line">pipeline = cors request_id authtoken api-server</div><div class="line"></div><div class="line">[app:api-server]</div><div class="line">paste.app_factory = ceilometer.api.app:app_factory</div><div class="line"></div><div class="line">[filter:authtoken]</div><div class="line">paste.filter_factory = keystonemiddleware.auth_token:filter_factory</div><div class="line"></div><div class="line">[filter:request_id]</div><div class="line">paste.filter_factory = oslo_middleware:RequestId.factory</div><div class="line"></div><div class="line">[filter:cors]</div><div class="line">paste.filter_factory = oslo_middleware.cors:filter_factory</div><div class="line">oslo_config_project = ceilometer</div></pre></td></tr></table></figure>
-<p>根据[app:api-server] 我们得知app_factory函数的具体位置<br>返回的是setup_app()</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">def app_factory(global_config, **local_conf):</div><div class="line">    return setup_app()</div></pre></td></tr></table></figure>
-<p>setup_app函数就是真正创建Python Application的函数，在此函数中最重要的就是调用了pecan.make_app函数，在此函数中最重要的就是指定了解析HTTP Request的RootController，是通过pecan_config.app.root参数指定的；另外一个重要的地方就是hoooks.DBHook，在这里面初始化了数据库的链接，关于这一点后面再做介绍。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div></pre></td><td class="code"><pre><div class="line">def setup_app(pecan_config=None):</div><div class="line">    # FIXME: Replace DBHook with a hooks.TransactionHook</div><div class="line">    app_hooks = [hooks.ConfigHook(),</div><div class="line">                 hooks.DBHook(),</div><div class="line">                 hooks.NotifierHook(),</div><div class="line">                 hooks.TranslationHook()]</div><div class="line"></div><div class="line">    pecan_config = pecan_config or &#123;</div><div class="line">        &quot;app&quot;: &#123;</div><div class="line">            &apos;root&apos;: &apos;ceilometer.api.controllers.root.RootController&apos;,</div><div class="line">            &apos;modules&apos;: [&apos;ceilometer.api&apos;],</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    pecan.configuration.set_config(dict(pecan_config), overwrite=True)</div><div class="line"></div><div class="line">    # NOTE(sileht): pecan debug won&apos;t work in multi-process environment</div><div class="line">    pecan_debug = CONF.api.pecan_debug</div><div class="line">    if CONF.api.workers and CONF.api.workers != 1 and pecan_debug:</div><div class="line">        pecan_debug = False</div><div class="line">        LOG.warning(_LW(&apos;pecan_debug cannot be enabled, if workers is &gt; 1, &apos;</div><div class="line">                        &apos;the value is overrided with False&apos;))</div><div class="line"></div><div class="line">    app = pecan.make_app(</div><div class="line">        pecan_config[&apos;app&apos;][&apos;root&apos;],</div><div class="line">        debug=pecan_debug,</div><div class="line">        hooks=app_hooks,</div><div class="line">        wrap_app=middleware.ParsableErrorMiddleware,</div><div class="line">        guess_content_type_from_ext=False</div><div class="line">    )</div><div class="line"></div><div class="line">    return app</div></pre></td></tr></table></figure>
-<p>在上面我们提到解析HTTP请求的RootController是通过pecan_config.app.root参数指定的，阅读代码可知pecan_config.app.root就pecan_config中指定的，也就是ceilometer.api.controllers.root.RootController。这样Python Application就创建完成了，并且指定好了解析HTTP Request的RootController，也就是说/v2/meters/从RootController开始处理。</p>
-<h3 id="2、HTTP请求的解析过程"><a href="#2、HTTP请求的解析过程" class="headerlink" title="2、HTTP请求的解析过程"></a>2、HTTP请求的解析过程</h3><p>在RootController我们可以看到它先创建了一个类属性:v2，于是所有的以/v2开头的HTTP Request都会由V2Controller来处理，/v2/meters/当然也不例外</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line">class RootController(object):</div><div class="line"></div><div class="line">    def __init__(self):</div><div class="line">        self.v2 = v2.V2Controller()</div><div class="line"></div><div class="line">    @pecan.expose(&apos;json&apos;)</div><div class="line">    def index(self):</div><div class="line">        base_url = pecan.request.application_url</div><div class="line">        available = [&#123;&apos;tag&apos;: &apos;v2&apos;, &apos;date&apos;: &apos;2013-02-13T00:00:00Z&apos;, &#125;]</div><div class="line">        collected = [version_descriptor(base_url, v[&apos;tag&apos;], v[&apos;date&apos;])</div><div class="line">                     for v in available]</div><div class="line">        versions = &#123;&apos;versions&apos;: &#123;&apos;values&apos;: collected&#125;&#125;</div><div class="line">        return versions</div></pre></td></tr></table></figure>
-<p>下面我们再去看V2Controller，我们可以看到它有类属性:event_types,events,capabilities，也就是说/v2/event_types会由EventTypesController来处理，/v2/events/会由EventsController来处理，/v2/capabilities/会由CapabilitiesController来处理，那/v2/meters/呢？往下看，在_lookup函数中我们可以看到/v2/meters/会由MetersController来处理，关于__lookup可以参看官方文档。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">class V2Controller(object):</div><div class="line">    &quot;&quot;&quot;Version 2 API controller root.&quot;&quot;&quot;</div><div class="line"></div><div class="line">    event_types = events.EventTypesController()</div><div class="line">    events = events.EventsController()</div><div class="line">    capabilities = capabilities.CapabilitiesController()</div></pre></td></tr></table></figure>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div></pre></td><td class="code"><pre><div class="line">@pecan.expose()</div><div class="line">    def _lookup(self, kind, *remainder):</div><div class="line">        if (kind in [&apos;meters&apos;, &apos;resources&apos;, &apos;samples&apos;]</div><div class="line">                and self.gnocchi_is_enabled):</div><div class="line">            if kind == &apos;meters&apos; and pecan.request.method == &apos;POST&apos;:</div><div class="line">                direct = pecan.request.params.get(&apos;direct&apos;, &apos;&apos;)</div><div class="line">                if strutils.bool_from_string(direct):</div><div class="line">                    pecan.abort(400, _(&apos;direct option cannot be true when &apos;</div><div class="line">                                       &apos;Gnocchi is enabled.&apos;))</div><div class="line">                return meters.MetersController(), remainder</div><div class="line">            gnocchi_abort()</div><div class="line">        elif kind == &apos;meters&apos;:</div><div class="line">            return meters.MetersController(), remainder</div><div class="line">        elif kind == &apos;resources&apos;:</div><div class="line">            return resources.ResourcesController(), remainder</div><div class="line">        elif kind == &apos;samples&apos;:</div><div class="line">            return samples.SamplesController(), remainder</div><div class="line">        elif kind == &apos;query&apos;:</div><div class="line">            return QueryController(</div><div class="line">                gnocchi_is_enabled=self.gnocchi_is_enabled,</div><div class="line">                aodh_url=self.aodh_url,</div><div class="line">            ), remainder</div><div class="line">        elif kind == &apos;alarms&apos; and (not self.aodh_url):</div><div class="line">            aodh_abort()</div><div class="line">        elif kind == &apos;alarms&apos; and self.aodh_url:</div><div class="line">            aodh_redirect(self.aodh_url)</div><div class="line">        else:</div><div class="line">            pecan.abort(404)</div></pre></td></tr></table></figure>
-<p>因为我们是meters所以最终会执行<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">return meters.MetersController(), remainder</div></pre></td></tr></table></figure></p>
-<p>终于到了MetersController，这里就是最终处理HTTP请求:/v2/meters/的地方</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div></pre></td><td class="code"><pre><div class="line">class MetersController(rest.RestController):</div><div class="line">    &quot;&quot;&quot;Works on meters.&quot;&quot;&quot;</div><div class="line"></div><div class="line">    @pecan.expose()</div><div class="line">    def _lookup(self, meter_name, *remainder):</div><div class="line">        return MeterController(meter_name), remainder</div><div class="line"></div><div class="line">    @wsme_pecan.wsexpose([Meter], [base.Query], int, str)</div><div class="line">    def get_all(self, q=None, limit=None, unique=&apos;&apos;):</div><div class="line">        &quot;&quot;&quot;Return all known meters, based on the data recorded so far.</div><div class="line"></div><div class="line">        :param q: Filter rules for the meters to be returned.</div><div class="line">        :param unique: flag to indicate unique meters to be returned.</div><div class="line">        &quot;&quot;&quot;</div><div class="line"></div><div class="line">        rbac.enforce(&apos;get_meters&apos;, pecan.request)</div><div class="line"></div><div class="line">        q = q or []</div><div class="line"></div><div class="line">        # Timestamp field is not supported for Meter queries</div><div class="line">        limit = v2_utils.enforce_limit(limit)</div><div class="line">        kwargs = v2_utils.query_to_kwargs(</div><div class="line">            q, pecan.request.storage_conn.get_meters,</div><div class="line">            [&apos;limit&apos;], allow_timestamps=False)</div><div class="line">        return [Meter.from_db_model(m)</div><div class="line">                for m in pecan.request.storage_conn.get_meters(</div><div class="line">                limit=limit, unique=strutils.bool_from_string(unique),</div><div class="line">                **kwargs)]</div></pre></td></tr></table></figure>
-<p>在这里最重要的就是最后那一行代码：return [Meter.from_db_model(m) for m in pecan.request.storage_conn.get_meters(limit=limit,**kwargs)]，在这行代码中有两个重要的函数调用：pecan.request.storage_conn.get_meters 以及 Meter.from_db_model。所以还没结束，下面还得分析这两个函数是如何执行的。</p>
-<h3 id="pecan-request-storage-conn-get-meters的执行过程"><a href="#pecan-request-storage-conn-get-meters的执行过程" class="headerlink" title="pecan.request.storage_conn.get_meters的执行过程"></a>pecan.request.storage_conn.get_meters的执行过程</h3><p>要分析pecan.request.storage_conn.get_meters(limit=limit, **kwargs)的执行过程我们分两步：一是storage_conn是如何获得的，二是get_meters是如何执行的。</p>
-<p>storage_conn指的是数据库的链接，在DBHook.<strong>init</strong>中可以看出它是通过调用函数get_connection来获得的，而函数get_connection又调用了函数storage.get_connection_from_config。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div></pre></td><td class="code"><pre><div class="line">class DBHook(hooks.PecanHook):</div><div class="line"></div><div class="line">    def __init__(self):</div><div class="line">        self.storage_connection = DBHook.get_connection(&apos;metering&apos;)</div><div class="line">        self.event_storage_connection = DBHook.get_connection(&apos;event&apos;)</div><div class="line"></div><div class="line">        if (not self.storage_connection</div><div class="line">           and not self.event_storage_connection):</div><div class="line">            raise Exception(&quot;Api failed to start. Failed to connect to &quot;</div><div class="line">                            &quot;databases, purpose:  %s&quot; %</div><div class="line">                            &apos;, &apos;.join([&apos;metering&apos;, &apos;event&apos;]))</div><div class="line"></div><div class="line">    def before(self, state):</div><div class="line">        state.request.storage_conn = self.storage_connection</div><div class="line">        state.request.event_storage_conn = self.event_storage_connection</div><div class="line"></div><div class="line">    @staticmethod</div><div class="line">    def get_connection(purpose):</div><div class="line">        try:</div><div class="line">            return storage.get_connection_from_config(cfg.CONF, purpose)</div><div class="line">        except Exception as err:</div><div class="line">            params = &#123;&quot;purpose&quot;: purpose, &quot;err&quot;: err&#125;</div><div class="line">            LOG.exception(_LE(&quot;Failed to connect to db, purpose %(purpose)s &quot;</div><div class="line">                              &quot;retry later: %(err)s&quot;) % params)</div></pre></td></tr></table></figure>
-<p>下面再看storage.get_connection_from_config函数是如何执行的，函数storage.get_connection_from_config调用了函数storage.get_connection，而在函数storage.get_connection中重要的是: mgr = driver.DriverManger(namespace, engine_name)，其中的driver为：from stevedore import driver，namespace为：ceilometer.meterings.storage，engine_name为：mongodb。于是stevedore会到setup.cfg中查找相应的设置。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div></pre></td><td class="code"><pre><div class="line">def get_connection_from_config(conf, purpose=&apos;metering&apos;):</div><div class="line">    retries = conf.database.max_retries</div><div class="line"></div><div class="line">    # Convert retry_interval secs to msecs for retry decorator</div><div class="line">    @retrying.retry(wait_fixed=conf.database.retry_interval * 1000,</div><div class="line">                    stop_max_attempt_number=retries if retries &gt;= 0 else None)</div><div class="line">    def _inner():</div><div class="line">        if conf.database_connection:</div><div class="line">            conf.set_override(&apos;connection&apos;, conf.database_connection,</div><div class="line">                              group=&apos;database&apos;)</div><div class="line">        namespace = &apos;ceilometer.%s.storage&apos; % purpose</div><div class="line">        url = (getattr(conf.database, &apos;%s_connection&apos; % purpose) or</div><div class="line">               conf.database.connection)</div><div class="line">        return get_connection(url, namespace)</div><div class="line"></div><div class="line">    return _inner()</div><div class="line"></div><div class="line">def get_connection(url, namespace):</div><div class="line">    &quot;&quot;&quot;Return an open connection to the database.&quot;&quot;&quot;</div><div class="line">    connection_scheme = urlparse.urlparse(url).scheme</div><div class="line">    # SqlAlchemy connections specify may specify a &apos;dialect&apos; or</div><div class="line">    # &apos;dialect+driver&apos;. Handle the case where driver is specified.</div><div class="line">    engine_name = connection_scheme.split(&apos;+&apos;)[0]</div><div class="line">    if engine_name == &apos;db2&apos;:</div><div class="line">        import warnings</div><div class="line">        warnings.simplefilter(&quot;always&quot;)</div><div class="line">        import debtcollector</div><div class="line">        debtcollector.deprecate(&quot;The DB2nosql driver is no longer supported&quot;,</div><div class="line">                                version=&quot;Liberty&quot;, removal_version=&quot;N*-cycle&quot;)</div><div class="line">    # NOTE: translation not applied bug #1446983</div><div class="line">    LOG.debug(&apos;looking for %(name)r driver in %(namespace)r&apos;,</div><div class="line">              &#123;&apos;name&apos;: engine_name, &apos;namespace&apos;: namespace&#125;)</div><div class="line">    mgr = driver.DriverManager(namespace, engine_name)</div><div class="line">    return mgr.driver(url)</div></pre></td></tr></table></figure>
-<p>根据</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">from stevedore import driver </div><div class="line">namespace为：ceilometer.meterings.storage，engine_name为：mongodb</div></pre></td></tr></table></figure>
-<p>所以会去调用setup.cfg中的</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">ceilometer.event.storage =</div><div class="line">    mongodb = ceilometer.event.storage.impl_mongodb:Connection</div></pre></td></tr></table></figure>
-<p>在ceilometer.storage.imple_mongodb.Connection类的初始化函数中会初始化数据库的连接，没有相应collection的情况下新建相应collection，设置ttl等。</p>
-<p>../ceilometer/storage/impl_mongodb.py: Connection.<strong>init</strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div><div class="line">76</div><div class="line">77</div><div class="line">78</div><div class="line">79</div><div class="line">80</div><div class="line">81</div><div class="line">82</div><div class="line">83</div><div class="line">84</div><div class="line">85</div><div class="line">86</div><div class="line">87</div><div class="line">88</div><div class="line">89</div><div class="line">90</div><div class="line">91</div><div class="line">92</div><div class="line">93</div><div class="line">94</div><div class="line">95</div><div class="line">96</div><div class="line">97</div><div class="line">98</div><div class="line">99</div><div class="line">100</div><div class="line">101</div><div class="line">102</div><div class="line">103</div><div class="line">104</div><div class="line">105</div><div class="line">106</div><div class="line">107</div><div class="line">108</div><div class="line">109</div><div class="line">110</div><div class="line">111</div><div class="line">112</div></pre></td><td class="code"><pre><div class="line">class Connection(pymongo_base.Connection):</div><div class="line">   </div><div class="line">    CAPABILITIES = utils.update_nested(pymongo_base.Connection.CAPABILITIES,</div><div class="line">                                       AVAILABLE_CAPABILITIES)</div><div class="line">    CONNECTION_POOL = pymongo_utils.ConnectionPool()</div><div class="line"></div><div class="line">    STANDARD_AGGREGATES = dict([(a.name, a) for a in [</div><div class="line">        pymongo_utils.SUM_AGGREGATION, pymongo_utils.AVG_AGGREGATION,</div><div class="line">        pymongo_utils.MIN_AGGREGATION, pymongo_utils.MAX_AGGREGATION,</div><div class="line">        pymongo_utils.COUNT_AGGREGATION,</div><div class="line">    ]])</div><div class="line"></div><div class="line">    AGGREGATES = dict([(a.name, a) for a in [</div><div class="line">        pymongo_utils.SUM_AGGREGATION,</div><div class="line">        pymongo_utils.AVG_AGGREGATION,</div><div class="line">        pymongo_utils.MIN_AGGREGATION,</div><div class="line">        pymongo_utils.MAX_AGGREGATION,</div><div class="line">        pymongo_utils.COUNT_AGGREGATION,</div><div class="line">        pymongo_utils.STDDEV_AGGREGATION,</div><div class="line">        pymongo_utils.CARDINALITY_AGGREGATION,</div><div class="line">    ]])</div><div class="line"></div><div class="line">    SORT_OPERATION_MAPPING = &#123;&apos;desc&apos;: (pymongo.DESCENDING, &apos;$lt&apos;),</div><div class="line">                              &apos;asc&apos;: (pymongo.ASCENDING, &apos;$gt&apos;)&#125;</div><div class="line"></div><div class="line">    MAP_RESOURCES = bson.code.Code(&quot;&quot;&quot;</div><div class="line">    function () &#123;</div><div class="line">        emit(this.resource_id,</div><div class="line">             &#123;user_id: this.user_id,</div><div class="line">              project_id: this.project_id,</div><div class="line">              source: this.source,</div><div class="line">              first_timestamp: this.timestamp,</div><div class="line">              last_timestamp: this.timestamp,</div><div class="line">              metadata: this.resource_metadata&#125;)</div><div class="line">    &#125;&quot;&quot;&quot;)</div><div class="line"></div><div class="line">    REDUCE_RESOURCES = bson.code.Code(&quot;&quot;&quot;</div><div class="line">    function (key, values) &#123;</div><div class="line">        var merge = &#123;user_id: values[0].user_id,</div><div class="line">                     project_id: values[0].project_id,</div><div class="line">                     source: values[0].source,</div><div class="line">                     first_timestamp: values[0].first_timestamp,</div><div class="line">                     last_timestamp: values[0].last_timestamp,</div><div class="line">                     metadata: values[0].metadata&#125;</div><div class="line">        values.forEach(function(value) &#123;</div><div class="line">            if (merge.first_timestamp - value.first_timestamp &gt; 0) &#123;</div><div class="line">                merge.first_timestamp = value.first_timestamp;</div><div class="line">                merge.user_id = value.user_id;</div><div class="line">                merge.project_id = value.project_id;</div><div class="line">                merge.source = value.source;</div><div class="line">            &#125; else if (merge.last_timestamp - value.last_timestamp &lt;= 0) &#123;</div><div class="line">                merge.last_timestamp = value.last_timestamp;</div><div class="line">                merge.metadata = value.metadata;</div><div class="line">            &#125;</div><div class="line">        &#125;);</div><div class="line">        return merge;</div><div class="line">      &#125;&quot;&quot;&quot;)</div><div class="line"></div><div class="line">    _GENESIS = datetime.datetime(year=datetime.MINYEAR, month=1, day=1)</div><div class="line">    _APOCALYPSE = datetime.datetime(year=datetime.MAXYEAR, month=12, day=31,</div><div class="line">                                    hour=23, minute=59, second=59)</div><div class="line"></div><div class="line">    def __init__(self, url):</div><div class="line"></div><div class="line">        # NOTE(jd) Use our own connection pooling on top of the Pymongo one.</div><div class="line">        # We need that otherwise we overflow the MongoDB instance with new</div><div class="line">        # connection since we instantiate a Pymongo client each time someone</div><div class="line">        # requires a new storage connection.</div><div class="line">        self.conn = self.CONNECTION_POOL.connect(url)</div><div class="line">        self.version = self.conn.server_info()[&apos;versionArray&apos;]</div><div class="line">        # Require MongoDB 2.4 to use $setOnInsert</div><div class="line">        if self.version &lt; pymongo_utils.MINIMUM_COMPATIBLE_MONGODB_VERSION:</div><div class="line">            raise storage.StorageBadVersion(</div><div class="line">                &quot;Need at least MongoDB %s&quot; %</div><div class="line">                pymongo_utils.MINIMUM_COMPATIBLE_MONGODB_VERSION)</div><div class="line"></div><div class="line">        connection_options = pymongo.uri_parser.parse_uri(url)</div><div class="line">        self.db = getattr(self.conn, connection_options[&apos;database&apos;])</div><div class="line">        if connection_options.get(&apos;username&apos;):</div><div class="line">            self.db.authenticate(connection_options[&apos;username&apos;],</div><div class="line">                                 connection_options[&apos;password&apos;])</div><div class="line"></div><div class="line">        # NOTE(jd) Upgrading is just about creating index, so let&apos;s do this</div><div class="line">        # on connection to be sure at least the TTL is correctly updated if</div><div class="line">        # needed.</div><div class="line">        self.upgrade()</div><div class="line"></div><div class="line">    @staticmethod</div><div class="line">    def update_ttl(ttl, ttl_index_name, index_field, coll):</div><div class="line">        &quot;&quot;&quot;Update or create time_to_live indexes.</div><div class="line"></div><div class="line">        :param ttl: time to live in seconds.</div><div class="line">        :param ttl_index_name: name of the index we want to update or create.</div><div class="line">        :param index_field: field with the index that we need to update.</div><div class="line">        :param coll: collection which indexes need to be updated.</div><div class="line">        &quot;&quot;&quot;</div><div class="line">        indexes = coll.index_information()</div><div class="line">        if ttl &lt;= 0:</div><div class="line">            if ttl_index_name in indexes:</div><div class="line">                coll.drop_index(ttl_index_name)</div><div class="line">            return</div><div class="line"></div><div class="line">        if ttl_index_name in indexes:</div><div class="line">            return coll.database.command(</div><div class="line">                &apos;collMod&apos;, coll.name,</div><div class="line">                index=&#123;&apos;keyPattern&apos;: &#123;index_field: pymongo.ASCENDING&#125;,</div><div class="line">                       &apos;expireAfterSeconds&apos;: ttl&#125;)</div><div class="line"></div><div class="line">        coll.create_index([(index_field, pymongo.ASCENDING)],</div><div class="line">                          expireAfterSeconds=ttl,</div><div class="line">                          name=ttl_index_name)</div><div class="line">...</div></pre></td></tr></table></figure></p>
-<h3 id="get-meters的执行过程"><a href="#get-meters的执行过程" class="headerlink" title="get_meters的执行过程"></a>get_meters的执行过程</h3><p>这里有一个类的继承关系：object &lt;– storage.base.Connection &lt;– storage.pymongo_base.Connection &lt;– storage.impl_mongodb.Connection，关于storage.impl_mongodb.Connection需要讲的都在上面提到了。</p>
-<p>在storage.base.Connection中给出了一些函数定义，但都没有具体的实现。</p>
-<p>在storage.pymongo_base.Connection中给出了get_meters的定义，在这里我们就可以真正的看到查询数据库的语句了: self.db.resource.find(q)，下面我们还要解释一下语句models.Meter。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div><div class="line">76</div><div class="line">77</div><div class="line">78</div><div class="line">79</div><div class="line">80</div><div class="line">81</div><div class="line">82</div><div class="line">83</div></pre></td><td class="code"><pre><div class="line">class Connection(base.Connection):</div><div class="line">    &quot;&quot;&quot;Base Connection class for MongoDB and DB2 drivers.&quot;&quot;&quot;</div><div class="line">    CAPABILITIES = utils.update_nested(base.Connection.CAPABILITIES,</div><div class="line">                                       COMMON_AVAILABLE_CAPABILITIES)</div><div class="line"></div><div class="line">    STORAGE_CAPABILITIES = utils.update_nested(</div><div class="line">        base.Connection.STORAGE_CAPABILITIES,</div><div class="line">        AVAILABLE_STORAGE_CAPABILITIES,</div><div class="line">    )</div><div class="line"></div><div class="line">    def get_meters(self, user=None, project=None, resource=None, source=None,</div><div class="line">                   metaquery=None, limit=None, unique=False):</div><div class="line">        &quot;&quot;&quot;Return an iterable of models.Meter instances</div><div class="line"></div><div class="line">        :param user: Optional ID for user that owns the resource.</div><div class="line">        :param project: Optional ID for project that owns the resource.</div><div class="line">        :param resource: Optional resource filter.</div><div class="line">        :param source: Optional source filter.</div><div class="line">        :param metaquery: Optional dict with metadata to match on.</div><div class="line">        :param limit: Maximum number of results to return.</div><div class="line">        :param unique: If set to true, return only unique meter information.</div><div class="line">        &quot;&quot;&quot;</div><div class="line">        if limit == 0:</div><div class="line">            return</div><div class="line"></div><div class="line">        metaquery = pymongo_utils.improve_keys(metaquery, metaquery=True) or &#123;&#125;</div><div class="line"></div><div class="line">        q = &#123;&#125;</div><div class="line">        if user == &apos;None&apos;:</div><div class="line">            q[&apos;user_id&apos;] = None</div><div class="line">        elif user is not None:</div><div class="line">            q[&apos;user_id&apos;] = user</div><div class="line">        if project == &apos;None&apos;:</div><div class="line">            q[&apos;project_id&apos;] = None</div><div class="line">        elif project is not None:</div><div class="line">            q[&apos;project_id&apos;] = project</div><div class="line">        if resource == &apos;None&apos;:</div><div class="line">            q[&apos;_id&apos;] = None</div><div class="line">        elif resource is not None:</div><div class="line">            q[&apos;_id&apos;] = resource</div><div class="line">        if source is not None:</div><div class="line">            q[&apos;source&apos;] = source</div><div class="line">        q.update(metaquery)</div><div class="line"></div><div class="line">        count = 0</div><div class="line">        if unique:</div><div class="line">            meter_names = set()</div><div class="line"></div><div class="line">        for r in self.db.resource.find(q):</div><div class="line">            for r_meter in r[&apos;meter&apos;]:</div><div class="line">                if unique:</div><div class="line">                    if r_meter[&apos;counter_name&apos;] in meter_names:</div><div class="line">                        continue</div><div class="line">                    else:</div><div class="line">                        meter_names.add(r_meter[&apos;counter_name&apos;])</div><div class="line"></div><div class="line">                if limit and count &gt;= limit:</div><div class="line">                    return</div><div class="line">                else:</div><div class="line">                    count += 1</div><div class="line"></div><div class="line">                if unique:</div><div class="line">                    yield models.Meter(</div><div class="line">                        name=r_meter[&apos;counter_name&apos;],</div><div class="line">                        type=r_meter[&apos;counter_type&apos;],</div><div class="line">                        # Return empty string if &apos;counter_unit&apos; is not valid</div><div class="line">                        # for backward compatibility.</div><div class="line">                        unit=r_meter.get(&apos;counter_unit&apos;, &apos;&apos;),</div><div class="line">                        resource_id=None,</div><div class="line">                        project_id=None,</div><div class="line">                        source=None,</div><div class="line">                        user_id=None)</div><div class="line">                else:</div><div class="line">                    yield models.Meter(</div><div class="line">                        name=r_meter[&apos;counter_name&apos;],</div><div class="line">                        type=r_meter[&apos;counter_type&apos;],</div><div class="line">                        # Return empty string if &apos;counter_unit&apos; is not valid</div><div class="line">                        # for backward compatibility.</div><div class="line">                        unit=r_meter.get(&apos;counter_unit&apos;, &apos;&apos;),</div><div class="line">                        resource_id=r[&apos;_id&apos;],</div><div class="line">                        project_id=r[&apos;project_id&apos;],</div><div class="line">                        source=r[&apos;source&apos;],</div><div class="line">                        user_id=r[&apos;user_id&apos;])</div></pre></td></tr></table></figure>
-<p>这里又有一个类的继承关系：object &lt;– storage.base.Model &lt;– storage.models.Meter。 这里其实就是把查询到的值和键做个对应的设置。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div></pre></td><td class="code"><pre><div class="line">class Model(object):</div><div class="line">    &quot;&quot;&quot;Base class for storage API models.&quot;&quot;&quot;</div><div class="line"></div><div class="line">    def __init__(self, **kwds):</div><div class="line">        self.fields = list(kwds)</div><div class="line">        for k, v in six.iteritems(kwds):</div><div class="line">            setattr(self, k, v)</div><div class="line"></div><div class="line">    def as_dict(self):</div><div class="line">        d = &#123;&#125;</div><div class="line">        for f in self.fields:</div><div class="line">            v = getattr(self, f)</div><div class="line">            if isinstance(v, Model):</div><div class="line">                v = v.as_dict()</div><div class="line">            elif isinstance(v, list) and v and isinstance(v[0], Model):</div><div class="line">                v = [sub.as_dict() for sub in v]</div><div class="line">            d[f] = v</div><div class="line">        return d</div><div class="line"></div><div class="line">    def __eq__(self, other):</div><div class="line">        return self.as_dict() == other.as_dict()</div><div class="line"></div><div class="line">    @classmethod</div><div class="line">    def get_field_names(cls):</div><div class="line">        fields = inspect.getargspec(cls.__init__)[0]</div><div class="line">        return set(fields) - set([&quot;self&quot;])</div></pre></td></tr></table></figure>
-<h3 id="Meter-from-db-model-m-的执行过程"><a href="#Meter-from-db-model-m-的执行过程" class="headerlink" title="Meter.from_db_model(m)的执行过程"></a>Meter.from_db_model(m)的执行过程</h3><p>这里有个类的继承关系：wsme.types.Base &lt;– wsme.types.DynamicBase &lt;– api.controllers.v2.base.Base &lt;– api.v2.meters.Meter</p>
-<p>后面api.v2.meters.Meter的初始化函数调用了wsme.types.Base.<strong>init</strong>函数。 </p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div></pre></td><td class="code"><pre><div class="line">class Base(six.with_metaclass(BaseMeta)):</div><div class="line">    &quot;&quot;&quot;Base type for complex types&quot;&quot;&quot;</div><div class="line">    def __init__(self, **kw):</div><div class="line">        for key, value in kw.items():</div><div class="line">            if hasattr(self, key):</div><div class="line">                setattr(self, key, value)</div><div class="line">                </div><div class="line">                </div><div class="line"></div><div class="line">class DynamicBase(Base):</div><div class="line">    &quot;&quot;&quot;Base type for complex types for which all attributes are not</div><div class="line">    defined when the class is constructed.</div><div class="line"></div><div class="line">    This class is meant to be used as a base for types that have</div><div class="line">    properties added after the main class is created, such as by</div><div class="line">    loading plugins.</div><div class="line"></div><div class="line">    &quot;&quot;&quot;</div><div class="line"></div><div class="line">    @classmethod</div><div class="line">    def add_attributes(cls, **attrs):</div><div class="line">        &quot;&quot;&quot;Add more attributes</div><div class="line"></div><div class="line">        The arguments should be valid Python attribute names</div><div class="line">        associated with a type for the new attribute.</div><div class="line"></div><div class="line">        &quot;&quot;&quot;</div><div class="line">        for n, t in attrs.items():</div><div class="line">            setattr(cls, n, t)</div><div class="line">        cls.__registry__.reregister(cls)</div></pre></td></tr></table></figure>
-<p>函数Meter.from_db_model定义在ceilometer.api.controllers.v2.base:Base中，函数Meter.from_db_model是把返回的ceilometer.storage.models.Meter实例， 进一步做一些简单的处理。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div></pre></td><td class="code"><pre><div class="line">class Base(wtypes.DynamicBase):</div><div class="line"></div><div class="line">    @classmethod</div><div class="line">    def from_db_model(cls, m):</div><div class="line">        return cls(**(m.as_dict()))</div><div class="line"></div><div class="line">    @classmethod</div><div class="line">    def from_db_and_links(cls, m, links):</div><div class="line">        return cls(links=links, **(m.as_dict()))</div><div class="line"></div><div class="line">    def as_dict(self, db_model):</div><div class="line">        valid_keys = inspect.getargspec(db_model.__init__)[0]</div><div class="line">        if &apos;self&apos; in valid_keys:</div><div class="line">            valid_keys.remove(&apos;self&apos;)</div><div class="line">        return self.as_dict_from_keys(valid_keys)</div><div class="line"></div><div class="line">    def as_dict_from_keys(self, keys):</div><div class="line">        return dict((k, getattr(self, k))</div><div class="line">                    for k in keys</div><div class="line">                    if hasattr(self, k) and</div><div class="line">                    getattr(self, k) != wsme.Unset)</div></pre></td></tr></table></figure>
-<p>Meter是在ceilometer.api.v2.meters中定义的，Meter中定义它的的类属性:name, type, unit, resource_id, project_id, user_id, source, meter_id；Meter中还定义了初始化函数<strong>init</strong>，该初始化函数主要是构造meter_id和调用wsme.types.Base的初始化函数<strong>init</strong>。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div></pre></td><td class="code"><pre><div class="line">class Meter(base.Base):</div><div class="line">    &quot;&quot;&quot;One category of measurements.&quot;&quot;&quot;</div><div class="line"></div><div class="line">    name = wtypes.text</div><div class="line">    &quot;The unique name for the meter&quot;</div><div class="line"></div><div class="line">    type = wtypes.Enum(str, *sample.TYPES)</div><div class="line">    &quot;The meter type (see :ref:`measurements`)&quot;</div><div class="line"></div><div class="line">    unit = wtypes.text</div><div class="line">    &quot;The unit of measure&quot;</div><div class="line"></div><div class="line">    resource_id = wtypes.text</div><div class="line">    &quot;The ID of the :class:`Resource` for which the measurements are taken&quot;</div><div class="line"></div><div class="line">    project_id = wtypes.text</div><div class="line">    &quot;The ID of the project or tenant that owns the resource&quot;</div><div class="line"></div><div class="line">    user_id = wtypes.text</div><div class="line">    &quot;The ID of the user who last triggered an update to the resource&quot;</div><div class="line"></div><div class="line">    source = wtypes.text</div><div class="line">    &quot;The ID of the source that identifies where the meter comes from&quot;</div><div class="line"></div><div class="line">    meter_id = wtypes.text</div><div class="line">    &quot;The unique identifier for the meter&quot;</div><div class="line"></div><div class="line">    def __init__(self, **kwargs):</div><div class="line">        meter_id = &apos;%s+%s&apos; % (kwargs[&apos;resource_id&apos;], kwargs[&apos;name&apos;])</div><div class="line">        # meter_id is of type Unicode but base64.encodestring() only accepts</div><div class="line">        # strings. See bug #1333177</div><div class="line">        meter_id = base64.b64encode(meter_id.encode(&apos;utf-8&apos;))</div><div class="line">        kwargs[&apos;meter_id&apos;] = meter_id</div><div class="line">        super(Meter, self).__init__(**kwargs)</div><div class="line"></div><div class="line">    @classmethod</div><div class="line">    def sample(cls):</div><div class="line">        return cls(name=&apos;instance&apos;,</div><div class="line">                   type=&apos;gauge&apos;,</div><div class="line">                   unit=&apos;instance&apos;,</div><div class="line">                   resource_id=&apos;bd9431c1-8d69-4ad3-803a-8d4a6b89fd36&apos;,</div><div class="line">                   project_id=&apos;35b17138-b364-4e6a-a131-8f3099c5be68&apos;,</div><div class="line">                   user_id=&apos;efd87807-12d2-4b38-9c70-5f5c2ac427ff&apos;,</div><div class="line">                   source=&apos;openstack&apos;,</div><div class="line">                   )</div></pre></td></tr></table></figure>
-<p>完毕。本文只是简单梳理了一些的代码流程，没有对于细节问题深究。</p>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">Openstack</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2017/03/29/ceilometer-mitaka api分析/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-
-
-
-
-
-
-
-  
-  
 
 
           </div>
@@ -900,8 +381,8 @@
     <script>
 	var yiliaConfig = {
 		mathjax: false,
-		isHome: true,
-		isPost: false,
+		isHome: false,
+		isPost: true,
 		isArchive: false,
 		isTag: false,
 		isCategory: false,
