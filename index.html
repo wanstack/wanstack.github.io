@@ -337,7 +337,7 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>title: Openstack Mitaka 集群安装部署<br>date: 2017-03-04-14 23:37</p>
+        <p>title: Openstack Mitaka HA 部署手册<br>date: 2017-03-04-14 23:37</p>
 <h2 id="tags-Openstack"><a href="#tags-Openstack" class="headerlink" title="tags: Openstack"></a>tags: Openstack</h2><p>==openstack运维开发群:94776000  欢迎牛逼的你==</p>
 <h3 id="Openstack-Mitaka-HA-实施部署测试文档"><a href="#Openstack-Mitaka-HA-实施部署测试文档" class="headerlink" title="Openstack Mitaka HA 实施部署测试文档"></a>Openstack Mitaka HA 实施部署测试文档</h3><h4 id="一、环境说明"><a href="#一、环境说明" class="headerlink" title="一、环境说明"></a>一、环境说明</h4><h5 id="1、主机环境"><a href="#1、主机环境" class="headerlink" title="1、主机环境"></a>1、主机环境</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">controller(VIP) 192.168.10.100</div><div class="line">controller01    192.168.10.101, 10.0.0.1</div><div class="line">controller02    192.168.10.102, 10.0.0.2</div><div class="line">controller03    192.168.10.103, 10.0.0.3</div><div class="line">compute01       192.168.10.104, 10.0.0.4</div><div class="line">compute02       192.168.10.105, 10.0.0.5</div></pre></td></tr></table></figure>
 <p>本次环境仅限于测试环境，主要测试HA功能。具体生产环境请对网络进行划分。</p>
