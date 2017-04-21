@@ -6,19 +6,19 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>wanstack</title>
+  <title>Openstack Mitaka HA安装部署手册 | wanstack</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="title: Openstack Mitaka HA安装部署手册date: 2017-03-04-14 23:37 tags: Openstack==openstack运维开发群:94776000  欢迎牛逼的你== Openstack Mitaka HA 实施部署测试文档一、环境说明1、主机环境123456controller(VIP) 192.168.10.100controller01">
-<meta name="keywords">
+  <meta name="description" content="==openstack运维开发群:94776000  欢迎牛逼的你== Openstack Mitaka HA 实施部署测试文档一、环境说明1、主机环境123456controller(VIP) 192.168.10.100controller01    192.168.10.101, 10.0.0.1controller02    192.168.10.102, 10.0.0.2controll">
+<meta name="keywords" content="Openstack">
 <meta property="og:type" content="article">
-<meta property="og:title" content="wanstack">
+<meta property="og:title" content="Openstack Mitaka HA安装部署手册">
 <meta property="og:url" content="http://yoursite.com/2017/04/14/Openstack-Mitaka HA 部署手册/index.html">
 <meta property="og:site_name" content="wanstack">
-<meta property="og:description" content="title: Openstack Mitaka HA安装部署手册date: 2017-03-04-14 23:37 tags: Openstack==openstack运维开发群:94776000  欢迎牛逼的你== Openstack Mitaka HA 实施部署测试文档一、环境说明1、主机环境123456controller(VIP) 192.168.10.100controller01">
-<meta property="og:updated_time" content="2017-04-21T01:41:04.905Z">
+<meta property="og:description" content="==openstack运维开发群:94776000  欢迎牛逼的你== Openstack Mitaka HA 实施部署测试文档一、环境说明1、主机环境123456controller(VIP) 192.168.10.100controller01    192.168.10.101, 10.0.0.1controller02    192.168.10.102, 10.0.0.2controll">
+<meta property="og:updated_time" content="2017-04-21T01:44:45.976Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="wanstack">
-<meta name="twitter:description" content="title: Openstack Mitaka HA安装部署手册date: 2017-03-04-14 23:37 tags: Openstack==openstack运维开发群:94776000  欢迎牛逼的你== Openstack Mitaka HA 实施部署测试文档一、环境说明1、主机环境123456controller(VIP) 192.168.10.100controller01">
+<meta name="twitter:title" content="Openstack Mitaka HA安装部署手册">
+<meta name="twitter:description" content="==openstack运维开发群:94776000  欢迎牛逼的你== Openstack Mitaka HA 实施部署测试文档一、环境说明1、主机环境123456controller(VIP) 192.168.10.100controller01    192.168.10.101, 10.0.0.1controller02    192.168.10.102, 10.0.0.2controll">
   
     <link rel="alternative" href="/atom.xml" title="wanstack" type="application/atom+xml">
   
@@ -175,10 +175,24 @@
             <article id="post-Openstack-Mitaka HA 部署手册" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      Openstack Mitaka HA安装部署手册
+    </h1>
+  
+
+        
+        <a href="/2017/04/14/Openstack-Mitaka HA 部署手册/" class="archive-article-date">
+  	<time datetime="2017-04-14T05:38:20.398Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-04-14</time>
+</a>
+        
+      </header>
+    
     <div class="article-entry" itemprop="articleBody">
       
-        <p>title: Openstack Mitaka HA安装部署手册<br>date: 2017-03-04-14 23:37</p>
-<h2 id="tags-Openstack"><a href="#tags-Openstack" class="headerlink" title="tags: Openstack"></a>tags: Openstack</h2><p>==openstack运维开发群:94776000  欢迎牛逼的你==</p>
+        <p>==openstack运维开发群:94776000  欢迎牛逼的你==</p>
 <h3 id="Openstack-Mitaka-HA-实施部署测试文档"><a href="#Openstack-Mitaka-HA-实施部署测试文档" class="headerlink" title="Openstack Mitaka HA 实施部署测试文档"></a>Openstack Mitaka HA 实施部署测试文档</h3><h4 id="一、环境说明"><a href="#一、环境说明" class="headerlink" title="一、环境说明"></a>一、环境说明</h4><h5 id="1、主机环境"><a href="#1、主机环境" class="headerlink" title="1、主机环境"></a>1、主机环境</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">controller(VIP) 192.168.10.100</div><div class="line">controller01    192.168.10.101, 10.0.0.1</div><div class="line">controller02    192.168.10.102, 10.0.0.2</div><div class="line">controller03    192.168.10.103, 10.0.0.3</div><div class="line">compute01       192.168.10.104, 10.0.0.4</div><div class="line">compute02       192.168.10.105, 10.0.0.5</div></pre></td></tr></table></figure>
 <p>本次环境仅限于测试环境，主要测试HA功能。具体生产环境请对网络进行划分。</p>
 <h4 id="二、配置基础环境"><a href="#二、配置基础环境" class="headerlink" title="二、配置基础环境"></a>二、配置基础环境</h4><h5 id="1、配置主机解析"><a href="#1、配置主机解析" class="headerlink" title="1、配置主机解析"></a>1、配置主机解析</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line">在对应节点上配置主机名：</div><div class="line"></div><div class="line">hostnamectl set-hostname controller01</div><div class="line">hostname contoller01</div><div class="line"></div><div class="line">hostnamectl set-hostname controller02</div><div class="line">hostname contoller02</div><div class="line"></div><div class="line">hostnamectl set-hostname controller03</div><div class="line">hostname contoller03</div><div class="line"></div><div class="line">hostnamectl set-hostname compute01</div><div class="line">hostname compute01</div><div class="line"></div><div class="line">hostnamectl set-hostname compute02</div><div class="line">hostname compute02</div></pre></td></tr></table></figure>
@@ -255,6 +269,17 @@
     <div class="article-info article-info-index">
       
       
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">Openstack</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
       
 
       
