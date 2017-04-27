@@ -218,7 +218,7 @@
 <h5 id="2、装饰的函数如果有参数"><a href="#2、装饰的函数如果有参数" class="headerlink" title="2、装饰的函数如果有参数"></a>2、装饰的函数如果有参数</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div></pre></td><td class="code"><pre><div class="line">#一个参数</div><div class="line">def w1(func):</div><div class="line">    def inner(arg):</div><div class="line">        # 验证1</div><div class="line">        # 验证2</div><div class="line">        # 验证3</div><div class="line">        return func(arg)</div><div class="line">    return inner</div><div class="line"> </div><div class="line">@w1</div><div class="line">def f1(arg):</div><div class="line">    print &apos;f1&apos;</div><div class="line"></div><div class="line">#两个参数</div><div class="line">def w1(func):</div><div class="line">    def inner(arg1,arg2):</div><div class="line">        # 验证1</div><div class="line">        # 验证2</div><div class="line">        # 验证3</div><div class="line">        return func(arg1,arg2)</div><div class="line">    return inner</div><div class="line"> </div><div class="line">@w1</div><div class="line">def f1(arg1,arg2):</div><div class="line">    print &apos;f1&apos;</div><div class="line"></div><div class="line">#三个参数</div><div class="line">def w1(func):</div><div class="line">    def inner(arg1,arg2,arg3):</div><div class="line">        # 验证1</div><div class="line">        # 验证2</div><div class="line">        # 验证3</div><div class="line">        return func(arg1,arg2,arg3)</div><div class="line">    return inner</div><div class="line"> </div><div class="line">@w1</div><div class="line">def f1(arg1,arg2,arg3):</div><div class="line">    print &apos;f1&apos;</div><div class="line"></div><div class="line"># N个参数</div><div class="line">def w1(func):</div><div class="line">    def inner(*args,**kwargs):</div><div class="line">        # 验证1</div><div class="line">        # 验证2</div><div class="line">        # 验证3</div><div class="line">        return func(*args,**kwargs)</div><div class="line">    return inner</div><div class="line"> </div><div class="line">@w1</div><div class="line">def f1(arg1,arg2,arg3):</div><div class="line">    print &apos;f1&apos;</div></pre></td></tr></table></figure>
 <h5 id="3、一个函数可以被多个装饰器装饰"><a href="#3、一个函数可以被多个装饰器装饰" class="headerlink" title="3、一个函数可以被多个装饰器装饰"></a>3、一个函数可以被多个装饰器装饰</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div></pre></td><td class="code"><pre><div class="line">def w1(func):</div><div class="line">    def inner(*args,**kwargs):</div><div class="line">        # 验证1</div><div class="line">        # 验证2</div><div class="line">        # 验证3</div><div class="line">        return func(*args,**kwargs)</div><div class="line">    return inner</div><div class="line"> </div><div class="line">def w2(func):</div><div class="line">    def inner(*args,**kwargs):</div><div class="line">        # 验证1</div><div class="line">        # 验证2</div><div class="line">        # 验证3</div><div class="line">        return func(*args,**kwargs)</div><div class="line">    return inner</div><div class="line"> </div><div class="line"> </div><div class="line">@w1</div><div class="line">@w2</div><div class="line">def f1(arg1,arg2,arg3):</div><div class="line">    print &apos;f1&apos;</div></pre></td></tr></table></figure>
 <p>最后来解释一下这个复杂的例子<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div></pre></td><td class="code"><pre><div class="line">#!/usr/bin/env python</div><div class="line">#coding:utf-8</div><div class="line">  </div><div class="line">def Before(request,kargs):</div><div class="line">    print &apos;before&apos;</div><div class="line">      </div><div class="line">def After(request,kargs):</div><div class="line">    print &apos;after&apos;</div><div class="line">  </div><div class="line">  </div><div class="line">def Filter(before_func,after_func):</div><div class="line">    def outer(main_func):</div><div class="line">        def wrapper(request,kargs):</div><div class="line">              </div><div class="line">            before_result = before_func(request,kargs)</div><div class="line">            if(before_result != None):</div><div class="line">                return before_result;</div><div class="line">              </div><div class="line">            main_result = main_func(request,kargs)</div><div class="line">            if(main_result != None):</div><div class="line">                return main_result;</div><div class="line">              </div><div class="line">            after_result = after_func(request,kargs)</div><div class="line">            if(after_result != None):</div><div class="line">                return after_result;</div><div class="line">              </div><div class="line">        return wrapper</div><div class="line">    return outer</div><div class="line">      </div><div class="line">@Filter(Before, After)</div><div class="line">def Index(request,kargs):</div><div class="line">    print &apos;index&apos;</div></pre></td></tr></table></figure></p>
-<p>这是一个装饰器带参数的例子。<br>等价于<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">Filter(Before, After)Index(request,kargs)这样写应该是不合法的。</div></pre></td></tr></table></figure></p>
+<p>这是一个装饰器带参数的例子。<br>等价于<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">Filter(Before, After)(Index(request,kargs))这样写应该是不合法的。</div></pre></td></tr></table></figure></p>
 <p>函数执行的步骤如下：</p>
 <ol>
 <li>def Before(request,kargs)</li>
@@ -226,8 +226,8 @@
 <li>def Filter(before_func,after_func)</li>
 <li>@Filter(Before, After)</li>
 </ol>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">@Filter(Before, After)python的语法糖</div><div class="line">@Filter(Before, After)内部会执行一下操作：</div><div class="line">执行Filter(Before, After)函数，并且把@Filter(Before, After)下面的函数作为Filter(Before, After)函数的参数，即：@Filter(Before, After)等价于Filter(Before, After)Index(request,kargs)。</div></pre></td></tr></table></figure>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div></pre></td><td class="code"><pre><div class="line">到了这里就比较关键了，如果上面的结果不好理解可以</div><div class="line">f = Fileter(Before, After)</div><div class="line">下面就变成了f(Index(reqeust,kargs))是不是和上面的差不多了。</div><div class="line"></div><div class="line">分成了2部分执行。</div><div class="line">f = Fileter(Before, After) 是函数的执行。</div><div class="line">f = return outer</div><div class="line">则f = def outer(main_func):</div><div class="line">        def wrapper(request,kargs):</div><div class="line">              </div><div class="line">            before_result = before_func(request,kargs)</div><div class="line">            if(before_result != None):</div><div class="line">                return before_result;</div><div class="line">              </div><div class="line">            main_result = main_func(request,kargs)</div><div class="line">            if(main_result != None):</div><div class="line">                return main_result;</div><div class="line">              </div><div class="line">            after_result = after_func(request,kargs)</div><div class="line">            if(after_result != None):</div><div class="line">                return after_result;</div><div class="line">              </div><div class="line">        return wrapper</div><div class="line"></div><div class="line">了f(Index(reqeust,kargs)) 其实和上面的一样了。</div><div class="line"></div><div class="line"></div><div class="line">了f(Index(reqeust,kargs)) = def wrapper(request,kargs):</div><div class="line">              </div><div class="line">            before_result = before_func(request,kargs)</div><div class="line">            if(before_result != None):</div><div class="line">                return before_result;</div><div class="line">              </div><div class="line">            Index = 原来的Index(request,kargs)</div><div class="line">            if(Index != None):</div><div class="line">                return Index;</div><div class="line">              </div><div class="line">            after_result = after_func(request,kargs)</div><div class="line">            if(after_result != None):</div><div class="line">                return after_result;</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">@Filter(Before, After)python的语法糖</div><div class="line">@Filter(Before, After)内部会执行一下操作：</div><div class="line">执行Filter(Before, After)函数，并且把@Filter(Before, After)下面的函数作为Filter(Before, After)函数的参数，即：@Filter(Before, After)等价于Filter(Before, After)(Index(request,kargs))。</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div></pre></td><td class="code"><pre><div class="line">到了这里就比较关键了，如果上面的结果不好理解可以</div><div class="line">f = Fileter(Before, After)</div><div class="line">下面就变成了f(Index(reqeust,kargs))是不是和上面的差不多了。</div><div class="line"></div><div class="line">分成了2部分执行。</div><div class="line">f = Fileter(Before, After) 是函数的执行。</div><div class="line">f = return outer</div><div class="line">则f = def outer(main_func):</div><div class="line">        def wrapper(request,kargs):</div><div class="line">              </div><div class="line">            before_result = before_func(request,kargs)</div><div class="line">            if(before_result != None):</div><div class="line">                return before_result;</div><div class="line">              </div><div class="line">            main_result = main_func(request,kargs)</div><div class="line">            if(main_result != None):</div><div class="line">                return main_result;</div><div class="line">              </div><div class="line">            after_result = after_func(request,kargs)</div><div class="line">            if(after_result != None):</div><div class="line">                return after_result;</div><div class="line">              </div><div class="line">        return wrapper</div><div class="line"></div><div class="line">了f(Index(reqeust,kargs)) 其实和上面的一样了。</div><div class="line"></div><div class="line"></div><div class="line">了f(Index(reqeust,kargs)) = def wrapper(request,kargs):</div><div class="line">              </div><div class="line">            before_result = before_func(request,kargs)</div><div class="line"></div><div class="line">            if(before_result != None):</div><div class="line">                return before_result;</div><div class="line">              </div><div class="line">            Index = 原来的Index(request,kargs)</div><div class="line">            if(Index != None):</div><div class="line">                return Index;</div><div class="line">              </div><div class="line">            after_result = after_func(request,kargs)</div><div class="line">            if(after_result != None):</div><div class="line">                return after_result;</div></pre></td></tr></table></figure>
 <h5 id="4、思考"><a href="#4、思考" class="headerlink" title="4、思考"></a>4、思考</h5><p>我们费力的说上面这个复杂的例子。那个这里例子到底有啥用呢。<br>这个例子也就是用2个函数修饰一个函数。即：</p>
 <ol>
 <li>第一个修饰的函数</li>
@@ -942,71 +942,6 @@
       
         <p class="article-more-link">
           <a class="article-more-a" href="/2017/03/29/python 调试工具/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-
-
-
-
-
-
-
-  
-    <article id="post-关于生活" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/03/29/关于生活/">关于感情</a>
-    </h1>
-  
-
-        
-        <a href="/2017/03/29/关于生活/" class="archive-article-date">
-  	<time datetime="2017-03-29T15:37:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-03-29</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>懵懂无知急功近利说爱情,花前月下纸醉金迷遭人叛,平平淡淡知足常乐即是福。</p>
-<p>人生若是初相见是美好。</p>
-<p>如果在感情的路上遇到过伤害, 请务必谢谢那些伤害过你的人。不要试图伤害她们, 一念成佛,一念成魔, 没有他(她)们你也只是停留在懵懂状态。</p>
-<p>珍惜那些跟你一起粗茶淡饭的人,只有他们才愿意和你长相厮守。没有任何前提, 没有如果, 更没有长期投资。</p>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">Life</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2017/03/29/关于生活/">展开全文 >></a>
         </p>
       
 
