@@ -15,7 +15,7 @@
 <meta property="og:url" content="http://yoursite.com/2017/05/09/openstack源码基础之wsgi/index.html">
 <meta property="og:site_name" content="wanstack">
 <meta property="og:description" content="一、wsgi基础1.1 http基础对于 web 应用程序来说，最基本的概念就是客户端发送请求（request），收到服务器端的响应（response）。下面是简单的 HTTP 请求： 12345GET /Index.html HTTP/1.1\r\nConnection: Keep-Alive\r\nAccept: */*\r\nUser-Agent: Sample Application\r\">
-<meta property="og:updated_time" content="2017-05-09T14:21:32.656Z">
+<meta property="og:updated_time" content="2017-05-09T14:23:55.195Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Openstack源码基础之wsgi">
 <meta name="twitter:description" content="一、wsgi基础1.1 http基础对于 web 应用程序来说，最基本的概念就是客户端发送请求（request），收到服务器端的响应（response）。下面是简单的 HTTP 请求： 12345GET /Index.html HTTP/1.1\r\nConnection: Keep-Alive\r\nAccept: */*\r\nUser-Agent: Sample Application\r\">
@@ -210,7 +210,7 @@
 <p>下面，我们看看middleware大概是什么样子的。</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line"># URL Routing middleware</div><div class="line"># 这里接受一个url_app_mapping的作用是通过url路由到相应的app，然后调用app(environ,start_response)</div><div class="line"># 返回相应app的结果</div><div class="line">def urlrouting(url_app_mapping):</div><div class="line">    def midware_app(environ, start_response):</div><div class="line">        url = environ[&apos;PATH_INFO&apos;]</div><div class="line">        app = url_app_mapping[url]</div><div class="line"></div><div class="line">        result = app(environ, start_response)</div><div class="line"></div><div class="line">        return result</div><div class="line"></div><div class="line">    return midware_app</div></pre></td></tr></table></figure>
 <p>函数 midware_app就是一个简单的middleware：对服务器而言，它是一个应用程序，是一个可调用对象， 有两个参数，返回一个可调用对象。对应用程序而言，它是一个服务器，为应用程序提供了参数，并且调用了应用程序。<br>另外，这里的urlrouting函数，相当于一个函数生成器，你给它不同的 url-app 映射关系，它会生成相应的具有 url routing功能的 middleware。</p>
-<h3 id="2、wsgi详解"><a href="#2、wsgi详解" class="headerlink" title="2、wsgi详解"></a>2、wsgi详解</h3><h4 id="2-1-wsgi-server"><a href="#2-1-wsgi-server" class="headerlink" title="2.1 wsgi server"></a>2.1 wsgi server</h4><p>wsgi server 基本工作流程</p>
+<h3 id="二、wsgi详解"><a href="#二、wsgi详解" class="headerlink" title="二、wsgi详解"></a>二、wsgi详解</h3><h4 id="2-1-wsgi-server"><a href="#2-1-wsgi-server" class="headerlink" title="2.1 wsgi server"></a>2.1 wsgi server</h4><p>wsgi server 基本工作流程</p>
 <ol>
 <li>服务器创建socket，监听端口，等待客户端连接。</li>
 <li>当有请求来时，服务器解析客户端信息放到环境变量environ中，并调用绑定的handler来处理请求。</li>
