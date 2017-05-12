@@ -6,14 +6,19 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>Archives: 2017 | wanstack</title>
+  <title>Openstack源码基础之Paste_deploy | wanstack</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="wanstack">
-<meta property="og:url" content="http://yoursite.com/archives/2017/page/2/index.html">
+  <meta name="description" content="QQ群:94776000  欢迎牛逼的你 一、paste deploy简介官方文档把PasteDeploy介绍为一个发现并配置WSGI应用和服务的一个系统，通过loadapp(一个简单的函数)就可以部署WSGI，而且不许要知道WSGI应用的细节。从一个PasteDeploy的配置文件(config.ini)入手分析 123456789101112131415161718192021222324[c">
+<meta name="keywords" content="Openstack">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Openstack源码基础之Paste_deploy">
+<meta property="og:url" content="http://yoursite.com/2017/05/11/openstack源码基础之Paste_deploy/index.html">
 <meta property="og:site_name" content="wanstack">
+<meta property="og:description" content="QQ群:94776000  欢迎牛逼的你 一、paste deploy简介官方文档把PasteDeploy介绍为一个发现并配置WSGI应用和服务的一个系统，通过loadapp(一个简单的函数)就可以部署WSGI，而且不许要知道WSGI应用的细节。从一个PasteDeploy的配置文件(config.ini)入手分析 123456789101112131415161718192021222324[c">
+<meta property="og:updated_time" content="2017-05-12T06:44:45.049Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="wanstack">
+<meta name="twitter:title" content="Openstack源码基础之Paste_deploy">
+<meta name="twitter:description" content="QQ群:94776000  欢迎牛逼的你 一、paste deploy简介官方文档把PasteDeploy介绍为一个发现并配置WSGI应用和服务的一个系统，通过loadapp(一个简单的函数)就可以部署WSGI，而且不许要知道WSGI应用的细节。从一个PasteDeploy的配置文件(config.ini)入手分析 123456789101112131415161718192021222324[c">
   
     <link rel="alternative" href="/atom.xml" title="wanstack" type="application/atom+xml">
   
@@ -167,74 +172,105 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-  
+            <article id="post-openstack源码基础之Paste_deploy" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
     
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2017" class="archive-year">2017</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/03/29/python 调试工具/" class="archive-article-date">
-  	<time datetime="2017-03-29T15:37:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-03-29</time>
-</a>
-        </div>
-    	 
+      <header class="article-header">
+        
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/03/29/python 调试工具/">python代码调试工具</a>
+    <h1 class="article-title" itemprop="name">
+      Openstack源码基础之Paste_deploy
     </h1>
   
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">Python</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/03/29/devstack/" class="archive-article-date">
-  	<time datetime="2017-03-29T15:37:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-03-29</time>
+        
+        <a href="/2017/05/11/openstack源码基础之Paste_deploy/" class="archive-article-date">
+  	<time datetime="2017-05-11T15:37:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-05-11</time>
 </a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/03/29/devstack/">devstack mitaka 安装配置</a>
-    </h1>
-  
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>QQ群:94776000  欢迎牛逼的你</p>
+<h3 id="一、paste-deploy简介"><a href="#一、paste-deploy简介" class="headerlink" title="一、paste deploy简介"></a>一、paste deploy简介</h3><p>官方文档把PasteDeploy介绍为一个发现并配置WSGI应用和服务的一个系统，通过loadapp(一个简单的函数)就可以部署WSGI，而且不许要知道WSGI应用的细节。<br>从一个PasteDeploy的配置文件(config.ini)入手分析</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div></pre></td><td class="code"><pre><div class="line">[composite:main]  </div><div class="line">use = egg:Paste#urlmap  </div><div class="line">/ = home  </div><div class="line">/blog = blog  </div><div class="line">/wiki = wiki  </div><div class="line">/cms = config:cms.ini  </div><div class="line">  </div><div class="line">[app:home]  </div><div class="line">use = egg:Paste#static  </div><div class="line">document_root = %(here)s/htdocs  </div><div class="line">  </div><div class="line">[filter-app:blog]  </div><div class="line">use = egg:Authentication#auth  </div><div class="line">next = blogapp  </div><div class="line">roles = admin  </div><div class="line">htpasswd = /home/me/users.htpasswd  </div><div class="line">  </div><div class="line">[app:blogapp]  </div><div class="line">use = egg:BlogApp  </div><div class="line">database = sqlite:/home/me/blog.db  </div><div class="line">  </div><div class="line">[app:wiki]  </div><div class="line">use = call:mywiki.main:application  </div><div class="line">database = sqlite:/home/me/wiki.db</div></pre></td></tr></table></figure>
+<h4 id="composite"><a href="#composite" class="headerlink" title="composite"></a>composite</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">[composite:main]  </div><div class="line">use = egg:Paste#urlmap  </div><div class="line">/ = home  </div><div class="line">/blog = blog  </div><div class="line">/wiki = wiki  </div><div class="line">/cms = config:cms.ini</div></pre></td></tr></table></figure>
+<p>compsite部分意味着把请求分发到其他应用上，main应该是这个部分的标识。<br>use = egg:Paste#urlmap意味着一种简单的映射方式，利用Paste包下的urlmap应用，把路径不同的请求进行映射。如后面紧跟的/，/blog，/wiki等路径。<br>如下面的例子就是一个简单的映射：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div></pre></td><td class="code"><pre><div class="line"># coding:utf-8</div><div class="line">from wsgiref.simple_server import make_server</div><div class="line">URL_PATTERNS= (</div><div class="line">    (&apos;hi/&apos;,&apos;say_hi&apos;),</div><div class="line">    (&apos;hello/&apos;,&apos;say_hello&apos;),</div><div class="line">    )</div><div class="line">class Dispatcher(object):</div><div class="line">    def _match(self,path):</div><div class="line">        path = path.split(&apos;/&apos;)[1]</div><div class="line">        # hi</div><div class="line">        print path</div><div class="line">        for url,app in URL_PATTERNS:</div><div class="line">            if path in url:</div><div class="line">                return app</div><div class="line">    def __call__(self,environ, start_response):</div><div class="line">    # PATH_INFO URL 路径除了起始部分后的剩余部分，用于找到相应的应用程序对象，如果请求的路径就是根路径，这个值为空字符串</div><div class="line">        path = environ.get(&apos;PATH_INFO&apos;,&apos;/&apos;)</div><div class="line">        #http://127.0.0.1:8000/hi ---&gt; /hi</div><div class="line">        print path</div><div class="line">        app = self._match(path)</div><div class="line">        if app :</div><div class="line">            app = globals()[app]</div><div class="line">            return app(environ, start_response)</div><div class="line">        else:</div><div class="line">            start_response(&quot;404 NOT FOUND&quot;,[(&apos;Content-type&apos;, &apos;text/plain&apos;)])</div><div class="line">            return [&quot;Page dose not exists!&quot;]</div><div class="line">def say_hi(environ, start_response):</div><div class="line">    start_response(&quot;200 OK&quot;,[(&apos;Content-type&apos;, &apos;text/html&apos;)])</div><div class="line">    return [&quot;kenshin say hi to you!&quot;]</div><div class="line">def say_hello(environ, start_response):</div><div class="line">    start_response(&quot;200 OK&quot;,[(&apos;Content-type&apos;, &apos;text/html&apos;)])</div><div class="line">    return [&quot;kenshin say hello to you!&quot;]</div><div class="line">app = Dispatcher()</div><div class="line"></div><div class="line">httpd = make_server(&apos;&apos;, 8000, app)</div><div class="line">print &quot;Serving on port 8000...&quot;</div><div class="line">httpd.serve_forever()</div></pre></td></tr></table></figure>
+<p>特别要注意的是最后一个，/cms=config:cms.ini，说明如果路径是这样写的话，指向相同目录下的cms.ini，再根据里面的配置进行映射。</p>
+<h4 id="app"><a href="#app" class="headerlink" title="app"></a>app</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">[app:home]  </div><div class="line">use = egg:Paste#static  </div><div class="line">document_root = %(here)s/htdocs</div></pre></td></tr></table></figure>
+<p>app，标识为home，连用到了一种新的映射方式static，进行静态映射，需要配置document_root的参数，指向静态文件目录，这里要注意的一点书%(here)s，官方文档的说明是：You can use variable substitution, which will pul lvariables from the section [DEFAULT] (case sensitive!) with markers like %(var_name)s。大概意思是用[DEFAULT]下的配置变量var_name=xxxx代替了[app:home]下的%(var_name)s的值。像这个配置文件就需要在[DEFAULT]下配置here=xxx为静态。</p>
+<h4 id="filter-app"><a href="#filter-app" class="headerlink" title="filter-app"></a>filter-app</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">[filter-app:blog]  </div><div class="line">use = egg:Authentication#auth  </div><div class="line">next = blogapp  </div><div class="line">roles = admin  </div><div class="line">htpasswd = /home/me/users.htpasswd  </div><div class="line">  </div><div class="line">[app:blogapp]  </div><div class="line">use = egg:BlogApp  </div><div class="line">database = sqlite:/home/me/blog.db</div></pre></td></tr></table></figure>
+<p>filter-app代表了对blog应用进行过滤，这里没有具体说明，但是use表明使用了Authenication包下的auth应用，next说明指向下一个应用，roles和htpasswd都是配置选项，一个key-value键值对。下面的blogapp指向了egg封装的BlogApp应用，并配置了数据库目录。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">[app:wiki]  </div><div class="line">use = call:mywiki.main:application  </div><div class="line">database = sqlite:/home/me/wiki.db</div></pre></td></tr></table></figure>
+<p>和上面配置的唯一区别就是use选项配置不再是egg封装的应用，直接通过call命令调用mywiki,main模块下application应用。</p>
+<h3 id="二-、Paste-Deploy基本用法"><a href="#二-、Paste-Deploy基本用法" class="headerlink" title="二 、Paste Deploy基本用法"></a>二 、Paste Deploy基本用法</h3><p>如下所示通过loadapp调用config.ini文件，进行应用WSGI接口的配置。需要注意的是config:xxx后面跟的路径如果是绝对路径，只有在config.ini里面再配置路径，如上面的/cms，才是相对路径。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">from paste.deploy import loadapp  </div><div class="line">wsgi_app = loadapp(&apos;config:/path/to/config.ini&apos;)</div></pre></td></tr></table></figure>
+<p>config文件格式如下</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">[section_name]  </div><div class="line">key = value  </div><div class="line">another key = a long value  </div><div class="line">    that extends over multiple lines</div></pre></td></tr></table></figure>
+<p>注释行，开头为#或者；<br> app应用部署方式有一下四种：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line">[app:myapp]  </div><div class="line">use = config:another_config_file.ini#app_name  </div><div class="line">  </div><div class="line"># or any URI:  </div><div class="line">[app:myotherapp]  </div><div class="line">use = egg:MyApp  </div><div class="line">  </div><div class="line"># or a callable from a module:  </div><div class="line">[app:mythirdapp]  </div><div class="line">use = call:my.project:myapplication  </div><div class="line">  </div><div class="line"># or even another section:  </div><div class="line">[app:mylastapp]  </div><div class="line">use = myotherapp</div></pre></td></tr></table></figure>
+<p>第一种指向同目录下另一个config,ini中的app应用<br>第二种指向egg分装的应用<br>第三种指向一个模块下的应用<br>第四中指向本config.ini下的另一个app<br>还有一种特别的app的应用部署方式</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">[app:myapp]  </div><div class="line">paste.app_factory = myapp.modulename:app_factory</div></pre></td></tr></table></figure>
+<p>paste.app_factory是一种协议格式，除了app_factory外还有composite_facory,fliter_factory,fliter_app_factory,server_factory,server_runner等。后面跟上myapp.modulename模块下的app_factroy类，不同协议其app_factory也不一样，后面会详细介绍如何定义每一个factories.</p>
+<p>全局变量定义在[DEFAULT]下，但是可以修改全局变量，以如下方式</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">[DEFAULT]  </div><div class="line">admin_email = webmaster@example.com  </div><div class="line">  </div><div class="line">[app:main]  </div><div class="line">use = ...  </div><div class="line">set admin_email = bob@example.com</div></pre></td></tr></table></figure>
+<p>使用set 这样就修修改了 admin_email</p>
+<p>Composite Application,为复合应用，他本身不提供应用，而是通过类似上文url的方式提供映射，到不同的应用。</p>
+<h4 id="Filter-Composition"><a href="#Filter-Composition" class="headerlink" title="Filter Composition"></a>Filter Composition</h4><p>有三种方法进行filter，第一种是fliter-with,第二种是filter-app,第三种是pipeline,多说一句，OpenStack用的最多的是pipeline。</p>
+<p>第一种，通过fliter-with指向下一个fliter应用</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">[app:main]  </div><div class="line">use = egg:MyEgg  </div><div class="line">filter-with = printdebug  </div><div class="line">  </div><div class="line">[filter:printdebug]  </div><div class="line">use = egg:Paste#printdebug  </div><div class="line"># and you could have another filter-with here, and so on...</div></pre></td></tr></table></figure>
+<p>第二种，通过next配置指向下一个filter应用</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">[filter-app:blog]  </div><div class="line">use = egg:Authentication#auth  </div><div class="line">next = blogapp  </div><div class="line">roles = admin  </div><div class="line">htpasswd = /home/me/users.htpasswd  </div><div class="line">  </div><div class="line">[app:blogapp]  </div><div class="line">use = egg:BlogApp  </div><div class="line">database = sqlite:/home/me/blog.db</div></pre></td></tr></table></figure>
+<p>第三种，pipeline依次列出filter即可</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">[pipeline:main]  </div><div class="line">pipeline = filter1 egg:FilterEgg#filter2 filter3 app  </div><div class="line">  </div><div class="line">[filter:filter1]  </div><div class="line">...</div></pre></td></tr></table></figure>
+<p>egg模式，通过setuptools打包Python源文件，类似Java jar的格式</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">setup(  </div><div class="line">    name=&apos;MyApp&apos;,  </div><div class="line">    ...  </div><div class="line">    entry_points=&#123;  </div><div class="line">        &apos;paste.app_factory&apos;: [  </div><div class="line">            &apos;main=myapp.mymodule:app_factory&apos;,  </div><div class="line">            &apos;ob2=myapp.mymodule:ob_factory&apos;],  </div><div class="line">        &#125;,  </div><div class="line">    )</div></pre></td></tr></table></figure>
+<p>通过上面配置安装egg，use=egg:MyApp#main或者use=egg:MyApp#ob2,可以分别找到myapp.mymodule下的app_factory对象和ob_factory对象</p>
+<h3 id="三-、Define-Factories"><a href="#三-、Define-Factories" class="headerlink" title="三 、Define Factories"></a>三 、Define Factories</h3><h4 id="app-factory"><a href="#app-factory" class="headerlink" title="app_factory"></a>app_factory</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">def app_factory(global_config, **local_conf):  </div><div class="line">    return wsgi_app</div></pre></td></tr></table></figure>
+<p>global_config传入的是字典参数，local_conf传入的是key-value参数，返回一个wsgi application</p>
+<h4 id="composite-factory"><a href="#composite-factory" class="headerlink" title="composite_factory"></a>composite_factory</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">def composite_factory(loader, global_config, **local_conf):</div><div class="line">    return wsgi_app</div></pre></td></tr></table></figure>
+<p>loader调用一些特殊函数，get_app(name_or_uri, global_conf=None) return a WSGI application with the given name. get_filter and get_server work the same way。如下使用方案：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">def pipeline_factory(loader, global_config, pipeline):  </div><div class="line">    # space-separated list of filter and app names:  </div><div class="line">    pipeline = pipeline.split()  </div><div class="line">    # n会去掉app</div><div class="line">    filters = [loader.get_filter(n) for n in pipeline[:-1]]  </div><div class="line">    app = loader.get_app(pipeline[-1])  </div><div class="line">    filters.reverse() # apply in reverse order!  </div><div class="line">    for filter in filters: </div><div class="line">        # 从最里面的filter开始</div><div class="line">        app = filter(app)  </div><div class="line">    return app</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">[composite:main]  </div><div class="line">use = &lt;pipeline_factory_uri&gt;  </div><div class="line">pipeline = egg:Paste#printdebug session myapp  </div><div class="line">  </div><div class="line">[filter:session]  </div><div class="line">use = egg:Paste#session  </div><div class="line">store = memory  </div><div class="line">  </div><div class="line">[app:myapp]  </div><div class="line">use = egg:MyApp</div></pre></td></tr></table></figure>
+<p>将数据读取传入，将filter printdebug,session读入并付给filter,读取app为pipeline参数的最后一个myapp,翻转filter先运行session(myapp)，再运行egg:Paste#printdebug(myapp)。</p>
+<h4 id="fliter-factory"><a href="#fliter-factory" class="headerlink" title="fliter_factory"></a>fliter_factory</h4><p>类似app_factroy但返回的是filter对象，而且仅仅接受WSGI application为唯一的参数，如下所示</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div></pre></td><td class="code"><pre><div class="line">def auth_filter_factory(global_conf, req_usernames):  </div><div class="line">    # space-separated list of usernames:  </div><div class="line">    req_usernames = req_usernames.split()  </div><div class="line">    def filter(app): </div><div class="line">        # 返回一个callable的实例</div><div class="line">        return AuthFilter(app, req_usernames) </div><div class="line">    # 返回一个函数</div><div class="line">    return filter  </div><div class="line">  </div><div class="line">class AuthFilter(object):  </div><div class="line">    def __init__(self, app, req_usernames):  </div><div class="line">        self.app = app  </div><div class="line">        self.req_usernames = req_usernames  </div><div class="line">  </div><div class="line">    def __call__(self, environ, start_response):  </div><div class="line">        if environ.get(&apos;REMOTE_USER&apos;) in self.req_usernames:  </div><div class="line">            return self.app(environ, start_response)  </div><div class="line">        start_response(  </div><div class="line">            &apos;403 Forbidden&apos;, [(&apos;Content-type&apos;, &apos;text/html&apos;)])  </div><div class="line">        return [&apos;You are forbidden to view this resource&apos;]</div></pre></td></tr></table></figure>
+<p>定义了AuthFilter对象实现请求变量’REMOTE_USER’下的变量和req_usernames是否一致，filter(app)调用唯一对象app，再里面再做处理并返回信息，通过<strong>call</strong>把类像函数一样调用。</p>
+<h4 id="fliter-app-factory"><a href="#fliter-app-factory" class="headerlink" title="fliter_app_factory"></a>fliter_app_factory</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">class AuthFilter(object):  </div><div class="line">    def __init__(self, app, global_conf, req_usernames):</div></pre></td></tr></table></figure>
+<p>除了参数包括app，返回对象为WSGI application外，其他不变。</p>
+<h4 id="server-factory"><a href="#server-factory" class="headerlink" title="server_factory"></a>server_factory</h4><p>一个参数 wsgi_app，返回serve</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">def server_factory(global_conf, host, port):  </div><div class="line">    port = int(port)  </div><div class="line">    def serve(app):  </div><div class="line">        s = Server(app, host=host, port=port)  </div><div class="line">        s.serve_forever()  </div><div class="line">    return serve</div></pre></td></tr></table></figure>
 
-        <div class="article-info info-on-right">
-          
+      
+
+      
+        <div class="page-reward">
+          <a href="javascript:;" class="page-reward-btn tooltip-top">
+            <div class="tooltip tooltip-east">
+            <span class="tooltip-item">
+              赏
+            </span>
+            <span class="tooltip-content">
+              <span class="tooltip-text">
+                <span class="tooltip-inner">
+                  <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢你请我吃糖果<i class="icon icon-quo-right"></i></p>
+                  <div class="reward-box">
+                    
+                    
+                  </div>
+                </span>
+              </span>
+            </span>
+          </div>
+          </a>
+        </div>
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags icon"></i>
 		<ul class="article-tag-list">
@@ -246,61 +282,108 @@
 		</ul>
 	</div>
 
-          
+      
 
+      
+
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
         </div>
-        <div class="clearfix"></div>
-    </header>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="http://s.jiathis.com/qrcode.php?url=http://yoursite.com/2017/05/11/openstack源码基础之Paste_deploy/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
+
   
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/03/29/ceilometer-mitaka api分析/" class="archive-article-date">
-  	<time datetime="2017-03-29T14:36:22.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-03-29</time>
-</a>
-        </div>
-    	 
+<nav id="article-nav">
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/03/29/ceilometer-mitaka api分析/">ceilometer-mitaka api分析</a>
-    </h1>
+    <a href="/2017/05/10/openstack源码基础之Routes/" id="article-nav-newer" class="article-nav-link-wrap">
+      <i class="icon-circle-left"></i>
+      <div class="article-nav-title">
+        
+          Openstack源码基础之Route
+        
+      </div>
+    </a>
+  
+  
+</nav>
+
+
+
+
+
+
+  
+    <div class="duoshuo"></div>
   
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">Openstack</a>
-        		</li>
-      		
-		</ul>
-	</div>
 
-          
 
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-  
-    </div></section>
-  
+<section id="comments">
+  <div id="disqus_thread"></div>
+    <script type="text/javascript">
+    /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+    var disqus_shortname = 'wanstack'; // required: replace example with your forum shortname
 
-    
-    <nav id="page-nav">
-      <a class="extend prev" rel="prev" href="/archives/2017/">&laquo; Prev</a><a class="page-number" href="/archives/2017/">1</a><span class="page-number current">2</span>
-    </nav>
-  
+    /* * * DON'T EDIT BELOW THIS LINE * * */
+    (function() {
+      var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+      dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+  </script>
+  <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</section>
 
 
           </div>
@@ -323,8 +406,8 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
-		isArchive: true,
+		isPost: true,
+		isArchive: false,
 		isTag: false,
 		isCategory: false,
 		open_in_new: false,

@@ -169,6 +169,243 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-openstack源码基础之Paste_deploy" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/05/11/openstack源码基础之Paste_deploy/">Openstack源码基础之Paste_deploy</a>
+    </h1>
+  
+
+        
+        <a href="/2017/05/11/openstack源码基础之Paste_deploy/" class="archive-article-date">
+  	<time datetime="2017-05-11T15:37:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-05-11</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>QQ群:94776000  欢迎牛逼的你</p>
+<h3 id="一、paste-deploy简介"><a href="#一、paste-deploy简介" class="headerlink" title="一、paste deploy简介"></a>一、paste deploy简介</h3><p>官方文档把PasteDeploy介绍为一个发现并配置WSGI应用和服务的一个系统，通过loadapp(一个简单的函数)就可以部署WSGI，而且不许要知道WSGI应用的细节。<br>从一个PasteDeploy的配置文件(config.ini)入手分析</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div></pre></td><td class="code"><pre><div class="line">[composite:main]  </div><div class="line">use = egg:Paste#urlmap  </div><div class="line">/ = home  </div><div class="line">/blog = blog  </div><div class="line">/wiki = wiki  </div><div class="line">/cms = config:cms.ini  </div><div class="line">  </div><div class="line">[app:home]  </div><div class="line">use = egg:Paste#static  </div><div class="line">document_root = %(here)s/htdocs  </div><div class="line">  </div><div class="line">[filter-app:blog]  </div><div class="line">use = egg:Authentication#auth  </div><div class="line">next = blogapp  </div><div class="line">roles = admin  </div><div class="line">htpasswd = /home/me/users.htpasswd  </div><div class="line">  </div><div class="line">[app:blogapp]  </div><div class="line">use = egg:BlogApp  </div><div class="line">database = sqlite:/home/me/blog.db  </div><div class="line">  </div><div class="line">[app:wiki]  </div><div class="line">use = call:mywiki.main:application  </div><div class="line">database = sqlite:/home/me/wiki.db</div></pre></td></tr></table></figure>
+<h4 id="composite"><a href="#composite" class="headerlink" title="composite"></a>composite</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">[composite:main]  </div><div class="line">use = egg:Paste#urlmap  </div><div class="line">/ = home  </div><div class="line">/blog = blog  </div><div class="line">/wiki = wiki  </div><div class="line">/cms = config:cms.ini</div></pre></td></tr></table></figure>
+<p>compsite部分意味着把请求分发到其他应用上，main应该是这个部分的标识。<br>use = egg:Paste#urlmap意味着一种简单的映射方式，利用Paste包下的urlmap应用，把路径不同的请求进行映射。如后面紧跟的/，/blog，/wiki等路径。<br>如下面的例子就是一个简单的映射：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div></pre></td><td class="code"><pre><div class="line"># coding:utf-8</div><div class="line">from wsgiref.simple_server import make_server</div><div class="line">URL_PATTERNS= (</div><div class="line">    (&apos;hi/&apos;,&apos;say_hi&apos;),</div><div class="line">    (&apos;hello/&apos;,&apos;say_hello&apos;),</div><div class="line">    )</div><div class="line">class Dispatcher(object):</div><div class="line">    def _match(self,path):</div><div class="line">        path = path.split(&apos;/&apos;)[1]</div><div class="line">        # hi</div><div class="line">        print path</div><div class="line">        for url,app in URL_PATTERNS:</div><div class="line">            if path in url:</div><div class="line">                return app</div><div class="line">    def __call__(self,environ, start_response):</div><div class="line">    # PATH_INFO URL 路径除了起始部分后的剩余部分，用于找到相应的应用程序对象，如果请求的路径就是根路径，这个值为空字符串</div><div class="line">        path = environ.get(&apos;PATH_INFO&apos;,&apos;/&apos;)</div><div class="line">        #http://127.0.0.1:8000/hi ---&gt; /hi</div><div class="line">        print path</div><div class="line">        app = self._match(path)</div><div class="line">        if app :</div><div class="line">            app = globals()[app]</div><div class="line">            return app(environ, start_response)</div><div class="line">        else:</div><div class="line">            start_response(&quot;404 NOT FOUND&quot;,[(&apos;Content-type&apos;, &apos;text/plain&apos;)])</div><div class="line">            return [&quot;Page dose not exists!&quot;]</div><div class="line">def say_hi(environ, start_response):</div><div class="line">    start_response(&quot;200 OK&quot;,[(&apos;Content-type&apos;, &apos;text/html&apos;)])</div><div class="line">    return [&quot;kenshin say hi to you!&quot;]</div><div class="line">def say_hello(environ, start_response):</div><div class="line">    start_response(&quot;200 OK&quot;,[(&apos;Content-type&apos;, &apos;text/html&apos;)])</div><div class="line">    return [&quot;kenshin say hello to you!&quot;]</div><div class="line">app = Dispatcher()</div><div class="line"></div><div class="line">httpd = make_server(&apos;&apos;, 8000, app)</div><div class="line">print &quot;Serving on port 8000...&quot;</div><div class="line">httpd.serve_forever()</div></pre></td></tr></table></figure>
+<p>特别要注意的是最后一个，/cms=config:cms.ini，说明如果路径是这样写的话，指向相同目录下的cms.ini，再根据里面的配置进行映射。</p>
+<h4 id="app"><a href="#app" class="headerlink" title="app"></a>app</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">[app:home]  </div><div class="line">use = egg:Paste#static  </div><div class="line">document_root = %(here)s/htdocs</div></pre></td></tr></table></figure>
+<p>app，标识为home，连用到了一种新的映射方式static，进行静态映射，需要配置document_root的参数，指向静态文件目录，这里要注意的一点书%(here)s，官方文档的说明是：You can use variable substitution, which will pul lvariables from the section [DEFAULT] (case sensitive!) with markers like %(var_name)s。大概意思是用[DEFAULT]下的配置变量var_name=xxxx代替了[app:home]下的%(var_name)s的值。像这个配置文件就需要在[DEFAULT]下配置here=xxx为静态。</p>
+<h4 id="filter-app"><a href="#filter-app" class="headerlink" title="filter-app"></a>filter-app</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">[filter-app:blog]  </div><div class="line">use = egg:Authentication#auth  </div><div class="line">next = blogapp  </div><div class="line">roles = admin  </div><div class="line">htpasswd = /home/me/users.htpasswd  </div><div class="line">  </div><div class="line">[app:blogapp]  </div><div class="line">use = egg:BlogApp  </div><div class="line">database = sqlite:/home/me/blog.db</div></pre></td></tr></table></figure>
+<p>filter-app代表了对blog应用进行过滤，这里没有具体说明，但是use表明使用了Authenication包下的auth应用，next说明指向下一个应用，roles和htpasswd都是配置选项，一个key-value键值对。下面的blogapp指向了egg封装的BlogApp应用，并配置了数据库目录。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">[app:wiki]  </div><div class="line">use = call:mywiki.main:application  </div><div class="line">database = sqlite:/home/me/wiki.db</div></pre></td></tr></table></figure>
+<p>和上面配置的唯一区别就是use选项配置不再是egg封装的应用，直接通过call命令调用mywiki,main模块下application应用。</p>
+<h3 id="二-、Paste-Deploy基本用法"><a href="#二-、Paste-Deploy基本用法" class="headerlink" title="二 、Paste Deploy基本用法"></a>二 、Paste Deploy基本用法</h3><p>如下所示通过loadapp调用config.ini文件，进行应用WSGI接口的配置。需要注意的是config:xxx后面跟的路径如果是绝对路径，只有在config.ini里面再配置路径，如上面的/cms，才是相对路径。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">from paste.deploy import loadapp  </div><div class="line">wsgi_app = loadapp(&apos;config:/path/to/config.ini&apos;)</div></pre></td></tr></table></figure>
+<p>config文件格式如下</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">[section_name]  </div><div class="line">key = value  </div><div class="line">another key = a long value  </div><div class="line">    that extends over multiple lines</div></pre></td></tr></table></figure>
+<p>注释行，开头为#或者；<br> app应用部署方式有一下四种：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line">[app:myapp]  </div><div class="line">use = config:another_config_file.ini#app_name  </div><div class="line">  </div><div class="line"># or any URI:  </div><div class="line">[app:myotherapp]  </div><div class="line">use = egg:MyApp  </div><div class="line">  </div><div class="line"># or a callable from a module:  </div><div class="line">[app:mythirdapp]  </div><div class="line">use = call:my.project:myapplication  </div><div class="line">  </div><div class="line"># or even another section:  </div><div class="line">[app:mylastapp]  </div><div class="line">use = myotherapp</div></pre></td></tr></table></figure>
+<p>第一种指向同目录下另一个config,ini中的app应用<br>第二种指向egg分装的应用<br>第三种指向一个模块下的应用<br>第四中指向本config.ini下的另一个app<br>还有一种特别的app的应用部署方式</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">[app:myapp]  </div><div class="line">paste.app_factory = myapp.modulename:app_factory</div></pre></td></tr></table></figure>
+<p>paste.app_factory是一种协议格式，除了app_factory外还有composite_facory,fliter_factory,fliter_app_factory,server_factory,server_runner等。后面跟上myapp.modulename模块下的app_factroy类，不同协议其app_factory也不一样，后面会详细介绍如何定义每一个factories.</p>
+<p>全局变量定义在[DEFAULT]下，但是可以修改全局变量，以如下方式</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">[DEFAULT]  </div><div class="line">admin_email = webmaster@example.com  </div><div class="line">  </div><div class="line">[app:main]  </div><div class="line">use = ...  </div><div class="line">set admin_email = bob@example.com</div></pre></td></tr></table></figure>
+<p>使用set 这样就修修改了 admin_email</p>
+<p>Composite Application,为复合应用，他本身不提供应用，而是通过类似上文url的方式提供映射，到不同的应用。</p>
+<h4 id="Filter-Composition"><a href="#Filter-Composition" class="headerlink" title="Filter Composition"></a>Filter Composition</h4><p>有三种方法进行filter，第一种是fliter-with,第二种是filter-app,第三种是pipeline,多说一句，OpenStack用的最多的是pipeline。</p>
+<p>第一种，通过fliter-with指向下一个fliter应用</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">[app:main]  </div><div class="line">use = egg:MyEgg  </div><div class="line">filter-with = printdebug  </div><div class="line">  </div><div class="line">[filter:printdebug]  </div><div class="line">use = egg:Paste#printdebug  </div><div class="line"># and you could have another filter-with here, and so on...</div></pre></td></tr></table></figure>
+<p>第二种，通过next配置指向下一个filter应用</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">[filter-app:blog]  </div><div class="line">use = egg:Authentication#auth  </div><div class="line">next = blogapp  </div><div class="line">roles = admin  </div><div class="line">htpasswd = /home/me/users.htpasswd  </div><div class="line">  </div><div class="line">[app:blogapp]  </div><div class="line">use = egg:BlogApp  </div><div class="line">database = sqlite:/home/me/blog.db</div></pre></td></tr></table></figure>
+<p>第三种，pipeline依次列出filter即可</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">[pipeline:main]  </div><div class="line">pipeline = filter1 egg:FilterEgg#filter2 filter3 app  </div><div class="line">  </div><div class="line">[filter:filter1]  </div><div class="line">...</div></pre></td></tr></table></figure>
+<p>egg模式，通过setuptools打包Python源文件，类似Java jar的格式</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">setup(  </div><div class="line">    name=&apos;MyApp&apos;,  </div><div class="line">    ...  </div><div class="line">    entry_points=&#123;  </div><div class="line">        &apos;paste.app_factory&apos;: [  </div><div class="line">            &apos;main=myapp.mymodule:app_factory&apos;,  </div><div class="line">            &apos;ob2=myapp.mymodule:ob_factory&apos;],  </div><div class="line">        &#125;,  </div><div class="line">    )</div></pre></td></tr></table></figure>
+<p>通过上面配置安装egg，use=egg:MyApp#main或者use=egg:MyApp#ob2,可以分别找到myapp.mymodule下的app_factory对象和ob_factory对象</p>
+<h3 id="三-、Define-Factories"><a href="#三-、Define-Factories" class="headerlink" title="三 、Define Factories"></a>三 、Define Factories</h3><h4 id="app-factory"><a href="#app-factory" class="headerlink" title="app_factory"></a>app_factory</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">def app_factory(global_config, **local_conf):  </div><div class="line">    return wsgi_app</div></pre></td></tr></table></figure>
+<p>global_config传入的是字典参数，local_conf传入的是key-value参数，返回一个wsgi application</p>
+<h4 id="composite-factory"><a href="#composite-factory" class="headerlink" title="composite_factory"></a>composite_factory</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">def composite_factory(loader, global_config, **local_conf):</div><div class="line">    return wsgi_app</div></pre></td></tr></table></figure>
+<p>loader调用一些特殊函数，get_app(name_or_uri, global_conf=None) return a WSGI application with the given name. get_filter and get_server work the same way。如下使用方案：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">def pipeline_factory(loader, global_config, pipeline):  </div><div class="line">    # space-separated list of filter and app names:  </div><div class="line">    pipeline = pipeline.split()  </div><div class="line">    # n会去掉app</div><div class="line">    filters = [loader.get_filter(n) for n in pipeline[:-1]]  </div><div class="line">    app = loader.get_app(pipeline[-1])  </div><div class="line">    filters.reverse() # apply in reverse order!  </div><div class="line">    for filter in filters: </div><div class="line">        # 从最里面的filter开始</div><div class="line">        app = filter(app)  </div><div class="line">    return app</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">[composite:main]  </div><div class="line">use = &lt;pipeline_factory_uri&gt;  </div><div class="line">pipeline = egg:Paste#printdebug session myapp  </div><div class="line">  </div><div class="line">[filter:session]  </div><div class="line">use = egg:Paste#session  </div><div class="line">store = memory  </div><div class="line">  </div><div class="line">[app:myapp]  </div><div class="line">use = egg:MyApp</div></pre></td></tr></table></figure>
+<p>将数据读取传入，将filter printdebug,session读入并付给filter,读取app为pipeline参数的最后一个myapp,翻转filter先运行session(myapp)，再运行egg:Paste#printdebug(myapp)。</p>
+<h4 id="fliter-factory"><a href="#fliter-factory" class="headerlink" title="fliter_factory"></a>fliter_factory</h4><p>类似app_factroy但返回的是filter对象，而且仅仅接受WSGI application为唯一的参数，如下所示</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div></pre></td><td class="code"><pre><div class="line">def auth_filter_factory(global_conf, req_usernames):  </div><div class="line">    # space-separated list of usernames:  </div><div class="line">    req_usernames = req_usernames.split()  </div><div class="line">    def filter(app): </div><div class="line">        # 返回一个callable的实例</div><div class="line">        return AuthFilter(app, req_usernames) </div><div class="line">    # 返回一个函数</div><div class="line">    return filter  </div><div class="line">  </div><div class="line">class AuthFilter(object):  </div><div class="line">    def __init__(self, app, req_usernames):  </div><div class="line">        self.app = app  </div><div class="line">        self.req_usernames = req_usernames  </div><div class="line">  </div><div class="line">    def __call__(self, environ, start_response):  </div><div class="line">        if environ.get(&apos;REMOTE_USER&apos;) in self.req_usernames:  </div><div class="line">            return self.app(environ, start_response)  </div><div class="line">        start_response(  </div><div class="line">            &apos;403 Forbidden&apos;, [(&apos;Content-type&apos;, &apos;text/html&apos;)])  </div><div class="line">        return [&apos;You are forbidden to view this resource&apos;]</div></pre></td></tr></table></figure>
+<p>定义了AuthFilter对象实现请求变量’REMOTE_USER’下的变量和req_usernames是否一致，filter(app)调用唯一对象app，再里面再做处理并返回信息，通过<strong>call</strong>把类像函数一样调用。</p>
+<h4 id="fliter-app-factory"><a href="#fliter-app-factory" class="headerlink" title="fliter_app_factory"></a>fliter_app_factory</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">class AuthFilter(object):  </div><div class="line">    def __init__(self, app, global_conf, req_usernames):</div></pre></td></tr></table></figure>
+<p>除了参数包括app，返回对象为WSGI application外，其他不变。</p>
+<h4 id="server-factory"><a href="#server-factory" class="headerlink" title="server_factory"></a>server_factory</h4><p>一个参数 wsgi_app，返回serve</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">def server_factory(global_conf, host, port):  </div><div class="line">    port = int(port)  </div><div class="line">    def serve(app):  </div><div class="line">        s = Server(app, host=host, port=port)  </div><div class="line">        s.serve_forever()  </div><div class="line">    return serve</div></pre></td></tr></table></figure>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">Openstack</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2017/05/11/openstack源码基础之Paste_deploy/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+
+
+
+
+
+
+
+  
+    <article id="post-openstack源码基础之Routes" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/05/10/openstack源码基础之Routes/">Openstack源码基础之Route</a>
+    </h1>
+  
+
+        
+        <a href="/2017/05/10/openstack源码基础之Routes/" class="archive-article-date">
+  	<time datetime="2017-05-10T15:37:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-05-10</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>QQ群:94776000  欢迎牛逼的你</p>
+<h4 id="参考官网"><a href="#参考官网" class="headerlink" title="参考官网:"></a>参考官网:</h4><p><a href="http://routes.readthedocs.io/en/latest/" target="_blank" rel="external">http://routes.readthedocs.io/en/latest/</a></p>
+<h4 id="Ruotes简介"><a href="#Ruotes简介" class="headerlink" title="Ruotes简介"></a>Ruotes简介</h4><p>Routes解决了一个Web开发中经常遇到的问题，那就是怎么将url请求map到app，也就是，你怎么能说’/blog/2008/01/08’做这件事，而’/login’却做另外一个。许多Web框架都有一个内置的调度系统。比如，’/A/B/C’表示在目录B中读文件C，或者在’A.B’模块中调用B类的C方法。这样看，毫无问题。但是，当你要重新组织urls的时候，改动就会很大。</p>
+<p>Routes却另辟蹊径。它将url层次和action分离，你可以按照你想要的方式去连接它们。如果你要改变一个特定的url，只要改变route map的一行代码，而不用改变action的逻辑。甚至你可以将多个url指向相同的action。Routes最早起源于Ruby on Rails，到现在已经有很大的不同了。</p>
+<p>Ruotes是Pylons框架最初的调度系统，也是CherrPy的一种调度。所有的Web框架都能用它来处理整个url架构或者是url的subtree。它也可以将subtree指向其他的调度，TurboGear 2在Pylons就是这么实现的。</p>
+<h4 id="搭建Routes"><a href="#搭建Routes" class="headerlink" title="搭建Routes"></a>搭建Routes</h4><p>Routes安装可以用pip或者<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">easy_insatll</div></pre></td></tr></table></figure></p>
+<p>，也可以下载源码用<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">python setup.py install</div></pre></td></tr></table></figure></p>
+<p>安装。</p>
+<p>Pylons中，在myapp/config/routing.py模块的make_map函数中定义routes，下面是一个典型的配置：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">from routes import Mapper</div><div class="line">map = Mapper()</div><div class="line">map.connect(None, &quot;/error/&#123;action&#125;/&#123;id&#125;&quot;, controller=&quot;error&quot;)</div><div class="line">map.connect(&quot;home&quot;, &quot;/&quot;, controller=&quot;main&quot;, action=&quot;index&quot;)</div><div class="line"># ADD CUSTOM ROUTES HERE</div><div class="line">map.connect(None, &quot;/&#123;controller&#125;/&#123;action&#125;&quot;)</div><div class="line">map.connect(None, &quot;/&#123;controller&#125;/&#123;action&#125;/&#123;id&#125;&quot;)</div></pre></td></tr></table></figure>
+<p>第1行和第2行创建一个mapper。</p>
+<p>第3行匹配以’/error’开头的三层url，将controller参数设置成常量。url请求’/error/images/arrow.jpg’会产生：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">1&#123;&quot;controller&quot;: &quot;error&quot;, &quot;action&quot;: &quot;images&quot;, &quot;id&quot;: &quot;arrow.jpg&quot;&#125;</div></pre></td></tr></table></figure>
+<p>第4行匹配’/‘, controller和action参数都设置成了常量，还有route名称’home’，它可以用来生成url。（其他route用None代替name。建议生成url的route都命名，其他route没有必要。）</p>
+<p>第6行匹配任意的两层url，第7行匹配任意三层url。当我们不想为每个action都定义不同的route时，这么做是很有用的。当然，如果你为每个action都定义了route，就可以删掉这两行了。</p>
+<p>注意，’/error/images/arrow.jpg’可以匹配第3行和第7行。mapper是按顺序匹配，所以这个url匹配第3行。</p>
+<p>如果没有route能匹配url，mapper会返回’matach failed’，在Pylons就是’404 Not Found’。</p>
+<p>Route path必须以’/‘开头。</p>
+<h4 id="Requirements"><a href="#Requirements" class="headerlink" title="Requirements"></a>Requirements</h4><p>Route path可以使用正则表达式。有两种方式：一是行内，二是使用requirements参数。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">map.connect(R&quot;/blog/&#123;id:\d+&#125;&quot;)</div><div class="line">map.connect(R&quot;/download/&#123;platform:windows|mac&#125;/&#123;filename&#125;&quot;)</div></pre></td></tr></table></figure>
+<p>等同于：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">map.connect(&quot;/blog/&#123;id&#125;&quot;, requirements=&#123;&quot;id&quot;: R&quot;\d+&quot;&#125;</div><div class="line">map.connect(&quot;/download/&#123;platform&#125;/&#123;filename&#125;&quot;,</div><div class="line">    requirements=&#123;&quot;platform&quot;: R&quot;windows|mac&quot;&#125;)</div></pre></td></tr></table></figure>
+<p>为了包含’\’，正则表达式使用了R””。如果不用R，就要使用’\‘。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">m.connect(&quot;archives/&#123;year&#125;/&#123;month&#125;/&#123;day&#125;&quot;, controller=&quot;archives&quot;,</div><div class="line">          action=&quot;view&quot;, year=2004,</div><div class="line">          requirements=dict(year=R&quot;\d&#123;2,4&#125;&quot;, month=R&quot;\d&#123;1,2&#125;&quot;))</div><div class="line"></div><div class="line">NUMERIC = R&quot;\d+&quot;</div><div class="line">map.connect(..., requirements=&#123;&quot;id&quot;: NUMERIC&#125;)</div><div class="line"></div><div class="line">ARTICLE_REQS = &#123;&quot;year&quot;: R&quot;\d\d\d\d&quot;, &quot;month&quot;: R&quot;\d\d&quot;, &quot;day&quot;: R&quot;\d\d&quot;&#125;</div><div class="line">map.connect(..., requirements=ARTICLE_REQS)</div></pre></td></tr></table></figure>
+<h4 id="Conditions"><a href="#Conditions" class="headerlink" title="Conditions"></a>Conditions</h4><p>Conditions决定匹配何种请求。conditions参数是一个字典，有三个key：</p>
+<h5 id="method"><a href="#method" class="headerlink" title="method"></a>method</h5><p>大写的HTTP方法列表，请求的方法必须是其中某一种。</p>
+<h5 id="sub-domain"><a href="#sub-domain" class="headerlink" title="sub_domain"></a>sub_domain</h5><p>可以是subdomain列表，True，False或者None。如果是列表，请求必须调用列表中的subdomain。如果是True，请求必须包括任意一个subdomain。如果是False或者None，不匹配subdomain。</p>
+<h5 id="function"><a href="#function" class="headerlink" title="function"></a>function</h5><p>验证request的函数。它必须是func(envirion, match_dict) =&gt; bool这种类型。如果匹配成功返回True，否则返回False。第一个参数是WSGI环境变量，第二个参数是匹配成功后返回的变量。函数还可以改变mtach。</p>
+<p>例子：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div></pre></td><td class="code"><pre><div class="line"># Match only if the HTTP method is &quot;GET&quot; or &quot;HEAD&quot;.</div><div class="line">m.connect(&quot;/user/list&quot;, controller=&quot;user&quot;, action=&quot;list&quot;,</div><div class="line">          conditions=dict(method=[&quot;GET&quot;, &quot;HEAD&quot;]))</div><div class="line"></div><div class="line"># A sub-domain should be present.</div><div class="line">m.connect(&quot;/&quot;, controller=&quot;user&quot;, action=&quot;home&quot;,</div><div class="line">          conditions=dict(sub_domain=True))</div><div class="line"></div><div class="line"># Sub-domain should be either &quot;fred&quot; or &quot;george&quot;.</div><div class="line">m.connect(&quot;/&quot;, controller=&quot;user&quot;, action=&quot;home&quot;,</div><div class="line">          conditions=dict(sub_domain=[&quot;fred&quot;, &quot;george&quot;]))</div><div class="line"></div><div class="line"># Put the referrer into the resulting match dictionary.</div><div class="line"># This function always returns true, so it never prevents the match</div><div class="line"># from succeeding.</div><div class="line">def referals(environ, result):</div><div class="line">    result[&quot;referer&quot;] = environ.get(&quot;HTTP_REFERER&quot;)</div><div class="line">    return True</div><div class="line">m.connect(&quot;/&#123;controller&#125;/&#123;action&#125;/&#123;id&#125;&quot;,</div><div class="line">    conditions=dict(function=referals))</div></pre></td></tr></table></figure>
+<h4 id="Wildcard-routes"><a href="#Wildcard-routes" class="headerlink" title="Wildcard routes"></a>Wildcard routes</h4><p>path变量默认情况不匹配’/‘。这是为了保证每个path精确匹配某一层url。你可以用requirements去覆盖：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">map.connect(&quot;/static/&#123;filename:.*?&#125;&quot;)</div></pre></td></tr></table></figure>
+<p>匹配’/static/foo.jpg’，’/static/bar/foo.jpg’等url。</p>
+<h5 id="Format-extensions"><a href="#Format-extensions" class="headerlink" title="Format extensions"></a>Format extensions</h5><p>path中包含’{.format}’会匹配可选的扩展名（如.html或者.json），在’.’之后设置format变量。例如：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">map.connect(&apos;/entries/&#123;id&#125;&#123;.format&#125;&apos;)</div></pre></td></tr></table></figure>
+<p>匹配’/entries/1’和’/entires/1.mp3’。你可以用requirements去限制匹配的扩展名：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">map.connect(&apos;/entries/&#123;id:\d+&#125;&#123;.format:json&#125;&apos;)</div></pre></td></tr></table></figure>
+<p>匹配’/entries/1’和’/entires/1.json’，但是不匹配’/entires/1.mp3’。</p>
+<h4 id="Submappers"><a href="#Submappers" class="headerlink" title="Submappers"></a>Submappers</h4><p>如果有相同的Key-value参数，可以用Submapper来添加route。有两种语法，一个使用with，一个不用：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line"># Using &apos;with&apos;</div><div class="line">with map.submapper(controller=&quot;home&quot;) as m:</div><div class="line">    m.connect(&quot;home&quot;, &quot;/&quot;, action=&quot;splash&quot;)</div><div class="line">    m.connect(&quot;index&quot;, &quot;/index&quot;, action=&quot;index&quot;)</div><div class="line"></div><div class="line"># Not using &apos;with&apos;</div><div class="line">m = map.submapper(controller=&quot;home&quot;)</div><div class="line">m.connect(&quot;home&quot;, &quot;/&quot;, action=&quot;splash&quot;)</div><div class="line">m.connect(&quot;index&quot;, &quot;/index&quot;, action=&quot;index&quot;)</div><div class="line"></div><div class="line"># Both of these syntaxes create the following routes::</div><div class="line"># &quot;/&quot;      =&gt; &#123;&quot;controller&quot;: &quot;home&quot;, action=&quot;splash&quot;&#125;</div><div class="line"># &quot;/index&quot; =&gt; &#123;&quot;controller&quot;: &quot;home&quot;, action=&quot;index&quot;&#125;</div></pre></td></tr></table></figure>
+<p>可以使用path_prefix参数：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">with map.submapper(path_prefix=&quot;/admin&quot;, controller=&quot;admin&quot;) as m:</div><div class="line">    m.connect(&quot;admin_users&quot;, &quot;/users&quot;, action=&quot;users&quot;)</div><div class="line">    m.connect(&quot;admin_databases&quot;, &quot;/databases&quot;, action=&quot;databases&quot;)</div><div class="line"></div><div class="line"># /admin/users     =&gt; &#123;&quot;controller&quot;: &quot;admin&quot;, &quot;action&quot;: &quot;users&quot;&#125;</div><div class="line"># /admin/databases =&gt; &#123;&quot;controller&quot;: &quot;admin&quot;, &quot;action&quot;: &quot;databases&quot;&#125;</div></pre></td></tr></table></figure>
+<p>.submapper的参数必须是key-value。</p>
+<h4 id="Submapper-helpers"><a href="#Submapper-helpers" class="headerlink" title="Submapper helpers"></a>Submapper helpers</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">with map.submapper(controller=&quot;home&quot;) as m:</div><div class="line">    m.connect(&quot;home&quot;, &quot;/&quot;, action=&quot;splash&quot;)</div><div class="line">    m.connect(&quot;index&quot;, &quot;/index&quot;, action=&quot;index&quot;</div></pre></td></tr></table></figure>
+<p>)<br>可以写成：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">with map.submapper(controller=&quot;home&quot;, path_prefix=&quot;/&quot;) as m:</div><div class="line">    m.action(&quot;home&quot;, action=&quot;splash&quot;)</div><div class="line">    m.link(&quot;index&quot;)</div></pre></td></tr></table></figure>
+<p>action在submapper的path（上例中是’/‘）上生成route。而link根据相关的path生成route。</p>
+<p>还有一些其他的action，index，new，create，show，edit，update和delete。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">with map.submapper(controller=&quot;entries&quot;, path_prefix=&quot;/entries&quot;) as entries:</div><div class="line">    entries.index()</div><div class="line">    with entries.submapper(path_prefix=&quot;/&#123;id&#125;&quot;) as entry:</div><div class="line">        entry.show()</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">with map.submapper(controller=&quot;entries&quot;, path_prefix=&quot;/entries&quot;,</div><div class="line">                   actions=[&quot;index&quot;]) as entries:</div><div class="line">    entries.submapper(path_prefix=&quot;/&#123;id&#125;&quot;, actions=[&quot;show&quot;])</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">map.collection(collection_name=&quot;entries&quot;, member_name=&quot;entry&quot;,</div><div class="line">               controller=&quot;entries&quot;,</div><div class="line">               collection_actions=[&quot;index&quot;], member_actions[&quot;show&quot;])</div></pre></td></tr></table></figure>
+<h4 id="RESTful-services"><a href="#RESTful-services" class="headerlink" title="RESTful services"></a>RESTful services</h4><p>map.resource使Restful风格的url更加容易，它创建了一个’add/modify/delete’route集。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div></pre></td><td class="code"><pre><div class="line">map.resource(&quot;message&quot;, &quot;messages&quot;)</div><div class="line"></div><div class="line"># The above command sets up several routes as if you had typed the</div><div class="line"># following commands:</div><div class="line">map.connect(&quot;messages&quot;, &quot;/messages&quot;,</div><div class="line">    controller=&quot;messages&quot;, action=&quot;create&quot;,</div><div class="line">    conditions=dict(method=[&quot;POST&quot;]))</div><div class="line">map.connect(&quot;messages&quot;, &quot;/messages&quot;,</div><div class="line">    controller=&quot;messages&quot;, action=&quot;index&quot;,</div><div class="line">    conditions=dict(method=[&quot;GET&quot;]))</div><div class="line">map.connect(&quot;formatted_messages&quot;, &quot;/messages.&#123;format&#125;&quot;,</div><div class="line">    controller=&quot;messages&quot;, action=&quot;index&quot;,</div><div class="line">    conditions=dict(method=[&quot;GET&quot;]))</div><div class="line">map.connect(&quot;new_message&quot;, &quot;/messages/new&quot;,</div><div class="line">    controller=&quot;messages&quot;, action=&quot;new&quot;,</div><div class="line">    conditions=dict(method=[&quot;GET&quot;]))</div><div class="line">map.connect(&quot;formatted_new_message&quot;, &quot;/messages/new.&#123;format&#125;&quot;,</div><div class="line">    controller=&quot;messages&quot;, action=&quot;new&quot;,</div><div class="line">    conditions=dict(method=[&quot;GET&quot;]))</div><div class="line">map.connect(&quot;/messages/&#123;id&#125;&quot;,</div><div class="line">    controller=&quot;messages&quot;, action=&quot;update&quot;,</div><div class="line">    conditions=dict(method=[&quot;PUT&quot;]))</div><div class="line">map.connect(&quot;/messages/&#123;id&#125;&quot;,</div><div class="line">    controller=&quot;messages&quot;, action=&quot;delete&quot;,</div><div class="line">    conditions=dict(method=[&quot;DELETE&quot;]))</div><div class="line">map.connect(&quot;edit_message&quot;, &quot;/messages/&#123;id&#125;/edit&quot;,</div><div class="line">    controller=&quot;messages&quot;, action=&quot;edit&quot;,</div><div class="line">    conditions=dict(method=[&quot;GET&quot;]))</div><div class="line">map.connect(&quot;formatted_edit_message&quot;, &quot;/messages/&#123;id&#125;.&#123;format&#125;/edit&quot;,</div><div class="line">    controller=&quot;messages&quot;, action=&quot;edit&quot;,</div><div class="line">    conditions=dict(method=[&quot;GET&quot;]))</div><div class="line">map.connect(&quot;message&quot;, &quot;/messages/&#123;id&#125;&quot;,</div><div class="line">    controller=&quot;messages&quot;, action=&quot;show&quot;,</div><div class="line">    conditions=dict(method=[&quot;GET&quot;]))</div><div class="line">map.connect(&quot;formatted_message&quot;, &quot;/messages/&#123;id&#125;.&#123;format&#125;&quot;,</div><div class="line">    controller=&quot;messages&quot;, action=&quot;show&quot;,</div><div class="line">    conditions=dict(method=[&quot;GET&quot;]))</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">GET    /messages        =&gt; messages.index()    =&gt; url(&quot;messages&quot;)</div><div class="line">POST   /messages        =&gt; messages.create()   =&gt; url(&quot;messages&quot;)</div><div class="line">GET    /messages/new    =&gt; messages.new()      =&gt; url(&quot;new_message&quot;)</div><div class="line">PUT    /messages/1      =&gt; messages.update(id) =&gt; url(&quot;message&quot;, id=1)</div><div class="line">DELETE /messages/1      =&gt; messages.delete(id) =&gt; url(&quot;message&quot;, id=1)</div><div class="line">GET    /messages/1      =&gt; messages.show(id)   =&gt; url(&quot;message&quot;, id=1)</div><div class="line">GET    /messages/1/edit =&gt; messages.edit(id)   =&gt; url(&quot;edit_message&quot;, id=1)</div></pre></td></tr></table></figure>
+<h4 id="Resource-options"><a href="#Resource-options" class="headerlink" title="Resource options"></a>Resource options</h4><p>controller</p>
+<h5 id="collection"><a href="#collection" class="headerlink" title="collection"></a>collection</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">map.resource(&quot;message&quot;, &quot;messages&quot;, collection=&#123;&quot;rss&quot;: &quot;GET&quot;&#125;)</div><div class="line"># &quot;GET /messages/rss&quot;  =&gt;  ``Messages.rss()``.</div><div class="line"># Defines a named route &quot;rss_messages&quot;.</div></pre></td></tr></table></figure>
+<h5 id="member"><a href="#member" class="headerlink" title="member"></a>member</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">map.resource(&apos;message&apos;, &apos;messages&apos;, member=&#123;&apos;mark&apos;:&apos;POST&apos;&#125;)</div><div class="line"># &quot;POST /message/1/mark&quot;  =&gt;  ``Messages.mark(1)``</div><div class="line"># also adds named route &quot;mark_message&quot;</div><div class="line"></div><div class="line">map.resource(&quot;message&quot;, &quot;messages&quot;, member=&#123;&quot;ask_delete&quot;: &quot;GET&quot;&#125;</div><div class="line"># &quot;GET /message/1/ask_delete&quot;   =&gt;   ``Messages.ask_delete(1)``.</div><div class="line"># Also adds a named route &quot;ask_delete_message&quot;.</div></pre></td></tr></table></figure>
+<h5 id="new"><a href="#new" class="headerlink" title="new"></a>new</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">map.resource(&quot;message&quot;, &quot;messages&quot;, new=&#123;&quot;preview&quot;: &quot;POST&quot;&#125;)</div><div class="line"># &quot;POST /messages/new/preview&quot;</div></pre></td></tr></table></figure>
+<p>path_prefix</p>
+<p>所有url的前置。</p>
+<h5 id="name-prefix"><a href="#name-prefix" class="headerlink" title="name_prefix"></a>name_prefix</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">map.resource(&quot;message&quot;, &quot;messages&quot;, controller=&quot;categories&quot;,</div><div class="line">    path_prefix=&quot;/category/&#123;category_id&#125;&quot;,</div><div class="line">    name_prefix=&quot;category_&quot;)</div><div class="line"># GET /category/7/message/1</div><div class="line"># Adds named route &quot;category_message&quot;</div></pre></td></tr></table></figure>
+<h5 id="parent-resource"><a href="#parent-resource" class="headerlink" title="parent_resource"></a>parent_resource</h5><p>一个包含父resource信息的字典，在创建嵌套resource使用。它应该包含member_name和collection_name。</p>
+<p>如果指定parent_resource而没有path_prefix，path_prefix将用’<parent collection="" name="">/:<parent member="" name="">_id’生成。</parent></parent></p>
+<p>如果指定parent_resource而没有name_prefix，name<em>prefix将用’<parent member="" name=""></parent></em>‘生成。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div></pre></td><td class="code"><pre><div class="line">&gt;&gt;&gt; m = Mapper()</div><div class="line">&gt;&gt;&gt; m.resource(&apos;location&apos;, &apos;locations&apos;,</div><div class="line">...            parent_resource=dict(member_name=&apos;region&apos;,</div><div class="line">...                                 collection_name=&apos;regions&apos;))</div><div class="line">&gt;&gt;&gt; # path_prefix is &quot;regions/:region_id&quot;</div><div class="line">&gt;&gt;&gt; # name prefix is &quot;region_&quot;</div><div class="line">&gt;&gt;&gt; url(&apos;region_locations&apos;, region_id=13)</div><div class="line">&apos;/regions/13/locations&apos;</div><div class="line">&gt;&gt;&gt; url(&apos;region_new_location&apos;, region_id=13)</div><div class="line">&apos;/regions/13/locations/new&apos;</div><div class="line">&gt;&gt;&gt; url(&apos;region_location&apos;, region_id=13, id=60)</div><div class="line">&apos;/regions/13/locations/60&apos;</div><div class="line">&gt;&gt;&gt; url(&apos;region_edit_location&apos;, region_id=13, id=60)</div><div class="line">&apos;/regions/13/locations/60/edit&apos;</div><div class="line"></div><div class="line">Overriding generated path_prefix:</div><div class="line"></div><div class="line">&gt;&gt;&gt; m = Mapper()</div><div class="line">&gt;&gt;&gt; m.resource(&apos;location&apos;, &apos;locations&apos;,</div><div class="line">...            parent_resource=dict(member_name=&apos;region&apos;,</div><div class="line">...                                 collection_name=&apos;regions&apos;),</div><div class="line">...            path_prefix=&apos;areas/:area_id&apos;)</div><div class="line">&gt;&gt;&gt; # name prefix is &quot;region_&quot;</div><div class="line">&gt;&gt;&gt; url(&apos;region_locations&apos;, area_id=51)</div><div class="line">&apos;/areas/51/locations&apos;</div><div class="line"></div><div class="line">Overriding generated name_prefix:</div><div class="line"></div><div class="line">&gt;&gt;&gt; m = Mapper()</div><div class="line">&gt;&gt;&gt; m.resource(&apos;location&apos;, &apos;locations&apos;,</div><div class="line">...            parent_resource=dict(member_name=&apos;region&apos;,</div><div class="line">...                                 collection_name=&apos;regions&apos;),</div><div class="line">...            name_prefix=&apos;&apos;)</div><div class="line">&gt;&gt;&gt; # path_prefix is &quot;regions/:region_id&quot;</div><div class="line">&gt;&gt;&gt; url(&apos;locations&apos;, region_id=51)</div><div class="line">&apos;/regions/51/locations&apos;</div></pre></td></tr></table></figure>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">Openstack</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2017/05/10/openstack源码基础之Routes/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+
+
+
+
+
+
+
+  
     <article id="post-openstack源码基础之wsgi" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -189,7 +426,8 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h3 id="一、wsgi基础"><a href="#一、wsgi基础" class="headerlink" title="一、wsgi基础"></a>一、wsgi基础</h3><h4 id="1-1-http基础"><a href="#1-1-http基础" class="headerlink" title="1.1 http基础"></a>1.1 http基础</h4><p>对于 web 应用程序来说，最基本的概念就是客户端发送请求（request），收到服务器端的响应（response）。<br>下面是简单的 HTTP 请求：</p>
+        <p>QQ群:94776000  欢迎牛逼的你</p>
+<h3 id="一、wsgi基础"><a href="#一、wsgi基础" class="headerlink" title="一、wsgi基础"></a>一、wsgi基础</h3><h4 id="1-1-http基础"><a href="#1-1-http基础" class="headerlink" title="1.1 http基础"></a>1.1 http基础</h4><p>对于 web 应用程序来说，最基本的概念就是客户端发送请求（request），收到服务器端的响应（response）。<br>下面是简单的 HTTP 请求：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">GET /Index.html HTTP/1.1\r\n</div><div class="line">Connection: Keep-Alive\r\n</div><div class="line">Accept: */*\r\n</div><div class="line">User-Agent: Sample Application\r\n</div><div class="line">Host: www.microsoft.com\r\n\r\n</div></pre></td></tr></table></figure>
 <p>内容包括了 method、 url、 protocol version 以及头部的信息。而 HTTP 响应（不包括数据）可能是如下的内容：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">HTTP/1.1 200 OK</div><div class="line">Server: Microsoft-IIS/5.0\r\n</div><div class="line">Content-Location: http://www.microsoft.com/default.htm\r\n</div><div class="line">Date: Tue, 25 Jun 2002 19:33:18 GMT\r\n</div><div class="line">Content-Type: text/html\r\n</div><div class="line">Accept-Ranges: bytes\r\n</div><div class="line">Last-Modified: Mon, 24 Jun 2002 20:27:23 GMT\r\n</div><div class="line">Content-Length: 26812\r\n</div></pre></td></tr></table></figure>
@@ -880,178 +1118,6 @@
       
         <p class="article-more-link">
           <a class="article-more-a" href="/2017/03/30/packstack install openstack-mitaka/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-
-
-
-
-
-
-
-  
-    <article id="post-python 调试工具" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/03/29/python 调试工具/">python代码调试工具</a>
-    </h1>
-  
-
-        
-        <a href="/2017/03/29/python 调试工具/" class="archive-article-date">
-  	<time datetime="2017-03-29T15:37:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-03-29</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>以前都是用print或者log来调试程序,在小规模的程序下很方便，但是遇到向openstack这种项目级别的程序就太尴尬了。于是找到了ipdb</p>
-<p>1、安装</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">pip install ipdb</div></pre></td></tr></table></figure>
-<p>2、使用方法<br>有两种使用方法,一种是不用改变程序直接用ipdb单步执行Python程序,第二种是在程序里标记断点,进行调试.</p>
-<p>1) 第一种方法</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">python -m ipdb xxx.py</div></pre></td></tr></table></figure>
-<p>2) 第二种方法</p>
-<p>在需要断点的地方插入</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">from ipdb import set_trace</div><div class="line">set_trace()</div></pre></td></tr></table></figure>
-<p>3、常用命令</p>
-<blockquote>
-<ul>
-<li>n(下一个)</li>
-<li>ENTER(重复上次命令)</li>
-<li>q(退出)</li>
-<li>p&lt;变量&gt;(打印变量)</li>
-<li>c(继续)</li>
-<li>l(查找当前位于哪里)</li>
-<li>s(进入子程序)</li>
-<li>r(运行直到子程序结束)</li>
-<li>!<python 命令=""></python></li>
-<li>h(帮助)</li>
-</ul>
-</blockquote>
-<hr>
-<p>如果上面的工具觉得好用的话，下面这款工具真心觉得用的爽。</p>
-<p>1、安装<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">pip install pudb</div></pre></td></tr></table></figure></p>
-<p>2、在代码的入口处插入</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">from pudb import set_trace; set_trace()</div></pre></td></tr></table></figure>
-<p>3、调试代码</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">sudo pudb bp.py</div></pre></td></tr></table></figure>
-<p>4、简单使用</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">Ctrl-p可以配置pudb: 是否显示行号, 选择主题, 内置Python解释器的类别</div></pre></td></tr></table></figure>
-<blockquote>
-<ul>
-<li>n: next，也就是执行一步</li>
-<li>s: step into，进入函数内部</li>
-<li>c: continue</li>
-<li>b: break point，断点</li>
-<li>!: python command line</li>
-<li>?: help</li>
-</ul>
-</blockquote>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">Python</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2017/03/29/python 调试工具/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-
-
-
-
-
-
-
-  
-    <article id="post-devstack" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/03/29/devstack/">devstack mitaka 安装配置</a>
-    </h1>
-  
-
-        
-        <a href="/2017/03/29/devstack/" class="archive-article-date">
-  	<time datetime="2017-03-29T15:37:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-03-29</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div><div class="line">76</div><div class="line">77</div><div class="line">78</div><div class="line">79</div><div class="line">80</div><div class="line">81</div><div class="line">82</div><div class="line">83</div><div class="line">84</div><div class="line">85</div><div class="line">86</div><div class="line">87</div><div class="line">88</div><div class="line">89</div><div class="line">90</div><div class="line">91</div><div class="line">92</div><div class="line">93</div><div class="line">94</div><div class="line">95</div><div class="line">96</div><div class="line">97</div><div class="line">98</div><div class="line">99</div><div class="line">100</div><div class="line">101</div><div class="line">102</div><div class="line">103</div><div class="line">104</div><div class="line">105</div><div class="line">106</div><div class="line">107</div><div class="line">108</div><div class="line">109</div><div class="line">110</div><div class="line">111</div><div class="line">112</div><div class="line">113</div><div class="line">114</div><div class="line">115</div><div class="line">116</div><div class="line">117</div><div class="line">118</div><div class="line">119</div><div class="line">120</div><div class="line">121</div><div class="line">122</div><div class="line">123</div><div class="line">124</div><div class="line">125</div><div class="line">126</div><div class="line">127</div><div class="line">128</div><div class="line">129</div><div class="line">130</div><div class="line">131</div><div class="line">132</div><div class="line">133</div><div class="line">134</div><div class="line">135</div><div class="line">136</div><div class="line">137</div><div class="line">138</div><div class="line">139</div><div class="line">140</div><div class="line">141</div><div class="line">142</div><div class="line">143</div><div class="line">144</div><div class="line">145</div><div class="line">146</div><div class="line">147</div><div class="line">148</div><div class="line">149</div><div class="line">150</div><div class="line">151</div><div class="line">152</div><div class="line">153</div><div class="line">154</div><div class="line">155</div></pre></td><td class="code"><pre><div class="line">1、操作系统ubuntu 14.04 </div><div class="line">2、安装方式 devstack </div><div class="line">3、安装版本 openstack mitaka版本</div><div class="line">4、安装devstack 步骤</div><div class="line"></div><div class="line">1) 目前国内已经提供了完整的OpenStack的github的mirror</div><div class="line">http://git.trystack.cn</div><div class="line"></div><div class="line">2) 另外devstack还会下载image，下载的过程也是非常缓慢。trystack也提供大家常用的image下载。</div><div class="line">http://images.trystack.cn</div><div class="line">3) 设置源</div><div class="line">sudo vim /etc/apt/sources.list</div><div class="line">deb http://cn.archive.ubuntu.com/ubuntu/ trusty main restricted universe multiverse</div><div class="line">deb http://cn.archive.ubuntu.com/ubuntu/ trusty-security main restricted universe multiverse</div><div class="line">deb http://cn.archive.ubuntu.com/ubuntu/ trusty-updates main restricted universe multiverse</div><div class="line">deb http://cn.archive.ubuntu.com/ubuntu/ trusty-proposed main restricted universe multiverse</div><div class="line">deb http://cn.archive.ubuntu.com/ubuntu/ trusty-backports main restricted universe multiverse</div><div class="line"></div><div class="line"></div><div class="line">sudo apt-get update</div><div class="line">sudo ntpdate 192.168.2.161</div><div class="line"></div><div class="line">sudo apt-get install git -y</div><div class="line"></div><div class="line">sudo git clone http://git.trystack.cn/openstack-dev/devstack.git -b stable/mitaka</div><div class="line"></div><div class="line"># 目前Devstack脚本已经不支持直接使用root身份运行，你需要创建stack用户运行</div><div class="line">cd devstack/tools/</div><div class="line">sudo ./create-stack-user.sh</div><div class="line">sudo passwd stack</div><div class="line"># 修改devstack目录权限,让stack用户可以运行</div><div class="line">sudo chown -R stack:stack devstack</div><div class="line">sudo chmod 777 /dev/pts/0</div><div class="line"></div><div class="line">su stack</div><div class="line">cd devstack</div><div class="line"></div><div class="line">vim local.conf</div><div class="line">stack@ubuntu:/home/wanstack/devstack$ cat local.conf </div><div class="line">[[local|localrc]]</div><div class="line"></div><div class="line"># use TryStack git mirror</div><div class="line">GIT_BASE=http://git.trystack.cn</div><div class="line">NOVNC_REPO=http://git.trystack.cn/kanaka/noVNC.git</div><div class="line">SPICE_REPO=http://git.trystack.cn/git/spice/spice-html5.git</div><div class="line"></div><div class="line">#OFFLINE=True</div><div class="line">RECLONE=False</div><div class="line"></div><div class="line"># Define images to be automatically downloaded during the DevStack built process.</div><div class="line">DOWNLOAD_DEFAULT_IMAGES=False</div><div class="line">IMAGE_URLS=&quot;http://images.trystack.cn/cirros/cirros-0.3.4-x86_64-disk.img&quot;</div><div class="line"></div><div class="line">HOST_IP=192.168.12.10</div><div class="line"></div><div class="line"></div><div class="line"># Credentials</div><div class="line">DATABASE_PASSWORD=openstack</div><div class="line">ADMIN_PASSWORD=openstack</div><div class="line">SERVICE_PASSWORD=openstack</div><div class="line">SERVICE_TOKEN=openstack</div><div class="line">RABBIT_PASSWORD=openstack</div><div class="line"></div><div class="line">HORIZON_BRANCH=stable/mitaka</div><div class="line">KEYSTONE_BRANCH=stable/mitaka</div><div class="line">NOVA_BRANCH=stable/mitaka</div><div class="line">NEUTRON_BRANCH=stable/mitaka</div><div class="line">GLANCE_BRANCH=stable/mitaka</div><div class="line">CINDER_BRANCH=stable/mitaka</div><div class="line">CEILOMETER_BRANCH=stable/mitaka</div><div class="line">AODH_BRANCH=stable/mitaka</div><div class="line"></div><div class="line">enable_plugin ceilometer https://git.openstack.org/openstack/ceilometer stable/mitaka</div><div class="line">enable_plugin aodh https://git.openstack.org/openstack/aodh stable/mitaka</div><div class="line"></div><div class="line"></div><div class="line">#keystone</div><div class="line">KEYSTONE_TOKEN_FORMAT=UUID</div><div class="line"></div><div class="line">##Heat</div><div class="line">HEAT_BRANCH=stable/mitaka</div><div class="line">enable_service h-eng h-api h-api-cfn h-api-cw</div><div class="line"></div><div class="line"></div><div class="line">## Swift</div><div class="line">SWIFT_BRANCH=stable/mitaka</div><div class="line">ENABLED_SERVICES+=,s-proxy,s-object,s-container,s-account</div><div class="line">SWIFT_REPLICAS=1</div><div class="line">SWIFT_HASH=011688b44136573e209e</div><div class="line"></div><div class="line"></div><div class="line"># Enabling Neutron (network) Service</div><div class="line">disable_service n-net</div><div class="line">enable_service q-svc</div><div class="line">enable_service q-agt</div><div class="line">enable_service q-dhcp</div><div class="line">enable_service q-l3</div><div class="line">enable_service q-meta</div><div class="line">enable_service q-metering</div><div class="line">enable_service neutron</div><div class="line"></div><div class="line">## Neutron options</div><div class="line">Q_USE_SECGROUP=True</div><div class="line">FLOATING_RANGE=&quot;192.168.12.0/24&quot;</div><div class="line">FIXED_RANGE=&quot;10.0.0.0/24&quot;</div><div class="line">Q_FLOATING_ALLOCATION_POOL=start=192.168.12.110,end=192.168.12.120</div><div class="line">PUBLIC_NETWORK_GATEWAY=&quot;192.168.12.1&quot;</div><div class="line">Q_L3_ENABLED=True</div><div class="line">PUBLIC_INTERFACE=eth0</div><div class="line">Q_USE_PROVIDERNET_FOR_PUBLIC=True</div><div class="line">OVS_PHYSICAL_BRIDGE=br-ex</div><div class="line">PUBLIC_BRIDGE=br-ex</div><div class="line">OVS_BRIDGE_MAPPINGS=public:br-ex</div><div class="line"></div><div class="line"># #VLAN configuration.</div><div class="line">Q_PLUGIN=ml2</div><div class="line">ENABLE_TENANT_VLANS=True</div><div class="line"></div><div class="line"># Logging</div><div class="line">LOGFILE=/opt/stack/logs/stack.sh.log</div><div class="line">VERBOSE=True</div><div class="line">LOG_COLOR=True</div><div class="line">SCREEN_LOGDIR=/opt/stack/logs</div><div class="line"></div><div class="line"></div><div class="line">报错:</div><div class="line">File &quot;/usr/local/lib/python2.7/dist-packages/pip/_vendor/requests/packages/urllib3/response.py&quot;, line 246, in _error_catcher</div><div class="line">2017-03-21 07:54:11.931 |     raise ReadTimeoutError(self._pool, None, &apos;Read timed out.&apos;)</div><div class="line">2017-03-21 07:54:11.931 | ReadTimeoutError: HTTPSConnectionPool(host=&apos;pypi.python.org&apos;, port=443): Read timed out.</div><div class="line"></div><div class="line"></div><div class="line">报错解决:</div><div class="line">./stack.sh: line 488: generate-subunit: command not found</div><div class="line"></div><div class="line">sudo apt-get install python-pip -y</div><div class="line">sudo pip install --upgrade pip</div><div class="line">sudo pip install -U os-testr</div><div class="line"></div><div class="line"></div><div class="line">报错:</div><div class="line">File &quot;/usr/local/lib/python2.7/dist-packages/openstack/session.py&quot;, line 29, in &lt;module&gt;</div><div class="line">2017-03-20 04:52:02.612 |     DEFAULT_USER_AGENT = &quot;openstacksdk/%s&quot; % openstack.__version__</div><div class="line">2017-03-20 04:52:02.612 | AttributeError: &apos;module&apos; object has no attribute &apos;__version__&apos;</div><div class="line">2017-03-20 04:52:02.643 | +lib/keystone:create_keystone_accounts:373  admin_tenant=</div><div class="line">处理:</div><div class="line">root@ubuntu:~# python</div><div class="line"> &gt;&gt;&gt; import openstack</div><div class="line"> &gt;&gt;&gt; import pbr.version</div><div class="line"> &gt;&gt;&gt; print(pbr.version.VersionInfo(&apos;openstacksdk&apos;).version_string())</div><div class="line"> 8 0.8.1</div><div class="line"> &gt;&gt;&gt; quit()</div><div class="line"> vim /usr/local/lib/python2.7/dist-packages/openstack/session.py</div><div class="line">修改为： DEFAULT_USER_AGENT = &quot;openstacksdk/0.8.1&quot;</div><div class="line"></div><div class="line">./stack.sh</div></pre></td></tr></table></figure>
-<h1 id="在ubuntu上搭建samba"><a href="#在ubuntu上搭建samba" class="headerlink" title="在ubuntu上搭建samba"></a>在ubuntu上搭建samba</h1><p>sudo apt-get install samba samba-common -y</p>
-<h1 id="我们把devstack安装在了-opt目录下，所以共享这个目录"><a href="#我们把devstack安装在了-opt目录下，所以共享这个目录" class="headerlink" title="我们把devstack安装在了/opt目录下，所以共享这个目录"></a>我们把devstack安装在了/opt目录下，所以共享这个目录</h1><p>#sudo chmod -R 777 /opt<br>sudo useradd openstack<br>sudo smbpasswd -a  openstack<br>sudo vim /etc/samba/smb.conf<br>在文件末尾添加：<br>[openstack]<br>comment=openstack<br>public=yes<br>browseable = yes<br>path=/opt<br>read only = no</p>
-<p>forceuser=root<br>forcegroup=root</p>
-<p>####################################################</p>
-<h1 id="重启服务"><a href="#重启服务" class="headerlink" title="重启服务"></a>重启服务</h1><p>sudo /etc/init.d/smbd restart</p>
-<p>```</p>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">Openstack</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2017/03/29/devstack/">展开全文 >></a>
         </p>
       
 

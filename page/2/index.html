@@ -169,6 +169,178 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-python 调试工具" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/03/29/python 调试工具/">python代码调试工具</a>
+    </h1>
+  
+
+        
+        <a href="/2017/03/29/python 调试工具/" class="archive-article-date">
+  	<time datetime="2017-03-29T15:37:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-03-29</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>以前都是用print或者log来调试程序,在小规模的程序下很方便，但是遇到向openstack这种项目级别的程序就太尴尬了。于是找到了ipdb</p>
+<p>1、安装</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">pip install ipdb</div></pre></td></tr></table></figure>
+<p>2、使用方法<br>有两种使用方法,一种是不用改变程序直接用ipdb单步执行Python程序,第二种是在程序里标记断点,进行调试.</p>
+<p>1) 第一种方法</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">python -m ipdb xxx.py</div></pre></td></tr></table></figure>
+<p>2) 第二种方法</p>
+<p>在需要断点的地方插入</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">from ipdb import set_trace</div><div class="line">set_trace()</div></pre></td></tr></table></figure>
+<p>3、常用命令</p>
+<blockquote>
+<ul>
+<li>n(下一个)</li>
+<li>ENTER(重复上次命令)</li>
+<li>q(退出)</li>
+<li>p&lt;变量&gt;(打印变量)</li>
+<li>c(继续)</li>
+<li>l(查找当前位于哪里)</li>
+<li>s(进入子程序)</li>
+<li>r(运行直到子程序结束)</li>
+<li>!<python 命令=""></python></li>
+<li>h(帮助)</li>
+</ul>
+</blockquote>
+<hr>
+<p>如果上面的工具觉得好用的话，下面这款工具真心觉得用的爽。</p>
+<p>1、安装<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">pip install pudb</div></pre></td></tr></table></figure></p>
+<p>2、在代码的入口处插入</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">from pudb import set_trace; set_trace()</div></pre></td></tr></table></figure>
+<p>3、调试代码</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">sudo pudb bp.py</div></pre></td></tr></table></figure>
+<p>4、简单使用</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">Ctrl-p可以配置pudb: 是否显示行号, 选择主题, 内置Python解释器的类别</div></pre></td></tr></table></figure>
+<blockquote>
+<ul>
+<li>n: next，也就是执行一步</li>
+<li>s: step into，进入函数内部</li>
+<li>c: continue</li>
+<li>b: break point，断点</li>
+<li>!: python command line</li>
+<li>?: help</li>
+</ul>
+</blockquote>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">Python</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2017/03/29/python 调试工具/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+
+
+
+
+
+
+
+  
+    <article id="post-devstack" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/03/29/devstack/">devstack mitaka 安装配置</a>
+    </h1>
+  
+
+        
+        <a href="/2017/03/29/devstack/" class="archive-article-date">
+  	<time datetime="2017-03-29T15:37:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-03-29</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div><div class="line">76</div><div class="line">77</div><div class="line">78</div><div class="line">79</div><div class="line">80</div><div class="line">81</div><div class="line">82</div><div class="line">83</div><div class="line">84</div><div class="line">85</div><div class="line">86</div><div class="line">87</div><div class="line">88</div><div class="line">89</div><div class="line">90</div><div class="line">91</div><div class="line">92</div><div class="line">93</div><div class="line">94</div><div class="line">95</div><div class="line">96</div><div class="line">97</div><div class="line">98</div><div class="line">99</div><div class="line">100</div><div class="line">101</div><div class="line">102</div><div class="line">103</div><div class="line">104</div><div class="line">105</div><div class="line">106</div><div class="line">107</div><div class="line">108</div><div class="line">109</div><div class="line">110</div><div class="line">111</div><div class="line">112</div><div class="line">113</div><div class="line">114</div><div class="line">115</div><div class="line">116</div><div class="line">117</div><div class="line">118</div><div class="line">119</div><div class="line">120</div><div class="line">121</div><div class="line">122</div><div class="line">123</div><div class="line">124</div><div class="line">125</div><div class="line">126</div><div class="line">127</div><div class="line">128</div><div class="line">129</div><div class="line">130</div><div class="line">131</div><div class="line">132</div><div class="line">133</div><div class="line">134</div><div class="line">135</div><div class="line">136</div><div class="line">137</div><div class="line">138</div><div class="line">139</div><div class="line">140</div><div class="line">141</div><div class="line">142</div><div class="line">143</div><div class="line">144</div><div class="line">145</div><div class="line">146</div><div class="line">147</div><div class="line">148</div><div class="line">149</div><div class="line">150</div><div class="line">151</div><div class="line">152</div><div class="line">153</div><div class="line">154</div><div class="line">155</div></pre></td><td class="code"><pre><div class="line">1、操作系统ubuntu 14.04 </div><div class="line">2、安装方式 devstack </div><div class="line">3、安装版本 openstack mitaka版本</div><div class="line">4、安装devstack 步骤</div><div class="line"></div><div class="line">1) 目前国内已经提供了完整的OpenStack的github的mirror</div><div class="line">http://git.trystack.cn</div><div class="line"></div><div class="line">2) 另外devstack还会下载image，下载的过程也是非常缓慢。trystack也提供大家常用的image下载。</div><div class="line">http://images.trystack.cn</div><div class="line">3) 设置源</div><div class="line">sudo vim /etc/apt/sources.list</div><div class="line">deb http://cn.archive.ubuntu.com/ubuntu/ trusty main restricted universe multiverse</div><div class="line">deb http://cn.archive.ubuntu.com/ubuntu/ trusty-security main restricted universe multiverse</div><div class="line">deb http://cn.archive.ubuntu.com/ubuntu/ trusty-updates main restricted universe multiverse</div><div class="line">deb http://cn.archive.ubuntu.com/ubuntu/ trusty-proposed main restricted universe multiverse</div><div class="line">deb http://cn.archive.ubuntu.com/ubuntu/ trusty-backports main restricted universe multiverse</div><div class="line"></div><div class="line"></div><div class="line">sudo apt-get update</div><div class="line">sudo ntpdate 192.168.2.161</div><div class="line"></div><div class="line">sudo apt-get install git -y</div><div class="line"></div><div class="line">sudo git clone http://git.trystack.cn/openstack-dev/devstack.git -b stable/mitaka</div><div class="line"></div><div class="line"># 目前Devstack脚本已经不支持直接使用root身份运行，你需要创建stack用户运行</div><div class="line">cd devstack/tools/</div><div class="line">sudo ./create-stack-user.sh</div><div class="line">sudo passwd stack</div><div class="line"># 修改devstack目录权限,让stack用户可以运行</div><div class="line">sudo chown -R stack:stack devstack</div><div class="line">sudo chmod 777 /dev/pts/0</div><div class="line"></div><div class="line">su stack</div><div class="line">cd devstack</div><div class="line"></div><div class="line">vim local.conf</div><div class="line">stack@ubuntu:/home/wanstack/devstack$ cat local.conf </div><div class="line">[[local|localrc]]</div><div class="line"></div><div class="line"># use TryStack git mirror</div><div class="line">GIT_BASE=http://git.trystack.cn</div><div class="line">NOVNC_REPO=http://git.trystack.cn/kanaka/noVNC.git</div><div class="line">SPICE_REPO=http://git.trystack.cn/git/spice/spice-html5.git</div><div class="line"></div><div class="line">#OFFLINE=True</div><div class="line">RECLONE=False</div><div class="line"></div><div class="line"># Define images to be automatically downloaded during the DevStack built process.</div><div class="line">DOWNLOAD_DEFAULT_IMAGES=False</div><div class="line">IMAGE_URLS=&quot;http://images.trystack.cn/cirros/cirros-0.3.4-x86_64-disk.img&quot;</div><div class="line"></div><div class="line">HOST_IP=192.168.12.10</div><div class="line"></div><div class="line"></div><div class="line"># Credentials</div><div class="line">DATABASE_PASSWORD=openstack</div><div class="line">ADMIN_PASSWORD=openstack</div><div class="line">SERVICE_PASSWORD=openstack</div><div class="line">SERVICE_TOKEN=openstack</div><div class="line">RABBIT_PASSWORD=openstack</div><div class="line"></div><div class="line">HORIZON_BRANCH=stable/mitaka</div><div class="line">KEYSTONE_BRANCH=stable/mitaka</div><div class="line">NOVA_BRANCH=stable/mitaka</div><div class="line">NEUTRON_BRANCH=stable/mitaka</div><div class="line">GLANCE_BRANCH=stable/mitaka</div><div class="line">CINDER_BRANCH=stable/mitaka</div><div class="line">CEILOMETER_BRANCH=stable/mitaka</div><div class="line">AODH_BRANCH=stable/mitaka</div><div class="line"></div><div class="line">enable_plugin ceilometer https://git.openstack.org/openstack/ceilometer stable/mitaka</div><div class="line">enable_plugin aodh https://git.openstack.org/openstack/aodh stable/mitaka</div><div class="line"></div><div class="line"></div><div class="line">#keystone</div><div class="line">KEYSTONE_TOKEN_FORMAT=UUID</div><div class="line"></div><div class="line">##Heat</div><div class="line">HEAT_BRANCH=stable/mitaka</div><div class="line">enable_service h-eng h-api h-api-cfn h-api-cw</div><div class="line"></div><div class="line"></div><div class="line">## Swift</div><div class="line">SWIFT_BRANCH=stable/mitaka</div><div class="line">ENABLED_SERVICES+=,s-proxy,s-object,s-container,s-account</div><div class="line">SWIFT_REPLICAS=1</div><div class="line">SWIFT_HASH=011688b44136573e209e</div><div class="line"></div><div class="line"></div><div class="line"># Enabling Neutron (network) Service</div><div class="line">disable_service n-net</div><div class="line">enable_service q-svc</div><div class="line">enable_service q-agt</div><div class="line">enable_service q-dhcp</div><div class="line">enable_service q-l3</div><div class="line">enable_service q-meta</div><div class="line">enable_service q-metering</div><div class="line">enable_service neutron</div><div class="line"></div><div class="line">## Neutron options</div><div class="line">Q_USE_SECGROUP=True</div><div class="line">FLOATING_RANGE=&quot;192.168.12.0/24&quot;</div><div class="line">FIXED_RANGE=&quot;10.0.0.0/24&quot;</div><div class="line">Q_FLOATING_ALLOCATION_POOL=start=192.168.12.110,end=192.168.12.120</div><div class="line">PUBLIC_NETWORK_GATEWAY=&quot;192.168.12.1&quot;</div><div class="line">Q_L3_ENABLED=True</div><div class="line">PUBLIC_INTERFACE=eth0</div><div class="line">Q_USE_PROVIDERNET_FOR_PUBLIC=True</div><div class="line">OVS_PHYSICAL_BRIDGE=br-ex</div><div class="line">PUBLIC_BRIDGE=br-ex</div><div class="line">OVS_BRIDGE_MAPPINGS=public:br-ex</div><div class="line"></div><div class="line"># #VLAN configuration.</div><div class="line">Q_PLUGIN=ml2</div><div class="line">ENABLE_TENANT_VLANS=True</div><div class="line"></div><div class="line"># Logging</div><div class="line">LOGFILE=/opt/stack/logs/stack.sh.log</div><div class="line">VERBOSE=True</div><div class="line">LOG_COLOR=True</div><div class="line">SCREEN_LOGDIR=/opt/stack/logs</div><div class="line"></div><div class="line"></div><div class="line">报错:</div><div class="line">File &quot;/usr/local/lib/python2.7/dist-packages/pip/_vendor/requests/packages/urllib3/response.py&quot;, line 246, in _error_catcher</div><div class="line">2017-03-21 07:54:11.931 |     raise ReadTimeoutError(self._pool, None, &apos;Read timed out.&apos;)</div><div class="line">2017-03-21 07:54:11.931 | ReadTimeoutError: HTTPSConnectionPool(host=&apos;pypi.python.org&apos;, port=443): Read timed out.</div><div class="line"></div><div class="line"></div><div class="line">报错解决:</div><div class="line">./stack.sh: line 488: generate-subunit: command not found</div><div class="line"></div><div class="line">sudo apt-get install python-pip -y</div><div class="line">sudo pip install --upgrade pip</div><div class="line">sudo pip install -U os-testr</div><div class="line"></div><div class="line"></div><div class="line">报错:</div><div class="line">File &quot;/usr/local/lib/python2.7/dist-packages/openstack/session.py&quot;, line 29, in &lt;module&gt;</div><div class="line">2017-03-20 04:52:02.612 |     DEFAULT_USER_AGENT = &quot;openstacksdk/%s&quot; % openstack.__version__</div><div class="line">2017-03-20 04:52:02.612 | AttributeError: &apos;module&apos; object has no attribute &apos;__version__&apos;</div><div class="line">2017-03-20 04:52:02.643 | +lib/keystone:create_keystone_accounts:373  admin_tenant=</div><div class="line">处理:</div><div class="line">root@ubuntu:~# python</div><div class="line"> &gt;&gt;&gt; import openstack</div><div class="line"> &gt;&gt;&gt; import pbr.version</div><div class="line"> &gt;&gt;&gt; print(pbr.version.VersionInfo(&apos;openstacksdk&apos;).version_string())</div><div class="line"> 8 0.8.1</div><div class="line"> &gt;&gt;&gt; quit()</div><div class="line"> vim /usr/local/lib/python2.7/dist-packages/openstack/session.py</div><div class="line">修改为： DEFAULT_USER_AGENT = &quot;openstacksdk/0.8.1&quot;</div><div class="line"></div><div class="line">./stack.sh</div></pre></td></tr></table></figure>
+<h1 id="在ubuntu上搭建samba"><a href="#在ubuntu上搭建samba" class="headerlink" title="在ubuntu上搭建samba"></a>在ubuntu上搭建samba</h1><p>sudo apt-get install samba samba-common -y</p>
+<h1 id="我们把devstack安装在了-opt目录下，所以共享这个目录"><a href="#我们把devstack安装在了-opt目录下，所以共享这个目录" class="headerlink" title="我们把devstack安装在了/opt目录下，所以共享这个目录"></a>我们把devstack安装在了/opt目录下，所以共享这个目录</h1><p>#sudo chmod -R 777 /opt<br>sudo useradd openstack<br>sudo smbpasswd -a  openstack<br>sudo vim /etc/samba/smb.conf<br>在文件末尾添加：<br>[openstack]<br>comment=openstack<br>public=yes<br>browseable = yes<br>path=/opt<br>read only = no</p>
+<p>forceuser=root<br>forcegroup=root</p>
+<p>####################################################</p>
+<h1 id="重启服务"><a href="#重启服务" class="headerlink" title="重启服务"></a>重启服务</h1><p>sudo /etc/init.d/smbd restart</p>
+<p>```</p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">Openstack</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2017/03/29/devstack/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+
+
+
+
+
+
+
+  
     <article id="post-ceilometer-mitaka api分析" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
